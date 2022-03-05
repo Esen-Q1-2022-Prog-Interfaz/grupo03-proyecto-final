@@ -1,8 +1,19 @@
 from db.connections import db
+from datetime import datetime
 
 
 class Actividades(db.Model):  # type: ignore
+    """
+    Table model de las actividades
+    Campos:
+        nombreActividad : str
+        fechaInicio : datetime
+        fechaFinal : datetime
+        cantidadVoluntarios : int
+        horasSociales : int
+    """
 
+    # Campos tabla
     idActividad = db.Column(db.Integer, primary_key=True)
     nombreActividad = db.Column(db.String(50), nullable=False)
     fechaInicio = db.Column(db.DateTime(), nullable=False)
@@ -13,14 +24,13 @@ class Actividades(db.Model):  # type: ignore
 
     def __init__(
         self,
-        idActividad,
-        nombreActividad,
-        fechaInicio,
-        fechaFinal,
-        cantidadVoluntarios,
-        horasSociales,
+        nombreActividad: str,
+        fechaInicio: datetime,
+        fechaFinal: datetime,
+        cantidadVoluntarios: int,
+        horasSociales: int,
     ) -> None:
-        self.idActividad = idActividad
+
         self.nombreActividad = nombreActividad
         self.fechaInicio = fechaInicio
         self.fechaFinal = fechaFinal

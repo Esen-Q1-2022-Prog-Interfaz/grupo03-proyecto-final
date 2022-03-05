@@ -1,31 +1,40 @@
 from db.connections import db
 
 
-class Inscripcion:
+class Inscripciones(db.Model):  # type: ignore
     """
-    Data model de tabla inscripcion
-    Campos: 
-    
+    Table model de inscripciones
+    Campos:
+        idVoluntario : int
+        idActividad : int
+        estado : bool
+        pago : bool
+    """
 
-    """
+    # Campos tabla
     idInscripcion = db.Column(db.Integer, primary_key=True)
-    idVoluntario = db.Column(db.Integer, db.ForeignKey(
-        'usuarios.idvoluntario'), nullable=False)
-    idActividad = db.Column(db.Integer, db.ForeignKey(
-        'actividades.idactividad'), nullable=False)
+    idVoluntario = db.Column(
+        db.Integer,
+        db.ForeignKey("usuarios.idVoluntario"),
+        nullable=False,
+    )
+    idActividad = db.Column(
+        db.Integer,
+        db.ForeignKey("actividades.idActividad"),
+        nullable=False,
+    )
     estado = db.Column(db.Boolean, nullable=False)
     pago = db.Column(db.Boolean, nullable=False)
 
     def __init__(
         self,
-        idInstripcion,
-        idVoluntario,
-        idActividad,
-        estado,
-        pago,
+        idVoluntario: int,
+        idActividad: int,
+        estado: bool,
+        pago: bool,
     ) -> None:
+
         self.idActividad = idActividad
-        self.idInscripcion = idInstripcion
         self.idVoluntario = idVoluntario
         self.estado = estado
         self.pago = pago

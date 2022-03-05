@@ -1,4 +1,4 @@
 __pycache__
 __pycache__/*
-dbconnection.py
 .pytest_cache
+.nvimlog

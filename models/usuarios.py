@@ -1,21 +1,20 @@
 from db.connections import db
+from datetime import datetime
 
-class Usuario(db.Model):  # type: ignore
+class Usuarios(db.Model):  # type: ignore
     """
-    Data model para tabla Usuario
-    Campos de tabla:
-
-    idVoluntario : int
-    carnet : str
-    nombre : str
-    apellido : str
-    anno : DateTime
-    telefono : str
-    correo : str
+    Table model de los Usuarios
+    Campos:
+        carnet : str
+        nombre : str
+        apellido : str
+        anno : DateTime
+        telefono : str
+        correo : str
     """
 
     # Campos tabla
-    idVoluntario = db.Column(db.Ingeter, primary_key=True)
+    idVoluntario = db.Column(db.Integer, primary_key=True)
     carnet = db.Column(db.String(50), nullable=False)
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
@@ -26,16 +25,14 @@ class Usuario(db.Model):  # type: ignore
 
     def __init__(
         self,
-        idVoluntario,
-        carnet,
-        nombre,
-        apellido,
-        anno,
-        telefono,
-        correo,
+        carnet : str,
+        nombre : str,
+        apellido : str,
+        anno : datetime,
+        telefono : str,
+        correo : str,
     ) -> None:
 
-        self.idVoluntario = idVoluntario
         self.carnet = carnet
         self.nombre = nombre
         self.apellido = apellido
