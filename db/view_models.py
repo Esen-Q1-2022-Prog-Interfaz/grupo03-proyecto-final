@@ -1,7 +1,6 @@
 from datetime import datetime
 from typing import Union
 
-
 class VistaUsuarios:
     def __init__(
         self,
@@ -20,7 +19,7 @@ class VistaUsuarios:
         self.status: str = "Finalizada" if status else "Cancelada"
 
     @classmethod
-    def clean_query(cls, raw_query: list[tuple]):
+    def clean_query(cls, raw_query: list[tuple]) -> list:
         return [cls(*raw_actvividad) for raw_actvividad in raw_query]
 
     def __repr__(self) -> str:
@@ -49,7 +48,7 @@ class VistaRegistro:
         self.total_horas = total_horas
 
     @classmethod
-    def clean_query(cls, raw_query: list[tuple]):
+    def clean_query(cls, raw_query: list[tuple]) -> list:
         return [cls(*raw_vol) for raw_vol in raw_query]
 
     def __repr__(self) -> str:
@@ -61,3 +60,4 @@ class VistaRegistro:
             {self.total_horas}
         )
         """.strip()
+

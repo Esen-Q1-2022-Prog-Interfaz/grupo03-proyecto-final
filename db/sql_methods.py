@@ -42,7 +42,7 @@ def get_view_inscripciones() -> list[VistaUsuarios]:
     result = db.session.execute(sql_statement).fetchall()
     return VistaUsuarios.clean_query(result)
 
-def get_view_registrp_academico():
+def get_view_registrp_academico() -> list[VistaRegistro]:
     sql_statement = (
         f"SELECT "
         # Campos a retornar
