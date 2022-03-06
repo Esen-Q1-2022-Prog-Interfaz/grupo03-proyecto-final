@@ -14,5 +14,5 @@ Agregar Campo Evidencia (si TipoActividad=1 o 2, NA; Si TipoActividad=3, evaluar
 Hacer evaluacion según TipoActividad para HorasTotales
     Hacer función para HorasTotales
 
-Crear Schema
+Crear Schema -- DONE
 
