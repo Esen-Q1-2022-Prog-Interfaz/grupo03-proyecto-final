@@ -1,7 +1,9 @@
 from datetime import datetime
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from db.connections import db
+from db.db import db
+from db.sql_methods import get_view_inscripciones
+
 from models.actividades import Actividades
 from models.inscripciones import Inscripciones
 from models.usuarios import Usuarios
@@ -11,7 +13,6 @@ app.config.from_object("config.BaseConfig")
 SQLAlchemy(app)
 
 # TODO: Borren esta weaaaaaaa
-# TODO: Delete esta route, es solo para ver si el SqlAlchemy works :), y of course it works
 # Es una muestra de como se usa
 @app.route("/")
 def home():
@@ -39,22 +40,25 @@ def home():
         "7444-3233",
         "david@hotmial.com",
     )
-    db.session.add(newArg)
-    db.session.add(secArg)
-    db.session.add(thArg)
-    db.session.commit()
+    # db.session.add(newArg)
+    # db.session.add(secArg)
+    # db.session.add(thArg)
+    # db.session.commit()
 
     act_1 = Actividades(
-        "Limpiar 1", datetime(2022, 4, 6), datetime(2045, 11, 12), 34, 45
+        "Limpiar 1", datetime(2022, 4, 6), datetime(2045, 11, 12)
     )
-    db.session.add(act_1)
-    db.session.commit()
+    # db.session.add(act_1)
+    # db.session.commit()
 
-    newInscrip = Inscripciones(2, 1, False, True)
-    db.session.add(newInscrip)
-    db.session.commit()
+    newInscrip = Inscripciones(2, 1, False, True, 54, 23)
+    # db.session.add(newInscrip)
+    # db.session.commit()
 
-    return "Fallo?"
+    data = Inscripciones.query.all()
+    data_2 = get_view_inscripciones()
+
+    return f"Fallo? {data} {data_2}"
 
 
 with app.app_context():

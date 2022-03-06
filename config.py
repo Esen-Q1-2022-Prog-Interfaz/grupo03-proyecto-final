@@ -7,5 +7,4 @@ class BaseConfig(object):
     SQLALCHEMY_POOL_SIZE = 50
     SQLALCHEMY_POOL_TIMEOUT = 300
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    #TODO: create a secret key
-    SECRET_KEY = "parangaracutirimicuaro"
+    SECRET_KEY = "1414892a04d3eb59b0c9953af3487cb1ff88152eb386b3bc50feac70e68098d71c682f63d3c0d8b5"

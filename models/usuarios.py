@@ -1,5 +1,6 @@
-from db.connections import db
+from db.db import db
 from datetime import datetime
+
 
 class Usuarios(db.Model):  # type: ignore
     """
@@ -18,19 +19,18 @@ class Usuarios(db.Model):  # type: ignore
     carnet = db.Column(db.String(50), nullable=False)
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
-    # TODO: fix name, pongo anno o year ?
     anno = db.Column(db.DateTime)
     telefono = db.Column(db.String(50), nullable=False)
     correo = db.Column(db.String(100), nullable=False)
 
     def __init__(
         self,
-        carnet : str,
-        nombre : str,
-        apellido : str,
-        anno : datetime,
-        telefono : str,
-        correo : str,
+        carnet: str,
+        nombre: str,
+        apellido: str,
+        anno: datetime,
+        telefono: str,
+        correo: str,
     ) -> None:
 
         self.carnet = carnet
@@ -49,3 +49,15 @@ class Usuarios(db.Model):  # type: ignore
             {self.anno}, 
             {self.telefono}, 
             {self.correo})""".strip()
+
+    def get_carnet(self):
+        carnet: str
+        try:
+            carnet = self.correo[:7]
+        except Exception:
+            carnet = "None"
+        return carnet
+
+    @staticmethod
+    def get_carnet_from_correo(correo: str):
+        return correo[:7]

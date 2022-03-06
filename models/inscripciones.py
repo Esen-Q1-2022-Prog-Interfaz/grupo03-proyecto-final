@@ -1,14 +1,16 @@
-from db.connections import db
+from db.db import db
 
 
 class Inscripciones(db.Model):  # type: ignore
     """
-    Table model de inscripciones
+    Table model de inscripciones:
     Campos:
         idVoluntario : int
         idActividad : int
         estado : bool
         pago : bool
+        horasSociales : int
+        cantidadKg : int
     """
 
     # Campos tabla
@@ -25,6 +27,8 @@ class Inscripciones(db.Model):  # type: ignore
     )
     estado = db.Column(db.Boolean, nullable=False)
     pago = db.Column(db.Boolean, nullable=False)
+    horasSociales = db.Column(db.Integer, nullable=False)
+    cantidadKg = db.Column(db.Integer, nullable=True)
 
     def __init__(
         self,
@@ -32,12 +36,16 @@ class Inscripciones(db.Model):  # type: ignore
         idActividad: int,
         estado: bool,
         pago: bool,
+        horasSociales: int,
+        cantidadKg: int,
     ) -> None:
 
         self.idActividad = idActividad
         self.idVoluntario = idVoluntario
         self.estado = estado
         self.pago = pago
+        self.horasSociales = horasSociales
+        self.cantidadKg = cantidadKg
 
     def __repr__(self) -> str:
         return f"""
@@ -45,5 +53,7 @@ class Inscripciones(db.Model):  # type: ignore
         {self.idActividad},
         {self.idVoluntario},
         {self.estado},
-        {self.pago}
+        {self.pago},
+        {self.horasSociales},
+        {self.cantidadKg}
         """.strip()
