@@ -1,4 +1,4 @@
-DATA_BASE_NAME = 'pruebaxd'
+DATA_BASE_NAME = 'raicesdb'
 USER = "root"
 PASSWORD = "rootroot"
 

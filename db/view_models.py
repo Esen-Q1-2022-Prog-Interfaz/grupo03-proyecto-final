@@ -2,6 +2,16 @@ from datetime import datetime
 from typing import Union
 
 class VistaUsuarios:
+    """
+    Model de la vista usuarios:
+        Campos:
+            idVoluntario: int
+            actividad: str
+            fechaInicio: datetime
+            fechaFinal: datetime
+            horas_por_actividad: int
+            status: int
+        """
     def __init__(
         self,
         idVoluntario: int,
@@ -11,6 +21,7 @@ class VistaUsuarios:
         horas_por_actividad: int,
         status: Union[bool, int],
     ) -> None:
+
         self.idVoluntario = idVoluntario
         self.actividad = actividad
         self.fechaInicio = fechaInicio
@@ -35,12 +46,20 @@ class VistaUsuarios:
 
 
 class VistaRegistro:
+    """
+    Model de la vista para registro academico:
+        Campos:     
+            carnet : str,
+            actividad : str,
+            nombre_apellido : str,
+            total_horas : int
+    """
     def __init__(
         self,
-        carnet,
-        actividad,
-        nombre_apellido,
-        total_horas,
+        carnet : str,
+        actividad : str,
+        nombre_apellido : str,
+        total_horas : int,
     ) -> None:
         self.carnet = carnet
         self.actividad = actividad
