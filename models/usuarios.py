@@ -1,3 +1,4 @@
+from typing import Union
 from db.db import db
 from datetime import datetime
 
@@ -25,20 +26,20 @@ class Usuarios(db.Model):  # type: ignore
 
     def __init__(
         self,
-        carnet: str,
+        correo: str,
         nombre: str,
         apellido: str,
         anno: int,
         telefono: str,
-        correo: str,
+        carnet: Union[str, None] = None,
     ) -> None:
 
-        self.carnet = carnet
         self.nombre = nombre
+        self.correo = correo
         self.apellido = apellido
         self.anno = anno
         self.telefono = telefono
-        self.correo = correo
+        self.carnet = self.get_carnet(carnet)
 
     def __repr__(self) -> str:
         return f"""Usuario(
@@ -50,14 +51,13 @@ class Usuarios(db.Model):  # type: ignore
             {self.telefono}, 
             {self.correo})""".strip()
 
-    def get_carnet(self):
-        carnet: str
-        try:
-            carnet = self.correo[:7]
-        except Exception: #AssertionError
-            carnet = "None" #No aceptaremos personas sin carnet, porque means que son personas de afuera de la esen, no?
+    def get_carnet(self, carnet_ : Union[str, None]):
+        carnet : str
+        if bool(carnet_) and not self.correo.endswith("@esen.edu.sv"):
+            carnet = carnet_
+        else:
+            try:
+                carnet = self.correo[:7]
+            except Exception: 
+                carnet = "None" 
         return carnet
-
-    @staticmethod
-    def get_carnet_from_correo(correo: str):
-        return correo[:7] #Entonces debemos validar que el correo sea "@esen.edu.sv"
