@@ -20,7 +20,7 @@ def home():
         "20200938",
         "David",
         "Solis",
-        datetime(2022, 4, 23),
+        4,
         "3434-3433",
         "david@hotmial.com",
     )
@@ -28,7 +28,7 @@ def home():
         "20200948",
         "Eleazar",
         "Segovia",
-        datetime(2023, 5, 13),
+        4,
         "8834-3434",
         "generic@hotmial.com",
     )
@@ -36,7 +36,7 @@ def home():
         "20200949",
         "MEnganito",
         "Fulano",
-        datetime(2025, 4, 5),
+        4,
         "7444-3233",
         "ful@hotmial.com",
     )
