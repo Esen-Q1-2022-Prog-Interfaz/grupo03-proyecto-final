@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from db.db import db
-from db.sql_methods import get_view_inscripciones, get_view_registrp_academico
+from db.sql_methods import get_view_inscripciones, get_view_registro_academico
 
 from models.actividades import Actividades
 from models.inscripciones import Inscripciones
@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config.from_object("config.BaseConfig")
 SQLAlchemy(app)
 
-
+# Todo: BORRAR ANTES DE MERGE
 # Es una muestra de como se usa
 @app.route("/")
 def home():
@@ -67,7 +67,7 @@ def home():
 
     data = Inscripciones.query.all()
     data_2 = get_view_inscripciones()
-    data_3 = get_view_registrp_academico()
+    data_3 = get_view_registro_academico()
     data_4 = Usuarios.query.all()
     data_5 = Actividades.query.all()
 
