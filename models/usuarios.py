@@ -19,7 +19,7 @@ class Usuarios(db.Model):  # type: ignore
     carnet = db.Column(db.String(50), nullable=False)
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
-    anno = db.Column(db.DateTime)
+    anno = db.Column(db.Integer, nullable=False) 
     telefono = db.Column(db.String(50), nullable=False)
     correo = db.Column(db.String(100), nullable=False)
 
@@ -28,7 +28,7 @@ class Usuarios(db.Model):  # type: ignore
         carnet: str,
         nombre: str,
         apellido: str,
-        anno: datetime,
+        anno: int,
         telefono: str,
         correo: str,
     ) -> None:
@@ -54,10 +54,10 @@ class Usuarios(db.Model):  # type: ignore
         carnet: str
         try:
             carnet = self.correo[:7]
-        except Exception:
-            carnet = "None"
+        except Exception: #AssertionError
+            carnet = "None" #No aceptaremos personas sin carnet, porque means que son personas de afuera de la esen, no?
         return carnet
 
     @staticmethod
     def get_carnet_from_correo(correo: str):
-        return correo[:7]
+        return correo[:7] #Entonces debemos validar que el correo sea "@esen.edu.sv"

@@ -28,7 +28,14 @@ class Inscripciones(db.Model):  # type: ignore
     estado = db.Column(db.Boolean, nullable=False)
     pago = db.Column(db.Boolean, nullable=False)
     horasSociales = db.Column(db.Integer, nullable=False)
-    cantidadKg = db.Column(db.Integer, nullable=True)
+    #Mejor dejamos horasSociales en Actividades, lo escribimos una vez por actividad y aca solo es una foranea
+    #Si no, tendríamos que validar cada registro if IdActividad=1, horassociales=60, por ejemplo
+    cantidadKg = db.Column(db.Float, nullable=True)
+    #HorasPorKilo
+    
+    #Evaluar TipoActividad para asignar HorasTotales
+    #HorasTotales: HorasTipo1+(CantidadKg*HorasPorKilo)
+    #Agregar Columna: Evidencia (si TipoActividad=1 o 2, NA; Si TipoActividad=3, evaluar(De forma natural: "NO", Pero se puede cambiar a "Sí"))
 
     def __init__(
         self,
@@ -37,7 +44,7 @@ class Inscripciones(db.Model):  # type: ignore
         estado: bool,
         pago: bool,
         horasSociales: int,
-        cantidadKg: int,
+        cantidadKg: float,
     ) -> None:
 
         self.idActividad = idActividad

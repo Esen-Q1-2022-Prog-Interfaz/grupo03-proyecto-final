@@ -15,7 +15,9 @@ class Actividades(db.Model):  # type: ignore
     idActividad = db.Column(db.Integer, primary_key=True)
     nombreActividad = db.Column(db.String(50), nullable=False)
     fechaInicio = db.Column(db.DateTime(), nullable=False)
-    fechaFinal = db.Column(db.DateTime(), nullable=False)
+    fechaFinal = db.Column(db.DateTime(), nullable=False) #Propongo tener un campo Cupos
+    #Porque permite printear en la tabla "Quedan x cupos" comparando los registros en "Inscripciones" con actividades.CantidadVoluntarios
+    #Agregar un campo TipoActividad (1:presencial, 2:reciclaje, 3:virtual)
 
     def __init__(
         self,
