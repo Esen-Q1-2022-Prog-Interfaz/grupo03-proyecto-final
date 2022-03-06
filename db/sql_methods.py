@@ -54,5 +54,5 @@ def get_view_registrp_academico():
         + f" FROM {DB_INSC} INNER JOIN {DB_ACT} ON {DB_INSC}.{ID_ACT_INSC} = {DB_ACT}.{ID_ACT} "
         + f"INNER JOIN {DB_USUARIOS} ON {DB_USUARIOS}.{ID_VOL} = {DB_INSC}.{ID_VOL_INSC};"
     )
-    result = db.session.executee(sql_statement).fetch_all()
+    result = db.session.execute(sql_statement).fetchall()
     return VistaRegistro.clean_query(result)

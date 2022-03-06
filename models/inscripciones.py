@@ -49,11 +49,13 @@ class Inscripciones(db.Model):  # type: ignore
 
     def __repr__(self) -> str:
         return f"""
-        {self.idInscripcion},
-        {self.idActividad},
-        {self.idVoluntario},
-        {self.estado},
-        {self.pago},
-        {self.horasSociales},
-        {self.cantidadKg}
+        Inscripciones(
+            {self.idInscripcion},
+            {self.idActividad},
+            {self.idVoluntario},
+            {self.estado},
+            {self.pago},
+            {self.horasSociales},
+            {self.cantidadKg}
+        )
         """.strip()
