@@ -16,7 +16,7 @@ class Usuarios(db.Model):  # type: ignore
 
     # Campos tabla
     idVoluntario = db.Column(db.Integer, primary_key=True)
-    carnet = db.Column(db.String(50), nullable=False)
+    carnet = db.Column(db.String(50), nullable=False) 
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
     anno = db.Column(db.Integer, nullable=False) 

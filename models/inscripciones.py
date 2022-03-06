@@ -9,8 +9,8 @@ class Inscripciones(db.Model):  # type: ignore
         idActividad : int
         estado : bool
         pago : bool
-        horasSociales : int
         cantidadKg : int
+        Evidencia: boolean
     """
 
     # Campos tabla
@@ -27,15 +27,8 @@ class Inscripciones(db.Model):  # type: ignore
     )
     estado = db.Column(db.Boolean, nullable=False)
     pago = db.Column(db.Boolean, nullable=False)
-    horasSociales = db.Column(db.Integer, nullable=False)
-    #Mejor dejamos horasSociales en Actividades, lo escribimos una vez por actividad y aca solo es una foranea
-    #Si no, tendríamos que validar cada registro if IdActividad=1, horassociales=60, por ejemplo
     cantidadKg = db.Column(db.Float, nullable=True)
-    #HorasPorKilo
-    
-    #Evaluar TipoActividad para asignar HorasTotales
-    #HorasTotales: HorasTipo1+(CantidadKg*HorasPorKilo)
-    #Agregar Columna: Evidencia (si TipoActividad=1 o 2, NA; Si TipoActividad=3, evaluar(De forma natural: "NO", Pero se puede cambiar a "Sí"))
+    evidencia = db.Column(db.Boolean(), nullable=False)
 
     def __init__(
         self,
@@ -43,16 +36,16 @@ class Inscripciones(db.Model):  # type: ignore
         idActividad: int,
         estado: bool,
         pago: bool,
-        horasSociales: int,
         cantidadKg: float,
+        evidencia: bool,
     ) -> None:
 
         self.idActividad = idActividad
         self.idVoluntario = idVoluntario
         self.estado = estado
         self.pago = pago
-        self.horasSociales = horasSociales
         self.cantidadKg = cantidadKg
+        self.evidencia = evidencia
 
     def __repr__(self) -> str:
         return f"""
@@ -63,6 +56,7 @@ class Inscripciones(db.Model):  # type: ignore
             {self.estado},
             {self.pago},
             {self.horasSociales},
-            {self.cantidadKg}
+            {self.cantidadKg},
+            {self.evidencia}
         )
         """.strip()
