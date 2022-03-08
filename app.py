@@ -51,7 +51,7 @@ def home():
         "Limpar 2", datetime(2022, 5, 7), datetime(2022, 5, 8), 30, 2, 2, 20
     )
     act_3 = Actividades(
-        "Limpar 3", datetime(2022, 4, 6), datetime(2022, 6, 3), 40, 5, 1, 220
+        "Limpar 3", datetime(2022, 4, 6), datetime(2022, 6, 3), 40, 5, 3, 220
     )
     db.session.add(act_1)
     db.session.add(act_2)

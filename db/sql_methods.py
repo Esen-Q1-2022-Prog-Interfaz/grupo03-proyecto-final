@@ -12,10 +12,13 @@ CARNET = "`carnet`"
 
 DB_ACT = "`Actividades`"
 ID_ACT = "`idActividad`" 
+NAME_ACT = "`nombreActividad`"
 FECHA_IN = "`fechaInicio`"
 FECHA_FIN = "`fechaFinal`"
-NAME_ACT = "`nombreActividad`"
 HORAS_SOCIALES = "`horasSociales`"
+HORAS_KG = "`horasKg`"
+TIPO_ACT = "`tipoActividad`"
+CUPOS_TOTALES = "`cuposTotales`"
 
 DB_INSC = "`Inscripciones`"
 ID_VOL_INSC ="`idVoluntario`"
@@ -23,6 +26,7 @@ ID_ACT_INSC = "`idActividad`"
 ESTADO = "`estado`"
 PAGO = "`pago`"
 CANT_KG = "`cantidadKg`"
+EVIDENCIA = "`evidencia`"
 
 def get_view_inscripciones() -> list[VistaUsuarios]:
     sql_statement = (
@@ -47,7 +51,7 @@ def get_view_registro_academico() -> list[VistaRegistro]:
         # Campos a retornar
         + f"{DB_USUARIOS}.{CARNET}, "
         + f"{DB_ACT}.{NAME_ACT}, "
-        + f'({DB_USUARIOS}.{NOMBRE} + {DB_USUARIOS}.{APELLIDO}) as "Nombre y apellido,"'
+        + f'({DB_USUARIOS}.{NOMBRE} + {DB_USUARIOS}.{APELLIDO}) as "Nombre y apellido", '
         + f'{DB_ACT}.{HORAS_SOCIALES}'
         #joins
         + f" FROM {DB_INSC} INNER JOIN {DB_ACT} ON {DB_INSC}.{ID_ACT_INSC} = {DB_ACT}.{ID_ACT} "
