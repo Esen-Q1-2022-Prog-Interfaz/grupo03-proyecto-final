@@ -11,19 +11,19 @@ class Actividades(db.Model):  # type: ignore
         fechaFinal : datetime
         horasSociales : int
         horasKg : int
-        tipoActividad: str
+        tipoActividad: int
         cuposTotales: int
     """
 
     # Campos tabla
     idActividad = db.Column(db.Integer, primary_key=True)
     nombreActividad = db.Column(db.String(50), nullable=False)
-    fechaInicio = db.Column(db.DateTime(), nullable=False)
-    fechaFinal = db.Column(db.DateTime(), nullable=False) 
-    horasSociales = db.Column(db.int(), nullable=True)
-    horasKg = db.Column(db.int(), nullable=True)
-    tipoActividad = db.Column(db.String(), nullable=False)
-    cuposTotales = db.Column(db.Integer(), nullable=False)
+    fechaInicio = db.Column(db.DateTime, nullable=False)
+    fechaFinal = db.Column(db.DateTime, nullable=False) 
+    horasSociales = db.Column(db.Integer, nullable=True)
+    horasKg = db.Column(db.Integer, nullable=True)
+    tipoActividad = db.Column(db.Integer, nullable=False)
+    cuposTotales = db.Column(db.Integer, nullable=False)
     
     #Propongo tener un campo Cupos
     #Porque permite printear en la tabla "Quedan x cupos" comparando los registros en "Inscripciones" con actividades.CantidadVoluntarios
@@ -36,7 +36,7 @@ class Actividades(db.Model):  # type: ignore
         fechaFinal: datetime,
         horasSociales: int,
         horasKg: int,
-        TipoActividad: str,
+        tipoActividad: int,
         cuposTotales: int) -> None:
 
         self.nombreActividad = nombreActividad
@@ -44,8 +44,8 @@ class Actividades(db.Model):  # type: ignore
         self.fechaFinal = fechaFinal
         self.horasSociales = horasSociales
         self.horasKg = horasKg
-        self.TipoActividad =TipoActividad
-        self.cuposTotales =cuposTotales
+        self.tipoActividad = tipoActividad 
+        self.cuposTotales = cuposTotales
 
     def __repr__(self) -> str:
 
@@ -57,7 +57,7 @@ class Actividades(db.Model):  # type: ignore
         {self.fechaFinal},
         {self.horasSociales},
         {self.horasKg},
-        {self.TipoActividad},
+        {self.tipoActividad},
         {self.cuposTotales}
         )
         """.strip()

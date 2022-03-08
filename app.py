@@ -17,28 +17,27 @@ SQLAlchemy(app)
 @app.route("/")
 def home():
     newArg = Usuarios(
-        "20200938",
+        "david@hotmial.com",
         "David",
         "Solis",
         4,
         "3434-3433",
-        "david@hotmial.com",
+        "20200938",
     )
     secArg = Usuarios(
-        "20200948",
+        "20203453@esen.edu.sv",
         "Eleazar",
         "Segovia",
-        4,
+        2,
         "8834-3434",
-        "generic@hotmial.com",
     )
     thArg = Usuarios(
-        "20200949",
+        "ful@hotmial.com",
         "MEnganito",
         "Fulano",
-        4,
+        3,
         "7444-3233",
-        "ful@hotmial.com",
+        "20200949",
     )
     db.session.add(newArg)
     db.session.add(secArg)
@@ -46,22 +45,22 @@ def home():
     db.session.commit()
 
     act_1 = Actividades(
-        "Limpiar 1", datetime(2022, 4, 6), datetime(2045, 11, 12)
+        "Limpiar 1", datetime(2022, 4, 6), datetime(2045, 11, 12), 30, 2, 3, 20
     )
     act_2 = Actividades(
-        "Limpar 2", datetime(2022, 5, 7), datetime(2022, 5, 8)
+        "Limpar 2", datetime(2022, 5, 7), datetime(2022, 5, 8), 30, 2, 2, 20
     )
     act_3 = Actividades(
-        "Limpar 3", datetime(2022, 4, 6), datetime(2022, 6, 3)
+        "Limpar 3", datetime(2022, 4, 6), datetime(2022, 6, 3), 40, 5, 1, 220
     )
     db.session.add(act_1)
     db.session.add(act_2)
     db.session.add(act_3)
     db.session.commit()
 
-    for i in range(1,3):
-        for u in range(1,3):
-            ins = Inscripciones(u, i, bool(u%2), True, 54, 23)
+    for i in range(1, 3):
+        for u in range(1, 3):
+            ins = Inscripciones(u, i, bool(u % 2), True, 54)
             db.session.add(ins)
             db.session.commit()
 

@@ -1,4 +1,6 @@
 from db.db import db
+from models.actividades import Actividades
+from db.utils.immutable_db import db_tipo_actividades
 
 
 class Inscripciones(db.Model):  # type: ignore
@@ -10,7 +12,6 @@ class Inscripciones(db.Model):  # type: ignore
         estado : bool
         pago : bool
         cantidadKg : int
-        Evidencia: boolean
     """
 
     # Campos tabla
@@ -28,7 +29,7 @@ class Inscripciones(db.Model):  # type: ignore
     estado = db.Column(db.Boolean, nullable=False)
     pago = db.Column(db.Boolean, nullable=False)
     cantidadKg = db.Column(db.Float, nullable=True)
-    evidencia = db.Column(db.Boolean(), nullable=False)
+    evidencia = db.Column(db.String(20), nullable=False)
 
     def __init__(
         self,
@@ -37,7 +38,6 @@ class Inscripciones(db.Model):  # type: ignore
         estado: bool,
         pago: bool,
         cantidadKg: float,
-        evidencia: bool,
     ) -> None:
 
         self.idActividad = idActividad
@@ -45,10 +45,14 @@ class Inscripciones(db.Model):  # type: ignore
         self.estado = estado
         self.pago = pago
         self.cantidadKg = cantidadKg
-        self.evidencia = evidencia
+        actividad = db_tipo_actividades[self.get_activity(self.idActividad)]
+        if actividad == 3:
+            self.evidencia = "---"
+        else:
+            self.evidencia = str(False)
 
-    def __repr__(self) -> str:
-        return f"""
+        def __repr__(self) -> str:
+            return f"""
         Inscripciones(
             {self.idInscripcion},
             {self.idActividad},
@@ -60,3 +64,7 @@ class Inscripciones(db.Model):  # type: ignore
             {self.evidencia}
         )
         """.strip()
+
+    def get_activity(self, id : int) -> int:
+        result : Actividades =  Actividades.query.get(id) 
+        return result.tipoActividad
