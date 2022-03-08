@@ -97,6 +97,24 @@ img {
     color: white;
 }
 
+/* Boton ser voluntario */
+
+#scroll {
+    outline: none;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 250px;
+    margin-top: -2.5em;
+    background-color: #6b0cd8;
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
 /* slideshow gallery */
 
 /* Position the image container (needed to position the left and right arrows) */
