@@ -26,6 +26,10 @@ ul {
 li {
     float: left;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 
 li a {
     display: block;
@@ -344,11 +348,61 @@ img {
 
 
 /* CONTACTO */
+.contact {
+    margin: 50px;
+    display: grid;
+    grid-template-columns: auto auto ;
+    gap: 30px;
+    background-color: white;
+    padding: 10px;
+}
+
+.contact > div {
+    background-color: f1f1f1;
+    text-align: center;
+    font-size: 30px;
+}
+
+.iconos {
+    margin: 50px;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.contact-info {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+
+
 
 
 
 /* LOGIN AND REGISTER */
-
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
