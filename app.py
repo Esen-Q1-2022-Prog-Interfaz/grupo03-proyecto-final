@@ -9,6 +9,11 @@ from db.sql_methods import get_view_inscripciones, get_view_registro_academico
 from models.actividades import Actividades
 from models.inscripciones import Inscripciones
 from models.usuarios import Usuarios
+from models.juntaDirectiva import juntaDirectiva
+from models.contactanos import contactanos
+from models.productos import productos
+from models.compras import compras
+
 
 app = Flask(__name__)
 app.config.from_object("config.BaseConfig")
@@ -62,10 +67,24 @@ def home():
         "En pie",
     )
     act_2 = Actividades(
-        "Limpar 2", datetime(2022, 5, 7), datetime(2022, 5, 8), 30, 2, 2, 20, "En pie"
+        "Limpar 2", 
+        datetime(2022, 5, 7), 
+        datetime(2022, 5, 8), 
+        30, 
+        2, 
+        2, 
+        20, 
+        "En pie"
     )
     act_3 = Actividades(
-        "Limpar 3", datetime(2022, 4, 6), datetime(2022, 6, 3), 40, 5, 3, 220, "En pie"
+        "Limpar 3", 
+        datetime(2022, 4, 6), 
+        datetime(2022, 6, 3), 
+        40, 
+        5, 
+        3, 
+        220, 
+        "En pie"
     )
     db.session.add(act_1)
     db.session.add(act_2)
@@ -78,11 +97,58 @@ def home():
             db.session.add(ins)
             db.session.commit()
 
+    contacto_1=contactanos(
+        "Ernesto",
+        "Cerna",
+        "prueba@hotmail.com",
+        11110000,
+        "asuntointento",
+        "mensajeintento",
+        1
+    )
+    db.session.ad(contacto_1)
+    db.session.commit()
+    
+    persona_jd_1=juntaDirectiva(
+        "sofia",
+        "segura",
+        "drectora",
+        "prueba@gmail.com"
+    )
+    db.session.ad(persona_jd_1)
+    db.session.commit()
+    
+    prod_1=productos(
+        "producto 1",
+        "Descripcion producto 1",
+        "linkimagen"
+    )
+    db.session.ad(prod_1)
+    db.session.commit()
+    
+    compra_1=compras(
+        "ernesto",
+        "cerna",
+        "Santa Ana",
+        "Santa Ana",
+        "Casa 1",
+        1111000,
+        1,
+        "instruccion"
+    )
+    db.session.ad(compra_1)
+    db.session.commit()
+    
+    
     data = Inscripciones.query.all()
     data_2 = get_view_inscripciones()
     data_3 = get_view_registro_academico()
     data_4 = Usuarios.query.all()
     data_5 = Actividades.query.all()
+    contactanos = contactanos.query.all()
+    juntaDirectiva = juntaDirectiva.query.all()
+    productos = productos.query.all()
+    compras = compras.query.all()
     cupos = Inscripciones.get_cupos_restantes(act_1.idActividad, act_1.cuposTotales)
     return f"""
     <h1>inscripciones</h1>
@@ -99,6 +165,14 @@ def home():
     {data_3}
     <h1>cupos</h1>
     {cupos}
+    <h1>compras</h1>
+    {contactanos}
+    <h1>productos</h1>
+    {juntaDirectiva}
+    <h1>Junta Directiva</h1>
+    {productos}
+    <h1>Productos</h1>
+    {compras}
    """
 
 
