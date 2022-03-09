@@ -1,6 +1,7 @@
 from datetime import datetime
 from flask import Flask, send_file
 from flask_sqlalchemy import SQLAlchemy
+from flask import session
 from db.db import db
 from db.make_excel import create_excel, delete_if_exist
 from db.sql_methods import get_view_inscripciones, get_view_registro_academico
@@ -13,13 +14,15 @@ app = Flask(__name__)
 app.config.from_object("config.BaseConfig")
 SQLAlchemy(app)
 
-path_file = ""
 
 # Todo: BORRAR ANTES DE MERGE
 # Es una muestra de como se usa
 @app.route("/")
 def home():
-    delete_if_exist(path_file)
+    if "path_excel" in session:
+        delete_if_exist(session["path_excel"])
+        session.pop("path_excel")
+
     newArg = Usuarios(
         "david@hotmial.com",
         "David",
@@ -49,7 +52,14 @@ def home():
     db.session.commit()
 
     act_1 = Actividades(
-        "Limpiar 1", datetime(2022, 4, 6), datetime(2045, 11, 12), 30, 2, 3, 20, "En pie"
+        "Limpiar 1",
+        datetime(2022, 4, 6),
+        datetime(2045, 11, 12),
+        30,
+        2,
+        3,
+        20,
+        "En pie",
     )
     act_2 = Actividades(
         "Limpar 2", datetime(2022, 5, 7), datetime(2022, 5, 8), 30, 2, 2, 20, "En pie"
@@ -97,11 +107,12 @@ def get_excel_file():
     data = get_view_registro_academico()
     path = create_excel(data)
     if path:
-        path_file = path
+        session["path_excel"] = path
         return send_file(path, as_attachment=True)
     else:
         return "Hubo un error procesando los datos"
-    
+
+
 with app.app_context():
     db.create_all()
 

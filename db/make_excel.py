@@ -13,7 +13,7 @@ def create_excel(data_vista: list[VistaRegistro], filename = "horas_sociales") -
     path = os.getcwd() + "/" + filename + ".xlsx"
     with pd.ExcelWriter(path, engine="xlsxwriter") as writer:
         df.to_excel(writer, sheet_name="Horas sociales", index=False)
-        return path
+    return path
         
 def delete_if_exist(path : str):
     print(f"looking {path}")
