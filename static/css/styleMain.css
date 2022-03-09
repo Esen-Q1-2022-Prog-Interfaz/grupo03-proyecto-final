@@ -60,6 +60,10 @@ h2 {
     font-size: 40px;
 }
 
+.login{
+    float: right;
+  }
+
 /* HOME -------------------------------------------------------------*/
 .container {
     position: relative;
@@ -403,6 +407,16 @@ input[type=submit]:hover {
 
 
 /* LOGIN AND REGISTER */
+
+.frame {
+    width: 80%;
+    padding: 10px;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+    padding: 5%;
+}
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
