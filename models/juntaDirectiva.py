@@ -1,6 +1,6 @@
 from db.db import db
 
-class juntaDirectiva(db.Model):  # type: ignore
+class JuntaDirectiva(db.Model):  # type: ignore
     """
     Table model de la junta Directiva
     Campos:

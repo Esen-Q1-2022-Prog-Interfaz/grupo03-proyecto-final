@@ -9,10 +9,10 @@ from db.sql_methods import get_view_inscripciones, get_view_registro_academico
 from models.actividades import Actividades
 from models.inscripciones import Inscripciones
 from models.usuarios import Usuarios
-from models.juntaDirectiva import juntaDirectiva
-from models.contactanos import contactanos
-from models.productos import productos
-from models.compras import compras
+from models.juntaDirectiva import JuntaDirectiva
+from models.contactanos import Contactanos
+from models.productos import Productos
+from models.compras import Compras
 
 
 app = Flask(__name__)
@@ -96,7 +96,7 @@ def home():
             db.session.add(ins)
             db.session.commit()
 
-    contacto_1=contactanos(
+    contacto_1= Contactanos(
         "Ernesto",
         "Cerna",
         "prueba@hotmail.com",
@@ -108,7 +108,7 @@ def home():
     db.session.add(contacto_1)
     db.session.commit()
     
-    persona_jd_1=juntaDirectiva(
+    persona_jd_1= JuntaDirectiva(
         "sofia",
         "segura",
         "drectora",
@@ -117,7 +117,7 @@ def home():
     db.session.add(persona_jd_1)
     db.session.commit()
     
-    prod_1=productos(
+    prod_1=Productos(
         "producto 1",
         "Descripcion producto 1",
         "linkimagen"
@@ -125,7 +125,7 @@ def home():
     db.session.add(prod_1)
     db.session.commit()
     
-    compra_1=compras(
+    compra_1=Compras(
         "ernesto",
         "cerna",
         "Santa Ana",
@@ -144,10 +144,10 @@ def home():
     data_3 = get_view_registro_academico()
     data_4 = Usuarios.query.all()
     data_5 = Actividades.query.all()
-    contactanos = contactanos.query.all()
-    juntaDirectiva = juntaDirectiva.query.all()
-    productos = productos.query.all()
-    compras = compras.query.all()
+    contactanos = Contactanos.query.all()
+    juntaDirectiva = JuntaDirectiva.query.all()
+    productos = Productos.query.all()
+    compras = Compras.query.all()
     cupos = Inscripciones.get_cupos_restantes(act_1.idActividad, act_1.cuposTotales)
     return f"""
     <h1>inscripciones</h1>

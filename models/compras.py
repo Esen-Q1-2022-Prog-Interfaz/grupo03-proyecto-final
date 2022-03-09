@@ -1,6 +1,6 @@
 from db.db import db
 
-class compras(db.Model):  # type: ignore
+class Compras(db.Model):  # type: ignore
     """
     Table model de las compras
     Campos:
@@ -21,7 +21,7 @@ class compras(db.Model):  # type: ignore
     apellidoComprador = db.Column(db.String(50), nullable=False)
     departamento = db.Column(db.String(50), nullable=False)
     municipio = db.Column(db.String(50), nullable=False)
-    dirección = db.Column(db.String(150), nullable=False)
+    direccion = db.Column(db.String(150), nullable=False)
     numeroTel = db.Column(db.Integer, nullable=False)
     instruccionesExtra = db.Column(db.String(100), nullable=True)
 
