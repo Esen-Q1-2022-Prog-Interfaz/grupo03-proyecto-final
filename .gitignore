@@ -4,3 +4,4 @@ __pycache__/*
 .nvimlog
 config.py
 horas_sociales.xlsx
+logins/*
