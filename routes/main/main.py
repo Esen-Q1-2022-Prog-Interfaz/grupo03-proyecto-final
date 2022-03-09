@@ -27,12 +27,3 @@ def catalog():
 def contact():
     return render_template("main/contact.html")
 
-
-@main.route("/login")
-def login():
-    return render_template("main/login.html")
-
-
-@main.route("/register")
-def register():
-    return render_template("main/register.html")
