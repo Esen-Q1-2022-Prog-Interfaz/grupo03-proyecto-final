@@ -26,7 +26,6 @@ SQLAlchemy(app)
 def home():
     if "path_excel" in session:
         delete_if_exist(session["path_excel"])
-        session.pop("path_excel")
 
     newArg = Usuarios(
         "david@hotmial.com",
@@ -182,7 +181,7 @@ def get_excel_file():
     path = create_excel(data)
     if path:
         session["path_excel"] = path
-        return send_file(path, as_attachment=True)
+        return send_file(path)
     else:
         return "Hubo un error procesando los datos"
 
