@@ -19,6 +19,7 @@ HORAS_SOCIALES = "`horasSociales`"
 HORAS_KG = "`horasKg`"
 TIPO_ACT = "`tipoActividad`"
 CUPOS_TOTALES = "`cuposTotales`"
+ESTADO_ACT = "`estado`"
 
 DB_INSC = "`Inscripciones`"
 ID_VOL_INSC ="`idVoluntario`"
@@ -33,10 +34,10 @@ def get_view_inscripciones() -> list[VistaUsuarios]:
         f"SELECT "
         # Valores a retornar
         + f"{DB_USUARIOS}.{ID_VOL}, "
-        + f"{DB_ACT}.{NAME_ACT},"
-        + f"{DB_ACT}.{FECHA_IN},"
-        + f"{DB_ACT}.{FECHA_FIN},"
-        + f"{DB_ACT}.{HORAS_SOCIALES},"
+        + f"{DB_ACT}.{NAME_ACT}, "
+        + f"{DB_ACT}.{FECHA_IN}, "
+        + f"{DB_ACT}.{FECHA_FIN}, "
+        + f"{DB_ACT}.{HORAS_SOCIALES}, "
         + f"{DB_INSC}.{ESTADO}"
         # Los joins
         + f" FROM {DB_INSC} INNER JOIN {DB_ACT} ON {DB_INSC}.{ID_ACT_INSC} = {DB_ACT}.{ID_ACT} "
@@ -51,7 +52,7 @@ def get_view_registro_academico() -> list[VistaRegistro]:
         # Campos a retornar
         + f"{DB_USUARIOS}.{CARNET}, "
         + f"{DB_ACT}.{NAME_ACT}, "
-        + f'({DB_USUARIOS}.{NOMBRE} + {DB_USUARIOS}.{APELLIDO}) as "Nombre y apellido", '
+        + f'CONCAT({DB_USUARIOS}.{NOMBRE}, " ", {DB_USUARIOS}.{APELLIDO}) AS "Nombre y apellido", '
         + f'{DB_ACT}.{HORAS_SOCIALES}'
         #joins
         + f" FROM {DB_INSC} INNER JOIN {DB_ACT} ON {DB_INSC}.{ID_ACT_INSC} = {DB_ACT}.{ID_ACT} "

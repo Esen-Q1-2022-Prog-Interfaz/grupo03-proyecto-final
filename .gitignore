@@ -3,3 +3,4 @@ __pycache__/*
 .pytest_cache
 .nvimlog
 config.py
+horas_sociales.xlsx

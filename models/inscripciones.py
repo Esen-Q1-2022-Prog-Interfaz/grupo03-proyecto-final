@@ -1,6 +1,5 @@
 from db.db import db
 from models.actividades import Actividades
-from db.utils.immutable_db import db_tipo_actividades
 
 
 class Inscripciones(db.Model):  # type: ignore
@@ -45,7 +44,7 @@ class Inscripciones(db.Model):  # type: ignore
         self.estado = estado
         self.pago = pago
         self.cantidadKg = cantidadKg
-        actividad = self.get_activity(self.idActividad)
+        actividad = Actividades.get_activity(self.idActividad)
         if actividad != 3:
             self.evidencia = "---"
         else:
@@ -64,6 +63,15 @@ class Inscripciones(db.Model):  # type: ignore
     )
     """.strip()
 
-    def get_activity(self, id : int) -> int:
-        result : Actividades =  Actividades.query.get(id) 
-        return result.tipoActividad
+    def get_horas_sociales(self):
+        """Retorna horas sociales + (horasKg por cantidad recogida)"""
+        actitivdad: Actividades = Actividades.query.get(self.idActividad)
+        return actitivdad.horasSociales + (
+            actitivdad.horasKg or 0 * self.cantidadKg or 0
+        )
+
+    @classmethod
+    def get_cupos_restantes(cls, idActividad, cuposTotales) -> int:
+        """Retorna los cupos restantes de una actividad"""
+        cupos_llenos = len(cls.query.filter_by(idActividad=idActividad).all())
+        return cuposTotales - cupos_llenos
