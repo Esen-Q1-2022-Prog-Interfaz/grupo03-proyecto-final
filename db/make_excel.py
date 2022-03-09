@@ -26,6 +26,7 @@ def create_excel(
 
 
 def delete_if_exist(path: str):
+    """Borra archivo excel del almacenamiento de la app flask"""
     if os.path.exists(path):
         session.pop("path_excel")
         os.remove(path)

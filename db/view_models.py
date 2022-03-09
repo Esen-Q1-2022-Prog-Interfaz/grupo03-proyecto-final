@@ -1,5 +1,7 @@
 from datetime import datetime
 from typing import Union
+from __future__ import annotations
+
 
 class VistaUsuarios:
     """
@@ -11,7 +13,8 @@ class VistaUsuarios:
             fechaFinal: datetime
             horas_por_actividad: int
             status: int
-        """
+    """
+
     def __init__(
         self,
         idVoluntario: int,
@@ -30,7 +33,8 @@ class VistaUsuarios:
         self.status: str = "Finalizada" if status else "Cancelada"
 
     @classmethod
-    def clean_query(cls, raw_query: list[tuple]) -> list:
+    def clean_query(cls, raw_query: list[tuple]) -> list[VistaUsuarios]:
+        """Limpia el query retornando registros del modelo VistaUsuarios"""
         return [cls(*raw_actvividad) for raw_actvividad in raw_query]
 
     def __repr__(self) -> str:
@@ -48,18 +52,19 @@ class VistaUsuarios:
 class VistaRegistro:
     """
     Model de la vista para registro academico:
-        Campos:     
+        Campos:
             carnet : str,
             actividad : str,
             nombre_apellido : str,
             total_horas : int
     """
+
     def __init__(
         self,
-        carnet : str,
-        actividad : str,
-        nombre_apellido : str,
-        total_horas : int,
+        carnet: str,
+        actividad: str,
+        nombre_apellido: str,
+        total_horas: int,
     ) -> None:
         self.carnet = carnet
         self.actividad = actividad
@@ -67,7 +72,8 @@ class VistaRegistro:
         self.total_horas = total_horas
 
     @classmethod
-    def clean_query(cls, raw_query: list[tuple]) -> list:
+    def clean_query(cls, raw_query: list[tuple]) -> list[VistaRegistro]:
+        """Limpia el query retornando registros del modelo VistaRegistro"""
         return [cls(*raw_vol) for raw_vol in raw_query]
 
     def __repr__(self) -> str:
@@ -79,4 +85,3 @@ class VistaRegistro:
             {self.total_horas}
         )
         """.strip()
-

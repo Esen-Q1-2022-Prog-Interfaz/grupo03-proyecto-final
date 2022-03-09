@@ -1,5 +1,6 @@
 from db.db import db
 
+
 class Contactanos(db.Model):  # type: ignore
     """
     Table model del contacto
@@ -24,7 +25,6 @@ class Contactanos(db.Model):  # type: ignore
     mensaje = db.Column(db.String(500), nullable=False)
     estado = db.Column(db.Integer, nullable=False)
 
-
     def __init__(
         self,
         nombre: str,
@@ -33,7 +33,7 @@ class Contactanos(db.Model):  # type: ignore
         telefono: int,
         asunto: str,
         mensaje: str,
-        estado: int
+        estado: int,
     ) -> None:
 
         self.nombre = nombre
