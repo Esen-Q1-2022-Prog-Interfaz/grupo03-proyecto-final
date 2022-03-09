@@ -105,7 +105,7 @@ def home():
         "mensajeintento",
         1
     )
-    db.session.ad(contacto_1)
+    db.session.add(contacto_1)
     db.session.commit()
     
     persona_jd_1=juntaDirectiva(
@@ -114,7 +114,7 @@ def home():
         "drectora",
         "prueba@gmail.com"
     )
-    db.session.ad(persona_jd_1)
+    db.session.add(persona_jd_1)
     db.session.commit()
     
     prod_1=productos(
@@ -122,7 +122,7 @@ def home():
         "Descripcion producto 1",
         "linkimagen"
     )
-    db.session.ad(prod_1)
+    db.session.add(prod_1)
     db.session.commit()
     
     compra_1=compras(
@@ -135,7 +135,7 @@ def home():
         1,
         "instruccion"
     )
-    db.session.ad(compra_1)
+    db.session.add(compra_1)
     db.session.commit()
     
     
