@@ -1,4 +1,8 @@
 __pycache__
 __pycache__/*
-dbconnection.py
 .pytest_cache
+.nvimlog
+config.py
+horas_sociales.xlsx
+logins/*
+.vscode/*
