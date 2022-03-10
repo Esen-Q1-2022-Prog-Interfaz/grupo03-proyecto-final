@@ -27,7 +27,6 @@ class Actividades(db.Model):  # type: ignore
     cuposTotales = db.Column(db.Integer, nullable=False)
     estado = db.Column(db.String(20), nullable=False)
 
-
     def __init__(
         self,
         nombreActividad: str,
@@ -37,7 +36,7 @@ class Actividades(db.Model):  # type: ignore
         horasKg: int,
         tipoActividad: int,
         cuposTotales: int,
-        estado : str
+        estado: str,
     ) -> None:
 
         self.nombreActividad = nombreActividad
@@ -66,6 +65,6 @@ class Actividades(db.Model):  # type: ignore
         """.strip()
 
     @classmethod
-    def get_activity(cls, id : int) -> int:
-        result =  cls.query.get(id) 
+    def get_activity(cls, id: int) -> int:
+        result = cls.query.get(id)
         return result.tipoActividad

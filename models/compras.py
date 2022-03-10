@@ -1,5 +1,6 @@
 from db.db import db
 
+
 class Compras(db.Model):  # type: ignore
     """
     Table model de las compras

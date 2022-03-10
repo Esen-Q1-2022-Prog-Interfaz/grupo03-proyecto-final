@@ -1,5 +1,6 @@
 from db.db import db
 
+
 class JuntaDirectiva(db.Model):  # type: ignore
     """
     Table model de la junta Directiva
@@ -38,4 +39,3 @@ class JuntaDirectiva(db.Model):  # type: ignore
             {self.apellido}, 
             {self.cargo}, 
             {self.correo})""".strip()
-
