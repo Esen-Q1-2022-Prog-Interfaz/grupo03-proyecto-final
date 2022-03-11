@@ -1,11 +1,22 @@
 from flask import Blueprint, render_template
+from sqlalchemy import desc
+from db.utils.photos_model import Photo
 
 main = Blueprint("main", __name__)
 
 
 @main.route("/")
 def home():
-    return render_template("main/home.html")
+    return render_template(
+        "main/home.html",
+        data={
+            i: Photo(
+                url=f"https://loremflickr.com/320/240?random={i}",
+                desc=f"The kitty number {i}",
+            )
+            for i in range(1, 11)
+        },
+    )
 
 
 @main.route("/about")
