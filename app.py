@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import Flask, send_file
 from flask_sqlalchemy import SQLAlchemy
-from flask import session
+from flask import session, render_template
 from db.db import db
 from db.make_excel import create_excel, delete_if_exist
 from db.sql_methods import get_view_inscripciones, get_view_registro_academico
@@ -112,7 +112,8 @@ def home():
         "sofia",
         "segura",
         "drectora",
-        "prueba@gmail.com"
+        "prueba@gmail.com",
+        "https://res.cloudinary.com/diwjly6a7/image/upload/v1646942199/cld-sample.jpg"
     )
     db.session.add(persona_jd_1)
     db.session.commit()
@@ -164,13 +165,14 @@ def home():
     {data_3}
     <h1>cupos</h1>
     {cupos}
-    <h1>compras</h1>
+    <h1>contactanos</h1>
     {contactanos}
-    <h1>productos</h1>
+    <h1>JD</h1>
     {juntaDirectiva}
-    <h1>Junta Directiva</h1>
-    {productos}
+    
     <h1>Productos</h1>
+    {productos}
+    <h1>Compras</h1>
     {compras}
    """
 
@@ -185,6 +187,9 @@ def get_excel_file():
     else:
         return "Hubo un error procesando los datos"
 
+@app.route("/try")
+def tryy():
+    return render_template("try.html")
 
 with app.app_context():
     db.create_all()
