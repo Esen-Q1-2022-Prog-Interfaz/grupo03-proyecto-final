@@ -2,13 +2,9 @@
 {%block contents %}
 <h1>Raíces ESEN</h1>
 
+
 <div class="container">
-  <img
-    src="../../static/media/fotoInicio.jpg"
-    alt="Cinque Terre"
-    width="1000"
-    height="300"
-  />
+  <img src="../../static/media/fotoInicio.jpg" alt="Cinque Terre" width="1000" height="300" />
   <div class="center">
     <h1>RAICES</h1>
   </div>
@@ -20,10 +16,10 @@
 <h2>Fotos</h2>
 
 <div class="containerSlideshow">
-  {% for i in data %}
+  {% for i in fotos_data %}
   <div class="mySlides">
     <div class="numbertext">{{i}} / 6</div>
-    <img src="{{data[i].url}}" style="object-fit: cover" />
+    <img src="{{fotos_data[i].url}}" style="object-fit: cover" />
   </div>
 
   {% endfor %}
@@ -36,163 +32,32 @@
   </div>
 
   <div class="row">
-    {% for i in data %}
+    {% for i in fotos_data %}
 
     <div class="column">
-      <img
-        class="demo cursor"
-        src="{{data[i].url}}"
-        style="width: 100%; object-fit: cover"
-        onclick="currentSlide({{i}})"
-        alt="{{data[i].desc}}"
-      />
+      <img class="demo cursor" src="{{fotos_data[i].url}}" style="width: 100%; object-fit: cover"
+        onclick='currentSlide({{ i }})' alt="{{fotos_data[i].desc}}" />
     </div>
 
     {% endfor %}
   </div>
 </div>
 
-<script>
-  var slideIndex = 1;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides((slideIndex += n));
-  }
-
-  function currentSlide(n) {
-    showSlides((slideIndex = n));
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
-    var captionText = document.getElementById("caption");
-    if (n > slides.length) {
-      slideIndex = 1;
-    }
-    if (n < 1) {
-      slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-    captionText.innerHTML = dots[slideIndex - 1].alt;
-  }
-</script>
 <h2>Próximas actividades</h2>
 
 <div class="grid-container">
+
+  {% for i in next_act %}
   <div>
     <div class="container">
-      <img
-        src="../../static/media/slide1.jpg"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
+      <img src="{{ next_act[i].url }}" alt="Avatar" class="image" style="width: 100%" />
       <div class="middle">
         <div class="text">Ver actividad</div>
       </div>
     </div>
   </div>
-  <div>
-    <div class="container">
-      <img
-        src="../../static/media/slide1.jpg"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
-      <div class="middle">
-        <div class="text">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="container">
-      <img
-        src="../../static/media/slide1.jpg"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
-      <div class="middle">
-        <div class="text">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="container">
-      <img
-        src="../../static/media/slide1.jpg"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
-      <div class="middle">
-        <div class="text">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="container">
-      <img
-        src="../../static/media/slide1.jpg"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
-      <div class="middle">
-        <div class="text">Ver actividad</div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="container">
-      <img
-        src="../../static/media/slide1.jpg"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
-      <div class="middle">
-        <div class="text">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="container">
-      <img
-        src="../../static/media/slide1.jpg"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
-      <div class="middle">
-        <div class="text">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="container">
-      <img
-        src="../../static/media/slide1.jpg"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
-      <div class="middle">
-        <div class="text">John Doe</div>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
+
 </div>
 
 <h2>Impacto</h2>
@@ -231,5 +96,40 @@
   </div>
   <br /><br />
 </div>
+<!-- TODO: Remover el javascript en el html-->
 
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides((slideIndex += n));
+  }
+
+  function currentSlide(n) {
+    showSlides((slideIndex = n));
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
 {% endblock %}
