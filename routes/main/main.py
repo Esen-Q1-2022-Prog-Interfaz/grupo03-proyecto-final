@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 from sqlalchemy import desc
-from db.utils.photos_model import Photo
+from db.utils.photos_model import Photo, PhotoNext
 
 main = Blueprint("main", __name__)
 
@@ -9,12 +9,20 @@ main = Blueprint("main", __name__)
 def home():
     return render_template(
         "main/home.html",
-        data={
+        fotos_data={
             i: Photo(
                 url=f"https://loremflickr.com/320/240?random={i}",
                 desc=f"The kitty number {i}",
             )
             for i in range(1, 11)
+        },
+        next_act={
+            i: PhotoNext(
+                f"https://loremflickr.com/320/240?random={i}",
+                f"No se {i}",
+                0,
+            )
+            for i in range(1, 13)
         },
     )
 
