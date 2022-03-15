@@ -2,9 +2,13 @@
 {%block contents %}
 <h1>Raíces ESEN</h1>
 
-
 <div class="container">
-  <img src="../../static/media/fotoInicio.jpg" alt="Cinque Terre" width="1000" height="300" />
+  <img
+    src="../../static/media/fotoInicio.jpg"
+    alt="Cinque Terre"
+    width="1000"
+    height="300"
+  />
   <div class="center">
     <h1>RAICES</h1>
   </div>
@@ -35,8 +39,13 @@
     {% for i in fotos_data %}
 
     <div class="column">
-      <img class="demo cursor" src="{{fotos_data[i].url}}" style="width: 100%; object-fit: cover"
-        onclick='currentSlide({{ i }})' alt="{{fotos_data[i].desc}}" />
+      <img
+        class="demo cursor"
+        src="{{fotos_data[i].url}}"
+        style="width: 100%; object-fit: cover"
+        onclick="currentSlide({{ i }})"
+        alt="{{fotos_data[i].desc}}"
+      />
     </div>
 
     {% endfor %}
@@ -46,18 +55,21 @@
 <h2>Próximas actividades</h2>
 
 <div class="grid-container">
-
   {% for i in next_act %}
   <div>
     <div class="container">
-      <img src="{{ next_act[i].url }}" alt="Avatar" class="image" style="width: 100%" />
+      <img
+        src="{{ next_act[i].url }}"
+        alt="Avatar"
+        class="image"
+        style="width: 100%"
+      />
       <div class="middle">
         <div class="text">Ver actividad</div>
       </div>
     </div>
   </div>
   {% endfor %}
-
 </div>
 
 <h2>Impacto</h2>
@@ -132,4 +144,5 @@
     captionText.innerHTML = dots[slideIndex - 1].alt;
   }
 </script>
+
 {% endblock %}
