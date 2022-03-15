@@ -12,7 +12,7 @@ class Contactanos(db.Model):  # type: ignore
         numeroTel : int
         asunto : str
         mensaje : str
-        estado : int
+        estado : boolean
     """
 
     # Campos tabla
@@ -23,7 +23,7 @@ class Contactanos(db.Model):  # type: ignore
     telefono = db.Column(db.Integer, nullable=True)
     asunto = db.Column(db.String(50), nullable=False)
     mensaje = db.Column(db.String(500), nullable=False)
-    estado = db.Column(db.Integer, nullable=False)
+    estado = db.Column(db.Boolean, nullable=False)
 
     def __init__(
         self,
@@ -33,7 +33,7 @@ class Contactanos(db.Model):  # type: ignore
         telefono: int,
         asunto: str,
         mensaje: str,
-        estado: int,
+        estado: bool,
     ) -> None:
 
         self.nombre = nombre

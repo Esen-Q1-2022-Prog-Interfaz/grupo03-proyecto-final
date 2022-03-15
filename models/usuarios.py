@@ -10,7 +10,7 @@ class Usuarios(db.Model):  # type: ignore
         carnet : str
         nombre : str
         apellido : str
-        anno : DateTime
+        anno : int
         telefono : str
         correo : str
     """
