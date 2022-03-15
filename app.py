@@ -101,7 +101,7 @@ def home():
         11110000,
         "asuntointento",
         "mensajeintento",
-        1
+        False
     )
     db.session.add(contacto_1)
     db.session.commit()

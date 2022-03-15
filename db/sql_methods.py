@@ -45,7 +45,8 @@ def get_view_inscripciones() -> list[VistaUsuarios]:
         + f"{DB_ACT}.{ID_ACT}, "
         + f"{DB_ACT}.{FECHA_IN}, "
         + f"{DB_ACT}.{FECHA_FIN}, "
-        + f"{DB_ACT}.{HORAS_SOCIALES}, "
+        + f"{DB_ACT}.{HORAS_SOCIALES},"
+        + f"{DB_ACT}.{ESTADO}"
         # Los joins
         + f" FROM {DB_INSC} INNER JOIN {DB_ACT} ON {DB_INSC}.{ID_ACT_INSC} = {DB_ACT}.{ID_ACT} "
         + f"INNER JOIN {DB_USUARIOS} ON {DB_USUARIOS}.{ID_VOL} = {DB_INSC}.{ID_VOL_INSC};"
