@@ -11,8 +11,6 @@ from models.inscripciones import Inscripciones
 from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
-from models.productos import Productos
-from models.compras import Compras
 
 
 app = Flask(__name__)
@@ -63,7 +61,7 @@ def home():
         2,
         3,
         20,
-        "En pie",
+        2,
     )
     act_2 = Actividades(
         "Limpar 2", 
@@ -73,7 +71,7 @@ def home():
         2, 
         2, 
         20, 
-        "En pie"
+        2,
     )
     act_3 = Actividades(
         "Limpar 3", 
@@ -83,7 +81,7 @@ def home():
         5, 
         3, 
         220, 
-        "En pie"
+        2,
     )
     db.session.add(act_1)
     db.session.add(act_2)
@@ -92,7 +90,7 @@ def home():
 
     for i in range(1, 3):
         for u in range(1, 3):
-            ins = Inscripciones(u, i, bool(u % 2), True, 54)
+            ins = Inscripciones(u, i, 2,1, 50, 54)
             db.session.add(ins)
             db.session.commit()
 
@@ -118,27 +116,6 @@ def home():
     db.session.add(persona_jd_1)
     db.session.commit()
     
-    prod_1=Productos(
-        "producto 1",
-        "Descripcion producto 1",
-        "linkimagen"
-    )
-    db.session.add(prod_1)
-    db.session.commit()
-    
-    compra_1=Compras(
-        "ernesto",
-        "cerna",
-        "Santa Ana",
-        "Santa Ana",
-        "Casa 1",
-        1111000,
-        1,
-        "instruccion"
-    )
-    db.session.add(compra_1)
-    db.session.commit()
-    
     
     data = Inscripciones.query.all()
     data_2 = get_view_inscripciones()
@@ -147,8 +124,6 @@ def home():
     data_5 = Actividades.query.all()
     contactanos = Contactanos.query.all()
     juntaDirectiva = JuntaDirectiva.query.all()
-    productos = Productos.query.all()
-    compras = Compras.query.all()
     cupos = Inscripciones.get_cupos_restantes(act_1.idActividad, act_1.cuposTotales)
     return f"""
     <h1>inscripciones</h1>
@@ -169,11 +144,6 @@ def home():
     {contactanos}
     <h1>JD</h1>
     {juntaDirectiva}
-    
-    <h1>Productos</h1>
-    {productos}
-    <h1>Compras</h1>
-    {compras}
    """
 
 
@@ -186,10 +156,6 @@ def get_excel_file():
         return send_file(path)
     else:
         return "Hubo un error procesando los datos"
-
-@app.route("/try")
-def tryy():
-    return render_template("try.html")
 
 with app.app_context():
     db.create_all()
