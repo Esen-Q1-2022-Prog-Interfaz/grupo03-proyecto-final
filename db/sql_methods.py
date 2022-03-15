@@ -19,7 +19,6 @@ HORAS_SOCIALES = "`horasSociales`"
 HORAS_KG = "`horasKg`"
 TIPO_ACT = "`tipoActividad`"
 CUPOS_TOTALES = "`cuposTotales`"
-ESTADO_ACT = "`estado`"
 
 DB_INSC = "`Inscripciones`"
 ID_VOL_INSC = "`idVoluntario`"
@@ -38,17 +37,16 @@ def get_view_inscripciones() -> list[VistaUsuarios]:
         fechaInicio : datetime
         fechaFinal : datetime,
         horasSociales : int,
-        estado : bool
     """
     sql_statement = (
         f"SELECT "
         # Valores a retornar
         + f"{DB_USUARIOS}.{ID_VOL}, "
-        + f"{DB_ACT}.{NAME_ACT}, "
+        + f"{DB_ACT}.{ID_ACT}, "
         + f"{DB_ACT}.{FECHA_IN}, "
         + f"{DB_ACT}.{FECHA_FIN}, "
-        + f"{DB_ACT}.{HORAS_SOCIALES}, "
-        + f"{DB_INSC}.{ESTADO}"
+        + f"{DB_ACT}.{HORAS_SOCIALES},"
+        + f"{DB_ACT}.{ESTADO}"
         # Los joins
         + f" FROM {DB_INSC} INNER JOIN {DB_ACT} ON {DB_INSC}.{ID_ACT_INSC} = {DB_ACT}.{ID_ACT} "
         + f"INNER JOIN {DB_USUARIOS} ON {DB_USUARIOS}.{ID_VOL} = {DB_INSC}.{ID_VOL_INSC};"

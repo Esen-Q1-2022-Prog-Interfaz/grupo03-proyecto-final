@@ -10,6 +10,7 @@ class JuntaDirectiva(db.Model):  # type: ignore
         apellido : str
         cargo : str
         correo : str
+        link: str
     """
 
     # Campos tabla
@@ -18,6 +19,7 @@ class JuntaDirectiva(db.Model):  # type: ignore
     apellido = db.Column(db.String(50), nullable=False)
     cargo = db.Column(db.String(30), nullable=False)
     correo = db.Column(db.String(100), nullable=False)
+    link=db.Column(db.String(1000), nullable=False)
 
     def __init__(
         self,
@@ -25,12 +27,14 @@ class JuntaDirectiva(db.Model):  # type: ignore
         nombre: str,
         apellido: str,
         cargo: str,
+        link: str
     ) -> None:
 
         self.nombre = nombre
         self.correo = correo
         self.apellido = apellido
         self.cargo = cargo
+        self.link=link
 
     def __repr__(self) -> str:
         return f"""Junta Directiva(
@@ -38,4 +42,6 @@ class JuntaDirectiva(db.Model):  # type: ignore
             {self.nombre}, 
             {self.apellido}, 
             {self.cargo}, 
-            {self.correo})""".strip()
+            {self.correo},
+            {self.link})""".strip()
+
