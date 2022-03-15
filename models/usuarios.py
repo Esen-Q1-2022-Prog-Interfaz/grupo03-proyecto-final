@@ -17,10 +17,10 @@ class Usuarios(db.Model):  # type: ignore
 
     # Campos tabla
     idVoluntario = db.Column(db.Integer, primary_key=True)
-    carnet = db.Column(db.String(50), nullable=False) 
+    carnet = db.Column(db.String(50), nullable=False)
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
-    anno = db.Column(db.Integer, nullable=False) 
+    anno = db.Column(db.Integer, nullable=False)
     telefono = db.Column(db.String(50), nullable=False)
     correo = db.Column(db.String(100), nullable=False)
 
@@ -51,13 +51,13 @@ class Usuarios(db.Model):  # type: ignore
             {self.telefono}, 
             {self.correo})""".strip()
 
-    def get_carnet(self, carnet_ : Union[str, None]):
-        carnet : str
+    def get_carnet(self, carnet_: Union[str, None]):
+        carnet: str
         if bool(carnet_) and not self.correo.endswith("@esen.edu.sv"):
             carnet = carnet_
         else:
             try:
                 carnet = self.correo[:7]
-            except Exception: 
-                carnet = "None" 
+            except Exception:
+                carnet = "None"
         return carnet

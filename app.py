@@ -159,6 +159,12 @@ def get_excel_file():
 
 with app.app_context():
     db.create_all()
+from flask import Flask
+from routes.main.main import main
+from routes.admin.admin import admin
 
-if "__main__" == __name__:
-    app.run(debug=True)
+app = Flask(__name__)
+app.config.from_object("config.BaseConfig")
+
+app.register_blueprint(admin)
+app.register_blueprint(main)
