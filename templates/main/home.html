@@ -16,11 +16,41 @@
 <div class="back-color1">
   <h2>¡Anímate a ser parte de nuestra familia!</h2>
 
+<<<<<<< HEAD
   <div class="containerSlideshow">
     {% for i in data %}
     <div class="mySlides">
       <div class="numbertext">{{i}} / 6</div>
       <img src="{{data[i].url}}" style="object-fit: cover" />
+=======
+<div class="containerSlideshow">
+  {% for i in fotos_data %}
+  <div class="mySlides">
+    <div class="numbertext">{{i}} / 6</div>
+    <img src="{{fotos_data[i].url}}" style="object-fit: cover" />
+  </div>
+
+  {% endfor %}
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    {% for i in fotos_data %}
+
+    <div class="column">
+      <img
+        class="demo cursor"
+        src="{{fotos_data[i].url}}"
+        style="width: 100%; object-fit: cover"
+        onclick="currentSlide({{ i }})"
+        alt="{{fotos_data[i].desc}}"
+      />
+>>>>>>> b5a592a58d92096f518f412e22164964cb9fdd9d
     </div>
 
     {% endfor %}
@@ -49,6 +79,7 @@
     </div>
   </div>
 
+<<<<<<< HEAD
   <script>
     var slideIndex = 1;
     showSlides(slideIndex);
@@ -83,6 +114,26 @@
       captionText.innerHTML = dots[slideIndex - 1].alt;
     }
 </script>
+=======
+<h2>Próximas actividades</h2>
+
+<div class="grid-container">
+  {% for i in next_act %}
+  <div>
+    <div class="container">
+      <img
+        src="{{ next_act[i].url }}"
+        alt="Avatar"
+        class="image"
+        style="width: 100%"
+      />
+      <div class="middle">
+        <div class="text">Ver actividad</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+>>>>>>> b5a592a58d92096f518f412e22164964cb9fdd9d
 </div>
 
 <div class="back-color2">
@@ -233,5 +284,41 @@
     <br /><br />
   </div>
 </div>
+<!-- TODO: Remover el javascript en el html-->
+
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides((slideIndex += n));
+  }
+
+  function currentSlide(n) {
+    showSlides((slideIndex = n));
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
 
 {% endblock %}

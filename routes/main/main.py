@@ -1,21 +1,38 @@
 from flask import Blueprint, render_template
-from sqlalchemy import desc
-from db.utils.photos_model import Photo
+from db.cloud_connection import CloudinaryConnection
+
+# from db.cloud_connection import CloudinaryConnection
+from db.utils.photos_model import Photo, PhotoNext
 
 main = Blueprint("main", __name__)
 
 
 @main.route("/")
 def home():
+    cloud = CloudinaryConnection.get_connection()
+    img_url, data = cloud.get_image()
+
+    fotos_data = {
+        i: Photo(
+            url=img_url,
+            desc=f"The kitty number {i}",
+        )
+        for i in range(1, 11)
+    }
+
+    next_act = {
+        i: PhotoNext(
+            img_url,
+            f"No se {i}",
+            0,
+        )
+        for i in range(1, 13)
+    }
+
     return render_template(
         "main/home.html",
-        data={
-            i: Photo(
-                url=f"https://loremflickr.com/320/240?random={i}",
-                desc=f"The kitty number {i}",
-            )
-            for i in range(1, 11)
-        },
+        fotos_data=fotos_data,
+        next_act=next_act,
     )
 
 

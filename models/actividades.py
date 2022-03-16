@@ -13,7 +13,7 @@ class Actividades(db.Model):  # type: ignore
         horasKg : int
         tipoActividad: int
         cuposTotales: int
-        estado : str
+        estado : int
     """
 
     # Campos tabla
@@ -25,7 +25,7 @@ class Actividades(db.Model):  # type: ignore
     horasKg = db.Column(db.Integer, nullable=True)
     tipoActividad = db.Column(db.Integer, nullable=False)
     cuposTotales = db.Column(db.Integer, nullable=False)
-    estado = db.Column(db.String(20), nullable=False)
+    estado = db.Column(db.Integer, nullable=False)
 
     def __init__(
         self,
@@ -36,7 +36,7 @@ class Actividades(db.Model):  # type: ignore
         horasKg: int,
         tipoActividad: int,
         cuposTotales: int,
-        estado: str,
+        estado : int
     ) -> None:
 
         self.nombreActividad = nombreActividad
