@@ -1,3 +1,4 @@
+
 from flask import Flask
 from routes.main.main import main
 from routes.admin.admin import admin
