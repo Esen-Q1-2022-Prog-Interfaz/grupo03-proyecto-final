@@ -13,8 +13,7 @@ from models.inscripciones import Inscripciones
 from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
-from models.productos import Productos
-from models.compras import Compras
+
 
 admin = Blueprint("admin", __name__, url_prefix="/admin")
 
