@@ -61,7 +61,7 @@ h2 {
 }
 
 .back-color1 {
-    background-color: #E8FCCF;
+    background-color: #A3B18A;
     padding-bottom: 100px;
 }
 
@@ -71,12 +71,12 @@ h2 {
 }
 
 .back-color2 {
-    background-color: #71b340;
+    background-color: #588157;
     padding-bottom: 100px;
 }
 
 .back-color2 h2 {
-    color: #E8FCCF;
+    color: #c9d4b5;
     font-size: 50px;
 }
 
@@ -96,7 +96,7 @@ h2 {
 
 .center h1 {
     font-size: 200px;
-    color: #8fb339;
+    color: white;
 }
 
 .center {
@@ -107,6 +107,11 @@ h2 {
     font-size: 50px;
 }
 
+.ESEN {
+    font-size: 100px;
+    color: white;
+    font-family: "Source Sans Pro";
+}
 .background-cover { 
     width: 100%;
     height: 100vh;
