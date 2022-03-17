@@ -61,7 +61,7 @@ h2 {
 }
 
 .back-color1 {
-    background-color: #A3B18A;
+    background-color: #92ac95;
     padding-bottom: 100px;
 }
 
@@ -94,10 +94,6 @@ h2 {
     padding-top: 250px;
 }
 
-.center h1 {
-    font-size: 200px;
-    color: white;
-}
 
 .center {
     position: absolute;
@@ -105,6 +101,11 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 50px;
+}
+
+.center h1 {
+    font-size: 200px;
+    color: white;
 }
 
 .ESEN {
