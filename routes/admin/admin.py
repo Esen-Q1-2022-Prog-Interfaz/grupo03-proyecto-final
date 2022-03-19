@@ -69,13 +69,13 @@ def db_test():
         2,
         3,
         20,
-        "En pie",
+        1,
     )
     act_2 = Actividades(
         "Limpar 2", datetime(2022, 5, 7), datetime(2022, 5, 8), 30, 2, 2, 20, 3
     )
     act_3 = Actividades(
-        "Limpar 3", datetime(2022, 4, 6), datetime(2022, 6, 3), 40, 5, 3, 220, "En pie"
+        "Limpar 3", datetime(2022, 4, 6), datetime(2022, 6, 3), 40, 5, 3, 220, True
     )
     db.session.add(act_1)
     db.session.add(act_2)
@@ -84,7 +84,7 @@ def db_test():
 
     for i in range(1, 3):
         for u in range(1, 3):
-            ins = Inscripciones(u, i, bool(u % 2), True, 54)
+            ins = Inscripciones(u, i, bool(u % 2), True, 3, 54)
             db.session.add(ins)
             db.session.commit()
 
@@ -95,31 +95,16 @@ def db_test():
         11110000,
         "asuntointento",
         "mensajeintento",
-        1,
+        True,
     )
     db.session.add(contacto_1)
     db.session.commit()
 
-    persona_jd_1 = JuntaDirectiva("sofia", "segura", "drectora", "prueba@gmail.com")
-    db.session.add(persona_jd_1)
-    db.session.commit()
-
-    prod_1 = Productos("producto 1", "Descripcion producto 1", "linkimagen")
-    db.session.add(prod_1)
-    db.session.commit()
-
-    compra_1 = Compras(
-        "ernesto",
-        "cerna",
-        "Santa Ana",
-        "Santa Ana",
-        "Casa 1",
-        1111000,
-        1,
-        "instruccion",
-    )
-    db.session.add(compra_1)
-    db.session.commit()
+    # persona_jd_1 = JuntaDirectiva("sofia", "segura", "drectora", "prueba@gmail.com")
+    # db.session.add(persona_jd_1)
+    # db.session.commit()
+    # db.session.add(compra_1)
+    # db.session.commit()
 
     data = Inscripciones.query.all()
     data_2 = get_view_inscripciones()
@@ -128,8 +113,6 @@ def db_test():
     data_5 = Actividades.query.all()
     contactanos = Contactanos.query.all()
     juntaDirectiva = JuntaDirectiva.query.all()
-    productos = Productos.query.all()
-    compras = Compras.query.all()
     cupos = Inscripciones.get_cupos_restantes(act_1.idActividad, act_1.cuposTotales)
     return f"""
     <h1>inscripciones</h1>
@@ -150,8 +133,4 @@ def db_test():
     {contactanos}
     <h1>productos</h1>
     {juntaDirectiva}
-    <h1>Junta Directiva</h1>
-    {productos}
-    <h1>Productos</h1>
-    {compras}
    """

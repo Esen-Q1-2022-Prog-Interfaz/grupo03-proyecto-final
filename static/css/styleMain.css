@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Indie+Flower&family=Libre+Baskerville:ital@1&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Source+Sans+Pro:wght@900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Indie+Flower&family=Libre+Baskerville:ital@1&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Source+Sans+Pro:wght@200;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Fira+Sans:wght@900&family=Indie+Flower&family=Kalam&family=Libre+Baskerville:ital@1&family=Montserrat:wght@300&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Rubik:wght@900&family=Source+Sans+Pro:wght@200;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
 
 /* BASE -------------------------------------------------------------*/
 * {
@@ -8,19 +9,22 @@
     box-sizing: border-box;
     font-family: "Source Sans Pro";
 }
+
+/*navbar ------------------------------------------------------------*/
 .navbar {
         position: fixed;
         width: 100%;
-        z-index: 1001;    
+        z-index: 1001;   
 }
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #243119;
     top: 0;
     width: 100%;
+    font-size: 20px;
 }
 
 li {
@@ -39,12 +43,8 @@ li a {
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #04AA6D;
+li a:hover {
+    background-color: #588157;
 }
 
 /* titulos y subtitulos */
@@ -54,10 +54,30 @@ h1{
 }
 
 h2 {
-    padding: 30px;
+    padding-top: 50px;
     font-family: "Source Sans Pro";
     text-align: center;
-    font-size: 40px;
+    font-size: 60px;
+}
+
+.back-color1 {
+    background-color: #92ac95;
+    padding-bottom: 100px;
+}
+
+.back-color1 h2 {
+    color: #243119;
+    font-size: 50px;
+}
+
+.back-color2 {
+    background-color: #588157;
+    padding-bottom: 100px;
+}
+
+.back-color2 h2 {
+    color: #c9d4b5;
+    font-size: 50px;
 }
 
 .login{
@@ -69,12 +89,36 @@ h2 {
     position: relative;
 }
 
+.inicio {
+    text-align: center;
+    padding-top: 250px;
+}
+
+
 .center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 50px;
+}
+
+.center h1 {
+    font-size: 200px;
+    color: white;
+}
+
+.ESEN {
+    font-size: 100px;
+    color: white;
+    font-family: "Source Sans Pro";
+}
+.background-cover { 
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url(../media/fotoInicio.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 img { 
@@ -101,7 +145,7 @@ img {
 }
 
 .container .btn:hover {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: white;
 }
 
@@ -116,12 +160,23 @@ img {
     right: 0;
     top: 50%;
     width: 250px;
-    margin-top: -2.5em;
-    background-color: #6b0cd8;
+    margin-top: 250px;
+    background-color: #e0b115;
     list-style-type: none;
     font-size: 18px;
     font-weight: bold;
-  }
+    z-index: 1001;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.btn-volunteer {
+    color:#243119;
+}
+
+.btn-volunteer:hover:not(.active) {
+    background-color: #977914;
+}
 
 /* slideshow gallery */
 
@@ -248,11 +303,11 @@ img {
 
 .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto auto;
-        gap: 10px;
+        grid-template-columns: auto auto auto;
+        gap: 30px;
         background-color: #ffffff;
-        padding: 10px;
-        margin: 50px 150px 0px 150px;
+        padding: 30px;
+        margin: 50px 100px 0px 100px;
 }      
 
 .grid-container > div {
@@ -261,14 +316,20 @@ img {
     font-size: 30px;
 }
 
-/* impacto */
+/* impacto ----------------------------------------------------------*/
 .intro-impacto {
     text-align: center;
     margin: 15px 300px 15px 300px;
 }
-.dato-impacto {
-    font-size: 15px;
+
+.intro-impacto p {
+    font-size: 25px;
 }
+
+.dato-impacto {
+    font-size: 25px;
+}
+
 #grid-impacto {
     gap:50px
 }
@@ -344,6 +405,31 @@ img {
 }
 
 /* ACTIVIDADES */
+
+.grid-actividad {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap:30px;
+    background-color: #92ac95;
+    padding: 25px 150px 25px 150px; 
+} 
+.grid-actividad > div {
+text-align: center;
+font-size: 25px;
+}
+
+.titulo-actividad {
+    padding: 25px;
+    padding-bottom: 0px;
+    background-color: #92ac95;
+    font-family: "Source Sans Pro";
+    color: rgb(56, 54, 42);
+    font-size: 25px;
+}
+
+.btn-actividad {
+    width:auto;
+}
 
 
 
