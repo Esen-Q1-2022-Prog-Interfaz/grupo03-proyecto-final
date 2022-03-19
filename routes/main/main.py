@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template
 from db.cloud_connection import CloudinaryConnection
-
-# from db.cloud_connection import CloudinaryConnection
 from db.utils.photos_model import Photo, PhotoNext
 
 main = Blueprint("main", __name__)

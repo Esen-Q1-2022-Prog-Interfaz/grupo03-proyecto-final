@@ -13,8 +13,6 @@ from models.inscripciones import Inscripciones
 from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
-from models.productos import Productos
-from models.compras import Compras
 
 admin = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -74,7 +72,7 @@ def db_test():
         "En pie",
     )
     act_2 = Actividades(
-        "Limpar 2", datetime(2022, 5, 7), datetime(2022, 5, 8), 30, 2, 2, 20, "En pie"
+        "Limpar 2", datetime(2022, 5, 7), datetime(2022, 5, 8), 30, 2, 2, 20, 3
     )
     act_3 = Actividades(
         "Limpar 3", datetime(2022, 4, 6), datetime(2022, 6, 3), 40, 5, 3, 220, "En pie"

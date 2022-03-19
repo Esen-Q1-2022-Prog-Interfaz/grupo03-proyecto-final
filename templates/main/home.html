@@ -3,12 +3,7 @@
 <h1>Raíces ESEN</h1>
 
 <div class="container">
-  <img
-    src="../../static/media/fotoInicio.jpg"
-    alt="Cinque Terre"
-    width="1000"
-    height="300"
-  />
+  <img src="../../static/media/fotoInicio.jpg" alt="Cinque Terre" width="1000" height="300" />
   <div class="center">
     <h1>RAICES</h1>
   </div>
@@ -39,13 +34,8 @@
     {% for i in fotos_data %}
 
     <div class="column">
-      <img
-        class="demo cursor"
-        src="{{fotos_data[i].url}}"
-        style="width: 100%; object-fit: cover"
-        onclick="currentSlide({{ i }})"
-        alt="{{fotos_data[i].desc}}"
-      />
+      <img class="demo cursor" src="{{fotos_data[i].url}}" style="width: 100%; object-fit: cover"
+        onclick="currentSlide({{ i }})" alt="{{fotos_data[i].desc}}" />
     </div>
 
     {% endfor %}
@@ -58,12 +48,7 @@
   {% for i in next_act %}
   <div>
     <div class="container">
-      <img
-        src="{{ next_act[i].url }}"
-        alt="Avatar"
-        class="image"
-        style="width: 100%"
-      />
+      <img src="{{ next_act[i].url }}" alt="Avatar" class="image" style="width: 100%" />
       <div class="middle">
         <div class="text">Ver actividad</div>
       </div>
@@ -108,41 +93,6 @@
   </div>
   <br /><br />
 </div>
-<!-- TODO: Remover el javascript en el html-->
-
-<script>
-  var slideIndex = 1;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides((slideIndex += n));
-  }
-
-  function currentSlide(n) {
-    showSlides((slideIndex = n));
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
-    var captionText = document.getElementById("caption");
-    if (n > slides.length) {
-      slideIndex = 1;
-    }
-    if (n < 1) {
-      slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-    captionText.innerHTML = dots[slideIndex - 1].alt;
-  }
-</script>
-
+<!-- Ejecucion del javascript del carrousel -->
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/main.js') }}"></script>
 {% endblock %}
