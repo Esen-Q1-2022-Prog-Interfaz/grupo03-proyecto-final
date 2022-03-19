@@ -1,3 +1,7 @@
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
 function plusSlides(n) {
     showSlides((slideIndex += n));
 }
@@ -28,5 +32,3 @@ function showSlides(n) {
     captionText.innerHTML = dots[slideIndex - 1].alt;
 }
 
-var slideIndex = 1;
-showSlides(slideIndex);
