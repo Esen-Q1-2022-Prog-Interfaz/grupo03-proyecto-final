@@ -27,28 +27,30 @@ class Inscripciones(db.Model):  # type: ignore
         db.ForeignKey("actividades.idActividad"),
         nullable=False,
     )
-    estadoInicial = db.Column(db.Integer, nullable=False)
-    estadoFinal = db.Column(db.Integer, nullable=False)
-    pago = db.Column(db.Integer, nullable=False)
+    estadoAsistencia = db.Column(db.Integer, nullable=False)
+    estadoPago = db.Column(db.Integer, nullable=False)
     cantidadKg = db.Column(db.Float, nullable=True)
+    horasTotales = db.Column(db.Integer, nullable=False)
     evidencia = db.Column(db.Integer, nullable=False)
 
     def __init__(
         self,
         idVoluntario: int,
         idActividad: int,
-        estadoInicial: int,
-        estadoFinal: int,
-        pago: int,
+        estadoAsistencia: int,
+        estadoPago: int,
+        horasTotales: int,
         cantidadKg: float,
+        #evidencia: int
     ) -> None:
 
         self.idActividad = idActividad
         self.idVoluntario = idVoluntario
-        self.estadoInicial = estadoInicial
-        self.estadoFinal = estadoFinal
-        self.pago = pago
+        self.estadoAsistencia = estadoAsistencia
+        self.estadoPago = estadoPago
+        self.horasTotales = horasTotales
         self.cantidadKg = cantidadKg
+        #self.evidencia = evidencia
         
         actividad = Actividades.get_activity(self.idActividad)
         #SOLIS    #SOLIS    #SOLIS    #SOLIS    #SOLIS    #SOLIS    #SOLIS    #SOLIS    
@@ -65,10 +67,10 @@ class Inscripciones(db.Model):  # type: ignore
         {self.idInscripcion},
         {self.idActividad},
         {self.idVoluntario},
-        {self.estadoInicial},
-        {self.estadoFinal}
-        {self.pago},
+        {self.estadoAsistencia},
+        {self.estadoPago},
         {self.cantidadKg},
+        {self.horasTotales},
         {self.evidencia}
     )
     """.strip()

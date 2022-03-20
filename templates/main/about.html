@@ -21,91 +21,21 @@
 <br />
 
 <div class="bloque_referencias">
+  {% for person in JDList %}
+
   <div class="caja_ref">
-    <h3 class="caja_ref_titulo">José Elías Ventura</h3>
-    <img src="../../static/media/team1.jpg" class="imagen_ref" /><br />
-    <p class="caja_ref_parrafo">Profesor de Ingeniería de Negocios</p>
-    <br />
-    <p>Lorem ipsum dolor.</p>
+    <h3 class="caja_ref_titulo">{{ person.nombre}} {{person.apellido}}</h3>
+    <img src="{{person.link}}" class="imagen_ref" /><br />
+    <p class="caja_ref_parrafo"> {{ person.cargo}} </p>
     <br />
     <p class="caja_ref_parrafo">
-      <i class="fa-solid fa-envelope"></i> eventura@esen.edu.sv
+      <i class="fa-solid fa-envelope"></i> {{person.correo}}
     </p>
   </div>
 
-  <div class="caja_ref">
-    <h3 class="caja_ref_titulo">José Elías Ventura</h3>
-    <img src="../../static/media/team1.jpg" class="imagen_ref" /><br />
-    <p class="caja_ref_parrafo">Profesor de Ingeniería de Negocios</p>
-    <br />
-    <p>Lorem ipsum dolor.</p>
-    <br />
-    <p class="caja_ref_parrafo">
-      <i class="fa-solid fa-envelope"></i> eventura@esen.edu.sv
-    </p>
-  </div>
+  {% endfor %}
 
-  <div class="caja_ref">
-    <h3 class="caja_ref_titulo">José Elías Ventura</h3>
-    <img src="../../static/media/team1.jpg" class="imagen_ref" /><br />
-    <p class="caja_ref_parrafo">Profesor de Ingeniería de Negocios</p>
-    <br />
-    <p>Lorem ipsum dolor.</p>
-    <br />
-    <p class="caja_ref_parrafo">
-      <i class="fa-solid fa-envelope"></i> eventura@esen.edu.sv
-    </p>
-  </div>
 
-  <div class="caja_ref">
-    <h3 class="caja_ref_titulo">José Elías Ventura</h3>
-    <img src="../../static/media/team1.jpg" class="imagen_ref" /><br />
-    <p class="caja_ref_parrafo">Profesor de Ingeniería de Negocios</p>
-    <br />
-    <p>Lorem ipsum dolor.</p>
-    <br />
-    <p class="caja_ref_parrafo">
-      <i class="fa-solid fa-envelope"></i> eventura@esen.edu.sv
-    </p>
-  </div>
-</div>
-
-<div class="bloque_referencias2">
-  <div class="caja_ref">
-    <h3 class="caja_ref_titulo">José Elías Ventura</h3>
-    <img src="../../static/media/team1.jpg" class="imagen_ref" /><br />
-    <p class="caja_ref_parrafo">Profesor de Ingeniería de Negocios</p>
-    <br />
-    <p>Lorem ipsum dolor.</p>
-    <br />
-    <p class="caja_ref_parrafo">
-      <i class="fa-solid fa-envelope"></i> eventura@esen.edu.sv
-    </p>
-  </div>
-
-  <div class="caja_ref">
-    <h3 class="caja_ref_titulo">José Elías Ventura</h3>
-    <img src="../../static/media/team1.jpg" class="imagen_ref" /><br />
-    <p class="caja_ref_parrafo">Profesor de Ingeniería de Negocios</p>
-    <br />
-    <p>Lorem ipsum dolor.</p>
-    <br />
-    <p class="caja_ref_parrafo">
-      <i class="fa-solid fa-envelope"></i> eventura@esen.edu.sv
-    </p>
-  </div>
-
-  <div class="caja_ref">
-    <h3 class="caja_ref_titulo">José Elías Ventura</h3>
-    <img src="../../static/media/team1.jpg" class="imagen_ref" /><br />
-    <p class="caja_ref_parrafo">Profesor de Ingeniería de Negocios</p>
-    <br />
-    <p>Lorem ipsum dolor.</p>
-    <br />
-    <p class="caja_ref_parrafo">
-      <i class="fa-solid fa-envelope"></i> eventura@esen.edu.sv
-    </p>
-  </div>
 </div>
 
 <div class="grid-historia">

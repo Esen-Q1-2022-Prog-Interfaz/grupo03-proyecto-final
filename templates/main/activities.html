@@ -1,12 +1,14 @@
 {% extends './main/baseMain.html' %} {% block title %}Actividades{% endblock %}
 {% block contents %}
 <h1>Actividades</h1>
+{% for activity in activitiesList %}
 <div>
     <div class="grid-actividad">
         <div class="algo" style="margin-top: 50px">
-            <h1>titulo de actividad</h1> 
+            <h1>{{activity.nombreActividad}}</h1> 
             <img src="../../static/media/fotoInicio.jpg" alt="" />
-            <p>Numero de cupos: #</p>
+            <p>Numero de cupos:</p>
+            <p>{{activity.cuposTotales}} </p>
         </div>
         <div class="texto-actividad" style="margin-top: 100px">
             <div>
@@ -25,31 +27,7 @@
         </div>
     </div>
 </div>
-<div>
-    <div class="grid-actividad" style="background-color: gray;">
-        <div class="texto-actividad" style="margin-top: 100px">
-            <div>
-                <p style="margin-bottom: 15px;">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste sed minima,
-                    quia fugiat, eveniet voluptatem saepe quos minus ratione, expedita vel
-                    illum distinctio excepturi qui quae culpa mollitia debitis vero?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam quibusdam, tempore quisquam sequi sed odio vero numquam commodi error maiores repellat debitis amet suscipit explicabo cupiditate molestias obcaecati. Explicabo, quas?
-                </p>
-            </div>
-            <div>
-                <button class="btn-actividad">
-                    Inscribirse
-                </button>
-            </div>
-        </div>
-        <div class="algo" style="margin-top: 50px">
-            <h1>titulo de actividad</h1> 
-            <img src="../../static/media/fotoInicio.jpg" alt="" />
-            <p>Numero de cupos: #</p>
-        </div>
-    </div>
-</div>
-
+{% endfor %}
 
 
 {% endblock %}

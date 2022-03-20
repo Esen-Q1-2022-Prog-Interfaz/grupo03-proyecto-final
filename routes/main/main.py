@@ -1,6 +1,8 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 from db.cloud_connection import CloudinaryConnection
 from db.utils.photos_model import Photo, PhotoNext
+from models.juntaDirectiva import JuntaDirectiva
+from models.actividades import Actividades
 
 main = Blueprint("main", __name__)
 
@@ -36,12 +38,14 @@ def home():
 
 @main.route("/about")
 def about():
-    return render_template("main/about.html")
+    JDList = JuntaDirectiva.query.all()
+    return render_template("main/about.html", JDList=JDList)
 
 
 @main.route("/activities")
 def activities():
-    return render_template("main/activities.html")
+    activitiesList = Actividades.query.all()
+    return render_template("main/activities.html", activitiesList=activitiesList)
 
 
 @main.route("/catalog")

@@ -17,29 +17,26 @@ class Usuarios(db.Model):  # type: ignore
 
     # Campos tabla
     idVoluntario = db.Column(db.Integer, primary_key=True)
-    carnet = db.Column(db.String(50), nullable=False)
+    correo = db.Column(db.String(100), nullable=False)
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
-    anno = db.Column(db.Integer, nullable=False)
     telefono = db.Column(db.String(50), nullable=False)
-    correo = db.Column(db.String(100), nullable=False)
+    departamento = db.Column(db.String(50), nullable=False)
 
     def __init__(
         self,
         correo: str,
         nombre: str,
         apellido: str,
-        anno: int,
         telefono: str,
-        carnet: Union[str, None] = None,
+        departamento: str,
     ) -> None:
 
-        self.nombre = nombre
         self.correo = correo
+        self.nombre = nombre
         self.apellido = apellido
-        self.anno = anno
         self.telefono = telefono
-        self.carnet = self.get_carnet(carnet)
+        self.departamento = departamento
 
     def __repr__(self) -> str:
         return f"""Usuario(
@@ -47,9 +44,10 @@ class Usuarios(db.Model):  # type: ignore
             {self.carnet}, 
             {self.nombre}, 
             {self.apellido}, 
-            {self.anno}, 
             {self.telefono}, 
+            {self.departamento},
             {self.correo})""".strip()
+
 
     def get_carnet(self, carnet_: Union[str, None]):
         carnet: str
