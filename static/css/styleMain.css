@@ -335,8 +335,7 @@ img {
     height: 50%;
     padding: 50px 50px 0px 50px;
     background-image: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.40)), url(../../static/media/hand-with-plant.jpg);
-    background-size: cover;
-    
+    background-size: cover;  
 }
 
 #grid-impacto i {
@@ -349,25 +348,37 @@ img {
 }
 
 /* ABOUT */
-.grid-historia {
-        display: grid;
-        grid-template-columns: auto auto;
-        gap:30px;
-        background-color: #92ac95;
-        padding: 50px 150px 50px 150px; 
-} 
-.grid-historia > div {
-    text-align: center;
-    font-size: 25px;
-    
+.fixed-alignment {
+    display: inline-flex;    
+    list-style: none;
+    align-items: center;
 }
-#vision {
-    background-color: rgb(64, 100, 55);
+.text-box {
+    background-color: #73ab84;
+    padding: 150px;
+    color:rgb(41, 40, 46);
+    width: 50%;
+    height: 500px;
+}
+.picture-box {
+    background-image: url(../../static/media/fotox.jpg);
+    background-color: whitesmoke;
+    background-size: cover;
+    padding:150px;
+    width: 50%;
+    height: 500px;
+}
+.text-quienes-somos {
+    text-align: left;
+    font-size: 1.5rem;
 }
 
 /*teammates*/
+#junta-titulo {
+    font-size: 45px;
+}
 
-.bloque_referencias{
+.bloque_miembros{
     margin: 50px 100px 50px 100px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -409,13 +420,65 @@ img {
     font-weight: 300;
 }
 
-.bloque_referencias2{
+.bloque_miembros2{
     margin: 50px 270px 50px 270px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(1,1fr);
     gap: 20px;
     padding-bottom: 5rem;
+}
+
+/* mision vision valores */
+
+.general-container-MVV {
+    padding-bottom: 50px;
+}
+
+.mision-cover { 
+    width: 100%;
+    height:100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15)), url(../../static/media/saveEarth.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.MVV-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 50px 100px 0px 100px;
+    height: auto; 
+    
+}      
+
+.MVV-container > div {
+text-align: center;
+font-size: 30px;
+background-color: #f3f3f3;
+padding: 50px;
+}
+
+.MVV-text {
+    padding-top: 25px;
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+.MVV-container i img{
+    width: 200px;
+    padding: 25px;
+}
+
+#img-MVV {
+    background-image: url(../../static/media/rotuloMVV.jpg);
+    background-size: cover;
+    padding: none;
+    margin: none;
+    width: 400px;
+    height: 100%;
 }
 
 /* ACTIVIDADES */
