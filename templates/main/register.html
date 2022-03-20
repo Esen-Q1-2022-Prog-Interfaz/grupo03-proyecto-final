@@ -3,7 +3,7 @@
 <h1>Regístrate</h1>
 
 <div class="frame">
-  <form method="post">
+  <form action="{{ url_for('main.register') }}" method="post">
     {{ form.hidden_tag() }}
     <div class="imgcontainer">
       <img src="../../static/media/avatar.png" alt="Avatar" class="avatar" />

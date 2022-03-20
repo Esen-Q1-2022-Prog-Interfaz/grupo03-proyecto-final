@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
-from nbformat import ValidationError
 from wtforms.fields import StringField, SubmitField, SelectField, PasswordField
-from wtforms.validators import InputRequired, Length, EqualTo
+from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
 from models.usuarios import Usuarios
 
 YEARS_UNI = [

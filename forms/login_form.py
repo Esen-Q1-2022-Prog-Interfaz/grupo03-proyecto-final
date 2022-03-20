@@ -1,6 +1,4 @@
-from flask import Flask
 from flask_wtf import FlaskForm
-from nbformat import ValidationError
 from wtforms.fields import StringField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, Length
 
