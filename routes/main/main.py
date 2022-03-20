@@ -48,11 +48,6 @@ def activities():
     return render_template("main/activities.html", activitiesList=activitiesList)
 
 
-@main.route("/catalog")
-def catalog():
-    return render_template("main/catalog.html")
-
-
 @main.route("/contact")
 def contact():
     return render_template("main/contact.html")

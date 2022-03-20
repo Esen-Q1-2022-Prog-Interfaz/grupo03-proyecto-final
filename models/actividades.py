@@ -19,7 +19,7 @@ class Actividades(db.Model):  # type: ignore
 
     # Campos tabla
     idActividad = db.Column(db.Integer, primary_key=True)
-    #descripcion = db.Column(db.String(50), nullable=False)
+    descripcion = db.Column(db.String(5000), nullable=False)
     nombreActividad = db.Column(db.String(50), nullable=False)
     tipoActividad = db.Column(db.Integer, nullable=False)
     lugarActividad = db.Column(db.String(200), nullable=False)
@@ -32,6 +32,7 @@ class Actividades(db.Model):  # type: ignore
 
     def __init__(
         self,
+        descripcion: str,
         nombreActividad: str,
         tipoActividad: int,
         lugarActividad: str,
@@ -43,6 +44,7 @@ class Actividades(db.Model):  # type: ignore
         estado : int
     ) -> None:
 
+        self.descripcion = descripcion
         self.nombreActividad = nombreActividad
         self.tipoActividad = tipoActividad
         self.lugarActividad = lugarActividad
@@ -57,6 +59,7 @@ class Actividades(db.Model):  # type: ignore
 
         return f"""
         Actividad(
+        {self.descripcion},
         {self.idActividad},
         {self.nombreActividad},
         {self.tipoActividad},
