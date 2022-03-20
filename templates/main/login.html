@@ -4,28 +4,33 @@
 
 <div class="frame">
   <form method="post">
+    {{ form.hidden_tag() }}
     <div class="imgcontainer">
       <img src="../../static/media/avatar.png" alt="Avatar" class="avatar" />
     </div>
 
     <div class="container">
-      <label for="uname"><b>Correo</b></label>
+      <b>{{ form.correo.label }}</b>
+      {{ form.correo }}
+      <!-- <label for="uname"><b>Correo</b></label>
       <input
         type="text"
         placeholder="Ingresa tu correo"
         name="email"
         required
-      />
+      /> -->
+      <b>{{ form.contrasenna.label }}</b>
+      {{ form.contrasenna }}
 
-      <label for="psw"><b>Contraseña</b></label>
+      <!-- <label for="psw"><b>Contraseña</b></label>
       <input
         type="password"
         placeholder="Ingresa tu contraseña"
         name="psw"
         required
-      />
-
-      <button type="submit">Iniciar sesión</button>
+      /> -->
+      {{ form.submit }}
+      <!-- <button type="submit">Iniciar sesión</button> -->
       <label>
         <input type="checkbox" checked="checked" name="remember" />Recuérdame
       </label>

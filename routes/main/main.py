@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template
 from db.cloud_connection import CloudinaryConnection
+from forms.login_form import LoginForm
+from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
 
 main = Blueprint("main", __name__)
@@ -54,11 +56,19 @@ def contact():
     return render_template("main/contact.html")
 
 
-@main.route("/login")
+@main.route("/login", methods=["POST", "GET"])
 def login():
-    return render_template("main/login.html")
+    form = LoginForm()
+    if form.validate_on_submit():
+        # Check is user esta agregado
+        pass  
+    return render_template("main/login.html", form=form)
 
 
-@main.route("/register")
+@main.route("/register", methods=["POST", "GET"])
 def register():
-    return render_template("main/register.html")
+    form = RegisterForm()
+    if form.validate_on_submit():
+        # Agregar user a db
+        pass
+    return render_template("main/register.html", form=form)
