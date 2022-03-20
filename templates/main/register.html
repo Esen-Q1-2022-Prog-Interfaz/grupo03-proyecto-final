@@ -4,63 +4,77 @@
 
 <div class="frame">
   <form method="post">
+    {{ form.hidden_tag() }}
     <div class="imgcontainer">
       <img src="../../static/media/avatar.png" alt="Avatar" class="avatar" />
     </div>
 
     <div class="container">
-      <label for="uname"><b>Correo</b></label>
+      <b>{{ form.correo.label }}</b>
+      {{ form.correo }}
+      <!-- <label for="uname"><b>Correo</b></label>
       <input
         type="text"
         placeholder="Ingresa tu ucorreo institucional"
         name="email"
         required
-      />
+      /> -->
 
-      <label for="uname"><b>Nombres</b></label>
-      <input type="text" placeholder="Ingresa tu nombre" name="name" required />
+      <b>{{ form.nombre.label }}</b>
+      {{ form.nombre }}
 
-      <label for="uname"><b>Apellidos</b></label>
+      <!-- <label for="uname"><b>Nombres</b></label>
+      <input type="text" placeholder="Ingresa tu nombre" name="name" required /> -->
+
+      <b>{{ form.apellido.label }}</b>
+      {{ form.apellido }}
+
+      
+      <!-- <label for="uname"><b>Apellidos</b></label>
       <input
         type="text"
         placeholder="Ingresa tu apellido"
         name="lastname"
         required
-      />
-
-      <label for="uname"><b>Teléfono</b></label>
+      /> -->
+      <b>{{ form.telefono.label }}</b>
+      {{ form.telefono }}
+      <!-- <label for="uname"><b>Teléfono</b></label>
       <input
         type="text"
         placeholder="Ingresa tu telefono"
         name="number"
         required
-      />
-
-      <label for="uname"><b>Año universitario</b></label>
+      /> -->
+      <b>{{ form.year_uni.label }}</b>
+      {{ form.year_uni }}
+      <!-- <label for="uname"><b>Año universitario</b></label>
       <input
         type="text"
         placeholder="Ingresa tu año universitario"
         name="number"
         required
-      />
-
-      <label for="psw"><b>Contraseña</b></label>
+      /> -->
+      <b>{{ form.contrasenna.label }}</b>
+      {{ form.contrasenna }}
+      <!-- <label for="psw"><b>Contraseña</b></label>
       <input
         type="password"
         placeholder="Ingresa tu contraseña"
         name="psw"
         required
-      />
-
-      <label for="psw"><b>Repetir contraseña</b></label>
+      /> -->
+      <b>{{ form.contrasenna_2.label }}</b>
+      {{ form.contrasenna_2 }}
+      <!-- <label for="psw"><b>Repetir contraseña</b></label>
       <input
         type="password"
         placeholder="Repite tu contraseña"
         name="psw"
         required
-      />
-
-      <button type="submit">Registrarse</button>
+      /> -->
+        {{ form.submit }}
+      <!-- <button type="submit">Registrarse</button> -->
       <label>
         <input type="checkbox" checked="checked" name="remember" /> Recuérdame
       </label>
