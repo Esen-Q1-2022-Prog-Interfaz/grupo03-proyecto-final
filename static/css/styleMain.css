@@ -347,7 +347,7 @@ img {
 
 }
 
-/* ABOUT */
+/* ABOUT --------------------------------------------------------------*/
 .fixed-alignment {
     display: inline-flex;    
     list-style: none;
@@ -481,7 +481,7 @@ padding: 50px;
     height: 100%;
 }
 
-/* ACTIVIDADES */
+/* ACTIVIDADES --------------------------------------------------------*/
 
 .grid-actividad {
     display: grid;
@@ -515,6 +515,129 @@ font-size: 25px;
 
 
 /* CONTACTO */
+
+
+
+
+
+.contact-container {
+    width: 100%;
+    height: 65vh;
+    background-image: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)), url(../../static/media/guantes-y-planta.jpg);
+    background-size: cover;
+}
+
+
+
+.inicio {
+    text-align: center;
+    padding-top: 250px;
+}
+
+
+.contact-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contact-text h1 {
+    font-size: 100px;
+    color: white;
+}
+
+.redes-sociales {
+    font-size: 25px;
+    color: white;
+    display:inline-flex;
+    gap: 200px;
+    padding: 50px;
+}
+
+.redes-iconos {
+    display: inline-flex;
+    color: white;
+    gap: 10px;
+}
+
+.redes-iconos a {
+    color: white;
+}
+
+
+.form-alignment {
+    display: inline-flex;
+    padding: 50px;
+}
+
+.contact-right  {
+    width: 50%;
+    padding: 25px 25px 0px 50px;
+}
+.contact-left  {
+    width: 50%;
+    padding: 25px 50px 0px 25px;
+}
+
+/*buscar input despues*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .contact {
     margin: 50px;
     display: grid;
