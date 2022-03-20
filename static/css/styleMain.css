@@ -57,32 +57,31 @@ h2 {
     padding-top: 50px;
     font-family: "Source Sans Pro";
     text-align: center;
-    font-size: 60px;
 }
 
 .back-color1 {
-    background-color: #92ac95;
-    padding-bottom: 100px;
+    background-color: #E8FCCF;
+    padding-bottom: 50px;
 }
 
 .back-color1 h2 {
     color: #243119;
-    font-size: 50px;
+    font-size: 55px;
 }
 
 .back-color2 {
-    background-color: #588157;
+    background-color: #73ab84;
     padding-bottom: 100px;
 }
 
 .back-color2 h2 {
-    color: #c9d4b5;
-    font-size: 50px;
+    color: white;
+    font-size: 75px;
 }
 
 .login{
     float: right;
-  }
+}
 
 /* HOME -------------------------------------------------------------*/
 .container {
@@ -152,16 +151,15 @@ img {
 /* Boton ser voluntario */
 
 #scroll {
-    outline: none;
     text-decoration: none;
     display: block;
     text-align: center;
     position: fixed;
-    right: 0;
+    right:0;
     top: 50%;
-    width: 250px;
+    width:fit-content;
     margin-top: 250px;
-    background-color: #e0b115;
+    background-color: #FFD449;
     list-style-type: none;
     font-size: 18px;
     font-weight: bold;
@@ -175,7 +173,7 @@ img {
 }
 
 .btn-volunteer:hover:not(.active) {
-    background-color: #977914;
+    background-color: #F9A620;
 }
 
 /* slideshow gallery */
@@ -303,15 +301,15 @@ img {
 
 .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto auto auto;
         gap: 30px;
         background-color: #ffffff;
         padding: 30px;
         margin: 50px 100px 0px 100px;
+        height: auto;
 }      
 
 .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     font-size: 30px;
 }
@@ -319,11 +317,12 @@ img {
 /* impacto ----------------------------------------------------------*/
 .intro-impacto {
     text-align: center;
-    margin: 15px 300px 15px 300px;
+    margin: 15px 250px 15px 250px;
 }
 
 .intro-impacto p {
-    font-size: 25px;
+    font-size: 30px;
+    color:#243119;   
 }
 
 .dato-impacto {
@@ -331,29 +330,55 @@ img {
 }
 
 #grid-impacto {
-    gap:50px
+    color: white;
+    gap:50px;
+    height: 50%;
+    padding: 50px 50px 0px 50px;
+    background-image: linear-gradient(rgba(0,0,0,0.40),rgba(0,0,0,0.40)), url(../../static/media/hand-with-plant.jpg);
+    background-size: cover;  
+}
+
+#grid-impacto i {
+    font-size: 3em;
+    padding-bottom: 50px;
+}
+#grid-impacto i img{
+    width: 150px;
+
 }
 
 /* ABOUT */
-.grid-historia {
-        display: grid;
-        grid-template-columns: auto auto;
-        gap:30px;
-        background-color: #92ac95;
-        padding: 50px 150px 50px 150px; 
-} 
-.grid-historia > div {
-    text-align: center;
-    font-size: 25px;
-    
+.fixed-alignment {
+    display: inline-flex;    
+    list-style: none;
+    align-items: center;
 }
-#vision {
-    background-color: rgb(64, 100, 55);
+.text-box {
+    background-color: #73ab84;
+    padding: 150px;
+    color:rgb(41, 40, 46);
+    width: 50%;
+    height: 500px;
+}
+.picture-box {
+    background-image: url(../../static/media/fotox.jpg);
+    background-color: whitesmoke;
+    background-size: cover;
+    padding:150px;
+    width: 50%;
+    height: 500px;
+}
+.text-quienes-somos {
+    text-align: left;
+    font-size: 1.5rem;
 }
 
 /*teammates*/
+#junta-titulo {
+    font-size: 45px;
+}
 
-.bloque_referencias{
+.bloque_miembros{
     margin: 50px 100px 50px 100px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -395,13 +420,65 @@ img {
     font-weight: 300;
 }
 
-.bloque_referencias2{
+.bloque_miembros2{
     margin: 50px 270px 50px 270px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(1,1fr);
     gap: 20px;
     padding-bottom: 5rem;
+}
+
+/* mision vision valores */
+
+.general-container-MVV {
+    padding-bottom: 50px;
+}
+
+.mision-cover { 
+    width: 100%;
+    height:100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15)), url(../../static/media/saveEarth.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.MVV-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 50px 100px 0px 100px;
+    height: auto; 
+    
+}      
+
+.MVV-container > div {
+text-align: center;
+font-size: 30px;
+background-color: #f3f3f3;
+padding: 50px;
+}
+
+.MVV-text {
+    padding-top: 25px;
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+.MVV-container i img{
+    width: 200px;
+    padding: 25px;
+}
+
+#img-MVV {
+    background-image: url(../../static/media/rotuloMVV.jpg);
+    background-size: cover;
+    padding: none;
+    margin: none;
+    width: 400px;
+    height: 100%;
 }
 
 /* ACTIVIDADES */
