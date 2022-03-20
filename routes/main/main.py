@@ -50,7 +50,10 @@ def activities():
 
 @main.route("/contact")
 def contact():
-    return render_template("main/contact.html")
+    newMessage= Contactanos("Bal", "Aylagas", "@", "7123", "nada", "nada", False) 
+    db.session.add(newMessage)   
+    db.session.commit()
+    return render_template("main/contact.html", message=newMessage)
 
 
 @main.route("/login")
