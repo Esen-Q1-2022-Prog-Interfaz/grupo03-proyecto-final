@@ -6,3 +6,5 @@ config.py
 horas_sociales.xlsx
 logins/*
 .vscode/*
+Pipfile
+Pipfile.lock
