@@ -29,56 +29,72 @@
     </div>
   </div>
 </div>
-    
 
-<div class="contact-form">
 
-  <div class="contact">
-    <div class="contact-info">
-      <form class="form-alignment" action="/action_page.php">
 
-        <div class="contact-left">
-          <label for="uname"><b>Nombres</b></label>
-          <input 
-            type="text" 
-            placeholder="Ingresa tu nombre" 
-            name="name" 
-            required 
-            />
-    
-          <label for="uname"><b>Apellidos</b></label>
-          <input
-            type="text"
-            placeholder="Ingresa tu apellido"
-            name="lastname"
-            required
-          />
-    
-          <label for="uname"><b>Teléfono</b></label>
-          <input
-            type="text"
-            placeholder="Ingresa tu telefono"
-            name="number"
-            required
-          />
-        </div>
 
-        <div class="contact-right">
-          <label for="subject">Subject</label>
-          <textarea
-            id="subject"
-            name="subject"
-            placeholder="Write something.."
-            style="height: 200px"
-          ></textarea>
-        </div>
-      
-      </form>
+<div class="container" id="center-items">
 
-      <input type="submit" value="Submit" />
+  <!-- 
+      <form action="https://formsubmit.co/valeria.benitezs@outlook.com" method="POST">
+  -->
+  <form action="/action_page.php">
 
-    </div>
+  <div class="form-container">
   
+    <div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Nombre</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="firstname" placeholder="Ingresa tu nombre..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Apellido</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="lastname" placeholder="Ingresa tu apellido..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="country">Teléfono</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="lastname" placeholder="Ingresa tu número telefónico..">
+      </div>
+    </div>
+    </div>
+
+    <div>
+      <div class="row">
+        <div class="col-75">
+          <textarea id="subject" name="subject" placeholder="Déjanos un mensaje.." style="height:325px"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="row">
+    <input type="submit" value="Enviar">
+  </div>  
+
+  </form>
+
+  <div id="status">Success</div>
 </div>
+
+
+
+
+
+
+
 
 {% endblock %}

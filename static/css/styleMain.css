@@ -516,10 +516,6 @@ font-size: 25px;
 
 /* CONTACTO */
 
-
-
-
-
 .contact-container {
     width: 100%;
     height: 65vh;
@@ -527,13 +523,10 @@ font-size: 25px;
     background-size: cover;
 }
 
-
-
 .inicio {
     text-align: center;
     padding-top: 250px;
 }
-
 
 .contact-text {
     position: absolute;
@@ -565,26 +558,26 @@ font-size: 25px;
     color: white;
 }
 
+/* contact form*/
 
-.form-alignment {
-    display: inline-flex;
-    padding: 50px;
+.form-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 30px;
+    gap: 75px;
+    height: auto; 
+    margin: 0px 20px 0px 20px;
+    font-size: 1.5rem;
+    align-items: center;
+}  
+
+.row {
+    padding-top: 15px;
 }
 
-.contact-right  {
-    width: 50%;
-    padding: 25px 25px 0px 50px;
+.col-75 input, textarea {
+    font-size: 1.25rem;
 }
-.contact-left  {
-    width: 50%;
-    padding: 25px 50px 0px 25px;
-}
-
-/*buscar input despues*/
-
-
-
-
 
 
 
