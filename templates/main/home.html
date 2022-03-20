@@ -53,6 +53,48 @@
   </div>
 </div>
 
+<div class="intro-impacto">
+  <h2>PROTEJAMOS NUESTRO PLANETA</h2>
+  <div class="intro-text">
+    <p>
+      En Raíces ESEN estamos comprometidos en ser parte de un cambio positivo en el medio ambiente. 
+      Con nuestros diferentes voluntariados hemos logrado:
+    </p>
+  </div>
+</div>
+  
+<div class="grid-container" id="grid-impacto">
+  <div> 
+    <i><img src="../../static/media/tree.png" alt=""></i>
+    <h3>100</h3>
+    <p class="dato-impacto">
+      árboles sembrados
+    </p>
+  </div>
+  <div>
+    <i><img src="../../static/media/recycle.png" alt=""></i>
+    <h3>500kg</h3>
+    <p class="dato-impacto">
+      reciclados
+    </p>
+  </div>
+  <div>
+    <i><img src="../../static/media/helping-hand.png" alt=""></i>
+    <h3>+200</h3>
+    <p class="dato-impacto">
+      voluntarios
+    </p>
+  </div>
+  <div>
+    <i><img src="../../static/media/turtle.png" alt=""></i>
+    <h3>80</h3>
+    <p class="dato-impacto">
+      charlas y foros
+    </p>
+  </div>
+  <br /><br />
+</div>
+
 <div class="back-color2">
 
   <h2>PROXIMAS ACTIVIDADES</h2>
@@ -75,48 +117,10 @@
     {% endfor %}
   </div>
 
-  <h2>IMPACTO</h2>
-
-  <div class="intro-impacto">
-    <p>
-      En Raíces ESEN estamos comprometidos en ser parte de un cambio positivo en el medio ambiente. 
-      Con nuestros diferentes voluntariados hemos logrado:
-    </p>
-  </div>
-  
-  <div class="grid-container" id="grid-impacto">
-    <div> 
-      <i><img src="../../static/media/tree.png" alt=""></i>
-      <h3>100 árboles</h3>
-      <p class="dato-impacto">
-        sembrados alrededor de El Salvador
-      </p>
-    </div>
-    <div>
-      <i><img src="../../static/media/recycle.png" alt=""></i>
-      <h3>+500 kg</h3>
-      <p class="dato-impacto">
-        reciclados
-      </p>
-    </div>
-    <div>
-      <i><img src="../../static/media/helping-hand.png" alt=""></i>
-      <h3>+200 voluntarios</h3>
-      <p class="dato-impacto">
-        en nuestras actividades
-      </p>
-    </div>
-    <div>
-      <i><img src="../../static/media/turtle.png" alt=""></i>
-      <h3>+200 tortugas</h3>
-      <p class="dato-impacto">
-        apadrinadas y liberadas
-      </p>
-    </div>
-    <br /><br />
-  </div>
-  <br /><br />
 </div>
+
+
+
 <!-- Ejecucion del javascript del carrousel de imagenes-->
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/main.js') }}"></script>
 {% endblock %}
