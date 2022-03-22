@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for
 from db.cloud_connection import CloudinaryConnection
+from forms.form_contactanos import FormContactanos
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
@@ -52,7 +53,8 @@ def activities():
 
 @main.route("/contact")
 def contact():
-    return render_template("main/contact.html")
+    form = FormContactanos()
+    return render_template("main/contact.html", form=form)
 
 
 @main.route("/login", methods=["POST", "GET"])
