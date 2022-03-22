@@ -2,58 +2,98 @@
 {%block contents %}
 <h1>Contacto</h1>
 
-<div class="contact">
-  <div class="contact-info">
-    <form action="/action_page.php">
-      <label for="fname">First Name</label>
-      <input
-        type="text"
-        id="fname"
-        name="firstname"
-        placeholder="Your name.."
-      />
 
-      <label for="lname">Last Name</label>
-      <input
-        type="text"
-        id="lname"
-        name="lastname"
-        placeholder="Your last name.."
-      />
+<div class="contact-container">
+  <div class="inicio">
+    <div class="box1">
+      <div class="contact-text">
+        
+        <h1>Contáctanos</h1>
+        
+        <div class="redes-sociales">
+          <div class="redes-iconos">
+            <i class="fa-solid fa-envelope"></i>
+            <a class="" href="mailto: raicesesen@gmail.com"> raicesesen@gmail.com</a>
+          </div>
+          <div class="redes-iconos">
+            <i class="fa-brands fa-instagram"></i>
+            <a class="icon" href="https://www.instagram.com/raices.esen/?hl=es-la">@raices.esen</a>
+          </div>
+          <div class="redes-iconos">
+            <i class="fa-brands fa-facebook-f"></i>
+            <a class="icon" href="">Facebook</a>
+          </div>
+        </div>
 
-      <label for="country">Country</label>
-      <select id="country" name="country">
-        <option value="australia">Australia</option>
-        <option value="canada">Canada</option>
-        <option value="usa">USA</option>
-      </select>
-
-      <label for="subject">Subject</label>
-      <textarea
-        id="subject"
-        name="subject"
-        placeholder="Write something.."
-        style="height: 200px"
-      ></textarea>
-
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
-
-  <div>
-    <img src="../../static/media/fotoInicio.jpg" alt="" />
-    <div class="iconos">
-      <i class="fa-solid fa-envelope"></i>
-      <a class="icon" href="mailto: raicesesen@gmail.com"> raicesesen@gmail.com</a
-      ><br /><br />
-      <i class="fa-brands fa-instagram"></i>
-      <a class="icon" href="https://www.instagram.com/raices.esen/?hl=es-la"
-        >Instagram</a
-      ><br /><br />
-      <i class="fa-brands fa-facebook-f"></i>
-      <a class="icon" href="">Facebook</a>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
+<div class="container" id="center-items">
+
+  <!-- 
+      <form action="https://formsubmit.co/valeria.benitezs@outlook.com" method="POST">
+  -->
+  <form action="/action_page.php">
+
+  <div class="form-container">
+  
+    <div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Nombre</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="firstname" placeholder="Ingresa tu nombre..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Apellido</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="lastname" placeholder="Ingresa tu apellido..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="country">Teléfono</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="lastname" placeholder="Ingresa tu número telefónico..">
+      </div>
+    </div>
+    </div>
+
+    <div>
+      <div class="row">
+        <div class="col-75">
+          <textarea id="subject" name="subject" placeholder="Déjanos un mensaje.." style="height:325px"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="row">
+    <input type="submit" value="Enviar">
+  </div>  
+
+  </form>
+
+</div>
+
+
+
+
+
+
+
 
 {% endblock %}
