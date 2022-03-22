@@ -39,6 +39,7 @@
       <form action="https://formsubmit.co/valeria.benitezs@outlook.com" method="POST">
   -->
   <form action="{{ url_for('main.contact') }}" method="post">
+    {{ form.hidden_tag() }}
 
   <div class="form-container">
   
