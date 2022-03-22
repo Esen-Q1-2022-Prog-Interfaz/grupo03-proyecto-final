@@ -9,11 +9,7 @@ class FormContactanos(FlaskForm):
         validators=[InputRequired(), Length(min=2, max=10)],
         render_kw={"placeholder": "Ingresa tu nombre"},
     )
-    nombre = StringField(
-        "Nombre",
-        validators=[InputRequired(), Length(min=2, max=10)],
-        render_kw={"placeholder": "Ingresa tu nombre"},
-    )
+
     apellido = StringField(
         "Apellido",
         validators=[InputRequired(), Length(min=3, max=20)],

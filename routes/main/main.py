@@ -8,6 +8,7 @@ from utils.bcrypt import bcrypt
 from models.juntaDirectiva import JuntaDirectiva
 from models.actividades import Actividades
 from models.usuarios import Usuarios
+from models.contactanos import Contactanos
 from db.db import db
 
 main = Blueprint("main", __name__)
@@ -54,9 +55,25 @@ def activities():
     return render_template("main/activities.html", activitiesList=activitiesList)
 
 
-@main.route("/contact")
+@main.route("/contact", methods=["POST", "GET"])
 def contact():
     form = FormContactanos()
+    if form.validate_on_submit():
+        # testin if form is being submitted
+        print("SUBMITED")
+        #test end
+        nombre = form.nombre.data
+        apellido =  form.apellido.data
+        telefono = form.telefono.data
+        text_area = form.text_area.data
+        newMessage = Contactanos(nombre, apellido, telefono, text_area, 0)        
+        db.session.add(newMessage)
+        db.session.commit()
+        return redirect (url_for("main.contact"))
+    # testin if form is being submitted
+    else:
+        print("not submitted yet")
+
     return render_template("main/contact.html", form=form)
 
 
