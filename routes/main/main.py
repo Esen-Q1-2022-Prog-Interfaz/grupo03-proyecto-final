@@ -4,8 +4,11 @@ from forms.form_contactanos import FormContactanos
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
+from utils.bcrypt import bcrypt
 from models.juntaDirectiva import JuntaDirectiva
 from models.actividades import Actividades
+from models.usuarios import Usuarios
+from db.db import db
 
 main = Blueprint("main", __name__)
 
@@ -70,6 +73,14 @@ def login():
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        # Agregar user a db
-        pass
+        correo = form.correo.data
+        nombre = form.nombre.data
+        apellido =  form.apellido.data
+        telefono = form.telefono.data
+        password = form.contrasenna.data
+        hashed_password = bcrypt.generate_password_hash(password)
+        newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA")
+        db.session.add(newUser)
+        db.session.commit()
+        return redirect (url_for("main.login"))
     return render_template("main/register.html", form=form)
