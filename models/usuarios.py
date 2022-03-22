@@ -9,6 +9,7 @@ class Usuarios(db.Model):  # type: ignore
     Campos:
         carnet : str
         nombre : str
+        contrasenna : str
         apellido : str
         anno : int
         telefono : str
@@ -18,6 +19,7 @@ class Usuarios(db.Model):  # type: ignore
     # Campos tabla
     idVoluntario = db.Column(db.Integer, primary_key=True)
     correo = db.Column(db.String(100), nullable=False)
+    contrasenna = db.Column(db.String(100), nullable= False)
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
     telefono = db.Column(db.String(50), nullable=False)
@@ -26,6 +28,7 @@ class Usuarios(db.Model):  # type: ignore
     def __init__(
         self,
         correo: str,
+        contrasenna: str,
         nombre: str,
         apellido: str,
         telefono: str,
@@ -33,6 +36,7 @@ class Usuarios(db.Model):  # type: ignore
     ) -> None:
 
         self.correo = correo
+        self.contrasenna = contrasenna
         self.nombre = nombre
         self.apellido = apellido
         self.telefono = telefono
@@ -42,6 +46,7 @@ class Usuarios(db.Model):  # type: ignore
         return f"""Usuario(
             {self.idVoluntario}, 
             {self.carnet}, 
+            {self.contrasenna},
             {self.nombre}, 
             {self.apellido}, 
             {self.telefono}, 
