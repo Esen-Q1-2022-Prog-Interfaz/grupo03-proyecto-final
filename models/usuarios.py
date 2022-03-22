@@ -28,7 +28,7 @@ class Usuarios(db.Model):  # type: ignore
     def __init__(
         self,
         correo: str,
-        contrasenna: str,
+        contrasenna: Union[str, bytes],
         nombre: str,
         apellido: str,
         telefono: str,
