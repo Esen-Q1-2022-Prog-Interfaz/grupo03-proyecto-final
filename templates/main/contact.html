@@ -38,33 +38,39 @@
   <!-- 
       <form action="https://formsubmit.co/valeria.benitezs@outlook.com" method="POST">
   -->
-  <form action="/action_page.php">
+  <form action="{{ url_for('main.contact') }}" method="post">
 
   <div class="form-container">
   
     <div>
     <div class="row">
       <div class="col-25">
-        <label for="fname">Nombre</label>
+        {{ form.nombre.label }}
+        <!-- <label for="fname">Nombre</label> -->
       </div>
       <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Ingresa tu nombre..">
+        {{ form.nombre }}
+        <!-- <input type="text" id="fname" name="firstname" placeholder="Ingresa tu nombre.."> -->
       </div>
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="lname">Apellido</label>
+        {{ form.apellido.label }}
+        <!-- <label for="lname">Apellido</label> -->
       </div>
       <div class="col-75">
-        <input type="text" id="lname" name="lastname" placeholder="Ingresa tu apellido..">
+        {{ form.apellido }}
+        <!-- <input type="text" id="lname" name="lastname" placeholder="Ingresa tu apellido.."> -->
       </div>
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="country">Teléfono</label>
+        {{ form.telefono.label }}
+        <!-- <label for="country">Teléfono</label> -->
       </div>
       <div class="col-75">
-        <input type="text" id="lname" name="lastname" placeholder="Ingresa tu número telefónico..">
+        {{ form.telefono }}
+        <!-- <input type="text" id="lname" name="lastname" placeholder="Ingresa tu número telefónico.."> -->
       </div>
     </div>
     </div>
@@ -72,7 +78,8 @@
     <div>
       <div class="row">
         <div class="col-75">
-          <textarea id="subject" name="subject" placeholder="Déjanos un mensaje.." style="height:325px"></textarea>
+          {{ form.text_area(style="height:325px") }}
+          <!-- <textarea id="subject" name="subject" placeholder="Déjanos un mensaje.." style="height:325px"></textarea> -->
         </div>
       </div>
     </div>
@@ -82,7 +89,8 @@
   <br>
 
   <div class="row">
-    <input type="submit" value="Enviar">
+    {{ form.submit }}
+    <!-- <input type="submit" value="Enviar"> -->
   </div>  
 
   </form>
