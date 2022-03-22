@@ -4,7 +4,7 @@ from forms.form_contactanos import FormContactanos
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
-from utils.bcrypt import bcrypt
+from utils_app.bcrypt import bcrypt
 from models.juntaDirectiva import JuntaDirectiva
 from models.actividades import Actividades
 from models.usuarios import Usuarios
@@ -79,7 +79,7 @@ def register():
         telefono = form.telefono.data
         password = form.contrasenna.data
         hashed_password = bcrypt.generate_password_hash(password)
-        newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA")
+        newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA") 
         db.session.add(newUser)
         db.session.commit()
         return redirect (url_for("main.login"))
