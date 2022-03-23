@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from db.cloud_connection import CloudinaryConnection
 from forms.form_contactanos import FormContactanos
 from forms.login_form import LoginForm
@@ -67,11 +67,11 @@ def contact():
         apellido =  form.apellido.data
         telefono = form.telefono.data
         text_area = form.text_area.data
-        newMessage = Contactanos(nombre, apellido, telefono, text_area, 0)        
+        newMessage = Contactanos(nombre, apellido, telefono, text_area, False)        
         db.session.add(newMessage)
         db.session.commit()
         return redirect (url_for("main.contact"))
-    # testin if form is being submitted
+    # testing if form is being submitted
     else:
         print("not submitted yet")
 
@@ -88,8 +88,8 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.contrasenna, contra):
                 login_user(user)
+                return f"Estas logeado {current_user}"
                 # TODO: poner en lugar de iniciar sesion nombre del usuario logeado, o sea modificar el html 
-        pass  
     return render_template("main/login.html", form=form)
 
 @main.route("/logout")

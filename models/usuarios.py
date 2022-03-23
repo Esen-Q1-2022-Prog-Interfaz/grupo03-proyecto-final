@@ -1,9 +1,10 @@
 from typing import Union
 from db.db import db
 from datetime import datetime
+from flask_login import UserMixin
 
 
-class Usuarios(db.Model):  # type: ignore
+class Usuarios(db.Model, UserMixin):  # type: ignore
     """
     Table model de los Usuarios
     Campos:
@@ -45,7 +46,6 @@ class Usuarios(db.Model):  # type: ignore
     def __repr__(self) -> str:
         return f"""Usuario(
             {self.idVoluntario}, 
-            {self.carnet}, 
             {self.contrasenna},
             {self.nombre}, 
             {self.apellido}, 
@@ -64,3 +64,7 @@ class Usuarios(db.Model):  # type: ignore
             except Exception:
                 carnet = "None"
         return carnet
+
+    # Necesario para el login
+    def get_id(self):
+        return (self.idVoluntario)
