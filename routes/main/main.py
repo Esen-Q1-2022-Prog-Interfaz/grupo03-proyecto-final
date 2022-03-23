@@ -70,10 +70,7 @@ def contact():
         newMessage = Contactanos(nombre, apellido, telefono, text_area, False)        
         db.session.add(newMessage)
         db.session.commit()
-        return redirect (url_for("main.contact"))
-    # testing if form is being submitted
-    else:
-        print("not submitted yet")
+        return redirect(url_for("main.contact"))
 
     return render_template("main/contact.html", form=form)
 
