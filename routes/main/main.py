@@ -109,3 +109,7 @@ def register():
         db.session.commit()
         return redirect (url_for("main.login"))
     return render_template("main/register.html", form=form)
+
+@main.route("/profile")
+def profile():
+    return render_template("main/profile.html")
