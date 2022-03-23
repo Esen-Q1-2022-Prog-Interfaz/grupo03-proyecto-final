@@ -522,52 +522,6 @@ padding: 50px;
 
 
 
-.section {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #E8FCCF;
-}
-
-.containerontop {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.top {
-    width: 50%;
-    height: 600px;
-    background: url(../../static/media/background-tree.jpg) no-repeat center / cover;
-    border-radius: 8px;
-}
-
-.bottom {
-    width: 50%;
-    min-height: 400px;
-    background-color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    border-radius: 8px;
-    color: white;
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -608,29 +562,75 @@ padding: 50px;
 
 /* ACTIVIDADES --------------------------------------------------------*/
 
-.grid-actividad {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap:30px;
-    background-color: #92ac95;
-    padding: 25px 150px 25px 150px; 
-} 
-.grid-actividad > div {
-text-align: center;
-font-size: 25px;
+.actividades-container {
+    width: 100%;
+    height: 65vh;
+    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url(../../static/media/actividad.jpg);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-.titulo-actividad {
-    padding: 25px;
-    padding-bottom: 0px;
-    background-color: #92ac95;
-    font-family: "Source Sans Pro";
-    color: rgb(56, 54, 42);
-    font-size: 25px;
+.actividad-text {
+    text-align: left;
+    padding-left: 150px;
+    font-size: 40px;
+}
+
+.actividad-text h1{
+color: white;
+}
+
+.fix-50-50 {
+    padding: 0px 150px 50px 150px;
+}
+
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerontop {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.left {
+    width: 100%;
+    height: 500px;
+    background: url(../media/actividades.jpg) no-repeat center / cover;
+}
+
+.right {
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+}
+.content h1,p {
+    text-align: left;
+    color:#3d4762;
+}
+
+.content h1 {
+    font-size: 3.5rem;
+}
+
+.content p {
+    padding-top: 50px;
+    font-size: 1.5rem;
 }
 
 .btn-actividad {
     width:auto;
+    text-align: right;
 }
 
 
