@@ -580,10 +580,6 @@ padding: 50px;
 color: white;
 }
 
-.fix-50-50 {
-    padding: 0px 150px 50px 150px;
-}
-
 .section {
     min-height: 100vh;
     width: 100%;
@@ -602,13 +598,13 @@ color: white;
 }
 
 .left {
-    width: 100%;
+    width: 50%;
     height: 500px;
     background: url(../media/actividades.jpg) no-repeat center / cover;
 }
 
 .right {
-    width: 100%;
+    max-width: 50%;
     min-height: 500px;
     display: flex;
     align-items: center;
@@ -625,13 +621,32 @@ color: white;
 
 .content p {
     padding-top: 50px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    text-align: justify;
+    width:100%;
 }
 
 .btn-actividad {
     width:auto;
     text-align: right;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

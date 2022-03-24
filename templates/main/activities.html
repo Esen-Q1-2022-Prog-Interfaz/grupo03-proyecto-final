@@ -13,27 +13,28 @@
     </div>
 </div>
 
-<div class="fix-50-50">
+<div style="padding: 50px 0px 50px 0px;">
 {% for activity in activitiesList %}
     <section>
         <div class="containerontop" id="about-us-container">
             <div class="left"></div>
             <div class="right">
-                <div class="content">
-                    <h1>{{activity.nombreActividad}}</h1>
-                    <p>{{activity.descripcion}}</p>
-                    <p>Numero de cupos: {{activity.cuposTotales}} </p><br><br>
                     <div>
-                        <button class="btn-actividad">
-                            Inscribirse
-                        </button>
+                    <div class="content">
+                        <h1>{{activity.nombreActividad}}</h1>
+                        <p>{{activity.descripcion}}</p>
+                        <p>Numero de cupos: {{activity.cuposTotales}} </p><br><br>
+                        <div>
+                            <button class="btn-actividad">
+                                Inscribirse
+                            </button>
+                        </div>
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </section>
 {% endfor %}
-</div>
 
 
 
