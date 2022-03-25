@@ -64,7 +64,7 @@ def contact():
 
 
 @admin.route("/dashboard")
-def catalog():
+def dashboard():
     return render_template("admin/dashboard.html")
 
 

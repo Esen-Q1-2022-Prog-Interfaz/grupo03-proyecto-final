@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../static/css/styleMain.css" />
+    <link rel="stylesheet" href="../../static/css/styleAdmin.css" />
     <script
       src="https://kit.fontawesome.com/bfe61dead8.js"
       crossorigin="anonymous"
@@ -15,12 +16,11 @@
   <body>
     <div class="navbar">
       <ul>
-        <li><a class="active" href="{{ url_for('main.home') }}">Inicio</a></li>
-        <li><a href="{{ url_for('main.about') }}">¿Quiénes somos?</a></li>
-        <li><a href="{{ url_for('main.activities') }}">Actividades</a></li>
-        <li><a href="{{ url_for('main.catalog') }}">Catálogo</a></li>
-        <li><a href="{{ url_for('main.contact') }}">Contacto</a></li>
-        <li class="login"><a href="{{ url_for('main.login') }}">Iniciar sesión</a></li>
+        <li><a class="active" href="{{ url_for('admin.home') }}">Inicio</a></li>
+        <li><a href="{{ url_for('admin.about') }}">¿Quiénes somos?</a></li>
+        <li><a href="{{ url_for('admin.activities') }}">Actividades</a></li>
+        <li><a href="{{ url_for('admin.contact') }}">Contacto</a></li>
+        <li class="login"><a href="{{ url_for('admin.dashboard') }}">Dashboard</a></li>
       </ul>
     </div>
 

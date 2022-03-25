@@ -1,0 +1,55 @@
+/* DASHBOARD----------------------------------------------------------------- */
+
+/* .dash {
+    display: grid;
+        grid-template-columns: auto auto;
+        gap:30px;
+        background-color: #92ac95;
+        padding: 50px 150px 50px 150px; 
+}
+ */
+/* Navbar------------------------------------ */
+
+/* .dash body {
+    margin: 0;
+  }
+
+.dash ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .dash li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .dash li a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .dash li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  } */
+
+ .vertical ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+ .v li a {
+    display: block;
+    width: 60px;
+    background-color: #dddddd;
+  }
