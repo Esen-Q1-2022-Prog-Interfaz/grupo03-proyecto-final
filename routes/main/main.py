@@ -62,3 +62,8 @@ def login():
 @main.route("/register")
 def register():
     return render_template("main/register.html")
+
+
+@main.route("/profile")
+def profile():
+    return render_template("main/profile.html")

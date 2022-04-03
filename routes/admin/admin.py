@@ -1,4 +1,4 @@
-from flask import Blueprint, send_file, session
+from flask import Blueprint, send_file, session, render_template
 from db.make_excel import create_excel, delete_if_exist
 from models.usuarios import Usuarios
 from db.db import db
@@ -134,3 +134,5 @@ def db_test():
     <h1>productos</h1>
     {juntaDirectiva}
    """
+
+

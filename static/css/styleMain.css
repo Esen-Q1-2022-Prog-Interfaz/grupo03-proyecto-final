@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Indie+Flower&family=Libre+Baskerville:ital@1&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Source+Sans+Pro:wght@900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Indie+Flower&family=Libre+Baskerville:ital@1&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Source+Sans+Pro:wght@200;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Fira+Sans:wght@900&family=Indie+Flower&family=Kalam&family=Libre+Baskerville:ital@1&family=Montserrat:wght@300&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Rubik:wght@900&family=Source+Sans+Pro:wght@200;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Kanit:wght@300&family=Lora:ital,wght@1,500&family=Merriweather+Sans&family=Mulish:wght@300&family=Orienta&family=Patua+One&family=Signika&family=Ubuntu+Mono&display=swap');
 
 /* BASE -------------------------------------------------------------*/
 * {
@@ -636,6 +637,96 @@ span.psw {
 .signbtn {
     align-items: center;
 }
-
+}
 
 /* PERFIL */
+.grid-perfil {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap:30px;
+    background-color: #8fc078;
+    padding: 50px 150px 50px 150px; 
+}
+
+.foto-perfil {
+    border-radius: 500px;
+    max-width: 250px;
+    max-height: auto;
+}
+
+.perfil-datos {
+    margin-top: 50px;
+    text-align: left;
+}
+
+.dato {
+    font-size: 25px;
+    margin: 8px;
+    font-family: "Mulish";
+}
+
+.actividades-user {
+    width: 85%;
+    margin: 50px 0px 50px 100px;
+}
+
+.tabla-user {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 20px;
+  }
+  
+  th {
+    text-align: center;
+    background-color: #4c7a49;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    color: #ffffff;
+    font-family: "Mulish";
+  }
+
+  td {
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    font-family: "Mulish";
+  }
+
+  tr {
+    background-color: #b8ddb5;
+  }
+
+  tr:hover {
+    background-color: #87b884;
+  }
+
+.logout_button {
+    padding: 0px 0px 50px 500px;
+}
+
+.logout {
+    font-family: "Merriweather Sans";
+    font-size: 18px;
+    text-align: center;
+    margin-left: 550px;
+    border-style: none;
+    border-radius: 15px;
+    width: 200px;
+    height: 65px;
+    background-color: rgb(245, 179, 81);
+    box-shadow: 5px 5px 10px;
+    padding: 10px;
+}
+
+.logout:hover {
+    background-color: rgb(202, 133, 48);
+    color: black;
+}
+
+.logout_button a:hover {
+    color:black
+}
+  
+ 
