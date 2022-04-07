@@ -1,3 +1,6 @@
+from flask import Blueprint, render_template
+from db.cloud_connection import CloudinaryConnection
+from db.utils.photos_model import Photo, PhotoNext
 from flask import Blueprint, send_file, session
 from db.make_excel import create_excel, delete_if_exist
 from models.usuarios import Usuarios
@@ -15,6 +18,54 @@ from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
 
 admin = Blueprint("admin", __name__, url_prefix="/admin")
+
+@admin.route("/")
+def home():
+    cloud = CloudinaryConnection.get_connection()
+    img_url, data = cloud.get_image()
+
+    fotos_data = {
+        i: Photo(
+            url=img_url,
+            desc=f"The kitty number {i}",
+        )
+        for i in range(1, 11)
+    }
+
+    next_act = {
+        i: PhotoNext(
+            img_url,
+            f"No se {i}",
+            0,
+        )
+        for i in range(1, 13)
+    }
+
+    return render_template(
+        "admin/home.html",
+        fotos_data=fotos_data,
+        next_act=next_act,
+    )
+
+
+@admin.route("/about")
+def about():
+    return render_template("admin/about.html")
+
+
+@admin.route("/activities")
+def activities():
+    return render_template("admin/activities.html")
+
+
+@admin.route("/contact")
+def contact():
+    return render_template("admin/contact.html")
+
+
+@admin.route("/dashboard")
+def dashboard():
+    return render_template("admin/dashboard.html")
 
 
 @admin.route("/download")

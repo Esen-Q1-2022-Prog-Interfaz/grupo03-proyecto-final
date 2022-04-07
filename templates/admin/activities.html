@@ -1,0 +1,43 @@
+{% extends './admin/baseAdmin.html' %} {% block title %}Inicio{% endblock %}
+{% block contents %}
+<h1>Actividades</h1>
+
+<div class="actividades-container">
+    <div class="inicio">
+        <div class="box1">
+        <div class="actividad-text"> 
+            <h1>Conoce más</h1> 
+            <h1>acerca de nuestras actividades</h1>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 50px 0px 50px 0px;">
+{% for activity in activitiesList %}
+    <section>
+        <div class="containerontop" id="about-us-container">
+            <div class="left"></div>
+            <div class="right">
+                    <div>
+                    <div class="content">
+                        <h1>{{activity.nombreActividad}}</h1>
+                        <p>{{activity.descripcion}}</p>
+                        <p>Numero de cupos: {{activity.cuposTotales}} </p><br><br>
+                        <div>
+                            <button class="btn-actividad">
+                                Inscribirse
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+{% endfor %}
+
+
+
+
+
+{% endblock %}
