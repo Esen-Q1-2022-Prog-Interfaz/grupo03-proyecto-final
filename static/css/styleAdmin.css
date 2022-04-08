@@ -19,7 +19,7 @@
   }
   
   .verticalBar li a.active {
-    background-color: #04AA6D;
+    background-color: #73ab84;
     color: white;
   }
   
@@ -53,6 +53,6 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
+    background-color: #4CAF50;
     color: white;
   }
