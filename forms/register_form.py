@@ -1,11 +1,7 @@
-from genericpath import exists
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, SelectField, PasswordField
 from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
 from models.usuarios import Usuarios
-# from tkinter import *
-# from tkinter import messagebox as MessageBox
-
 
 YEARS_UNI = [
     ("1", "Primer año"),
@@ -83,15 +79,11 @@ class RegisterForm(FlaskForm):
 
     submit = SubmitField(label="Registrarse")
 
-    # def message():
-    #     MessageBox.showerror("Error", 
-    #         "Ha ocurrido un error inesperado.")     
-
     def validate_correo(self, correo):
         correo_typed : str = correo.data
         current_mail = Usuarios.query.filter_by(correo=correo_typed).first()
         if not correo_typed.endswith("@esen.edu.sv"):
-            raise ValueError("El correo ingresado no es institucional")
+            raise ValidationError("El correo ingresado no es institucional")
         elif current_mail:
-            raise ValueError("El correo ingresado ya ha sido utilizado")
+            raise ValidationError("El correo ingresado ya ha sido utilizado")
 

@@ -60,9 +60,6 @@ def activities():
 def contact():
     form = FormContactanos()
     if form.validate_on_submit():
-        # testin if form is being submitted
-        print("SUBMITED")
-        #test end
         nombre = form.nombre.data
         apellido =  form.apellido.data
         telefono = form.telefono.data
