@@ -1,14 +1,16 @@
 from typing import Union
 from db.db import db
 from datetime import datetime
+from flask_login import UserMixin
 
 
-class Usuarios(db.Model):  # type: ignore
+class Usuarios(db.Model, UserMixin):  # type: ignore
     """
     Table model de los Usuarios
     Campos:
         carnet : str
         nombre : str
+        contrasenna : str
         apellido : str
         anno : int
         telefono : str
@@ -17,39 +19,40 @@ class Usuarios(db.Model):  # type: ignore
 
     # Campos tabla
     idVoluntario = db.Column(db.Integer, primary_key=True)
-    carnet = db.Column(db.String(50), nullable=False)
+    correo = db.Column(db.String(100), nullable=False)
+    contrasenna = db.Column(db.String(100), nullable= False)
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
-    anno = db.Column(db.Integer, nullable=False)
     telefono = db.Column(db.String(50), nullable=False)
-    correo = db.Column(db.String(100), nullable=False)
+    departamento = db.Column(db.String(50), nullable=False)
 
     def __init__(
         self,
         correo: str,
+        contrasenna: Union[str, bytes],
         nombre: str,
         apellido: str,
-        anno: int,
         telefono: str,
-        carnet: Union[str, None] = None,
+        departamento: str,
     ) -> None:
 
-        self.nombre = nombre
         self.correo = correo
+        self.contrasenna = contrasenna
+        self.nombre = nombre
         self.apellido = apellido
-        self.anno = anno
         self.telefono = telefono
-        self.carnet = self.get_carnet(carnet)
+        self.departamento = departamento
 
     def __repr__(self) -> str:
         return f"""Usuario(
             {self.idVoluntario}, 
-            {self.carnet}, 
+            {self.contrasenna},
             {self.nombre}, 
             {self.apellido}, 
-            {self.anno}, 
             {self.telefono}, 
+            {self.departamento},
             {self.correo})""".strip()
+
 
     def get_carnet(self, carnet_: Union[str, None]):
         carnet: str
@@ -61,3 +64,7 @@ class Usuarios(db.Model):  # type: ignore
             except Exception:
                 carnet = "None"
         return carnet
+
+    # Necesario para el login
+    def get_id(self):
+        return (self.idVoluntario)

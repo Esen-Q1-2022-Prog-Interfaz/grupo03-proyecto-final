@@ -8,9 +8,7 @@ class Contactanos(db.Model):  # type: ignore
         idContacto : int
         nombre : str
         apellido : str
-        correo : str
-        numeroTel : int
-        asunto : str
+        telefono : int
         mensaje : str
         estado : boolean
     """
@@ -19,9 +17,7 @@ class Contactanos(db.Model):  # type: ignore
     idContacto = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
-    correo = db.Column(db.String(100), nullable=False)
     telefono = db.Column(db.Integer, nullable=True)
-    asunto = db.Column(db.String(50), nullable=False)
     mensaje = db.Column(db.String(500), nullable=False)
     estado = db.Column(db.Boolean, nullable=False)
 
@@ -29,18 +25,14 @@ class Contactanos(db.Model):  # type: ignore
         self,
         nombre: str,
         apellido: str,
-        correo: str,
         telefono: int,
-        asunto: str,
         mensaje: str,
         estado: bool,
     ) -> None:
 
         self.nombre = nombre
-        self.correo = correo
         self.apellido = apellido
         self.telefono = telefono
-        self.asunto = asunto
         self.mensaje = mensaje
         self.estado = estado
 
@@ -50,7 +42,5 @@ class Contactanos(db.Model):  # type: ignore
             {self.nombre}, 
             {self.apellido}, 
             {self.telefono}, 
-            {self.correo},
-            {self.asunto}, 
             {self.mensaje}, 
             {self.estado})""".strip()

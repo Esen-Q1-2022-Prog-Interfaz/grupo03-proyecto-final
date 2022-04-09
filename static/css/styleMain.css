@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Indie+Flower&family=Libre+Baskerville:ital@1&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Source+Sans+Pro:wght@900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Indie+Flower&family=Libre+Baskerville:ital@1&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Source+Sans+Pro:wght@200;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Fira+Sans:wght@900&family=Indie+Flower&family=Kalam&family=Libre+Baskerville:ital@1&family=Montserrat:wght@300&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Rubik:wght@900&family=Source+Sans+Pro:wght@200;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Fira+Sans:wght@900&family=Homemade+Apple&family=Indie+Flower&family=Kalam&family=Libre+Baskerville:ital@1&family=Montserrat:wght@300&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Rubik:wght@900&family=Source+Sans+Pro:wght@200;400;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Indie+Flower&family=Libre+Baskerville:ital@1&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Source+Sans+Pro:wght@900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Indie+Flower&family=Libre+Baskerville:ital@1&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Source+Sans+Pro:wght@200;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Bad+Script&family=Comforter&family=Dosis:wght@400;800&family=Fira+Sans:wght@900&family=Indie+Flower&family=Kalam&family=Libre+Baskerville:ital@1&family=Montserrat:wght@300&family=Playfair+Display:wght@800&family=Poiret+One&family=Quintessential&family=Qwitcher+Grypen&family=Roboto:wght@100;900&family=Rubik:wght@900&family=Source+Sans+Pro:wght@200;900&family=Tangerine&family=Ubuntu+Mono&family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Kanit:wght@300&family=Lora:ital,wght@1,500&family=Merriweather+Sans&family=Mulish:wght@300&family=Orienta&family=Patua+One&family=Signika&family=Ubuntu+Mono&display=swap');
 
 /* BASE -------------------------------------------------------------*/
@@ -58,32 +62,31 @@ h2 {
     padding-top: 50px;
     font-family: "Source Sans Pro";
     text-align: center;
-    font-size: 60px;
 }
 
 .back-color1 {
-    background-color: #92ac95;
-    padding-bottom: 100px;
+    background-color: #E8FCCF;
+    padding-bottom: 50px;
 }
 
 .back-color1 h2 {
     color: #243119;
-    font-size: 50px;
+    font-size: 55px;
 }
 
 .back-color2 {
-    background-color: #588157;
-    padding-bottom: 100px;
+    background-color: #73ab84;
+    padding-bottom: 10px;
 }
 
 .back-color2 h2 {
-    color: #c9d4b5;
-    font-size: 50px;
+    color: white;
+    font-size: 75px;
 }
 
 .login{
     float: right;
-  }
+}
 
 /* HOME -------------------------------------------------------------*/
 .container {
@@ -153,16 +156,15 @@ img {
 /* Boton ser voluntario */
 
 #scroll {
-    outline: none;
     text-decoration: none;
     display: block;
     text-align: center;
     position: fixed;
-    right: 0;
+    right:0;
     top: 50%;
-    width: 250px;
+    width:fit-content;
     margin-top: 250px;
-    background-color: #e0b115;
+    background-color: #FFD449;
     list-style-type: none;
     font-size: 18px;
     font-weight: bold;
@@ -176,7 +178,7 @@ img {
 }
 
 .btn-volunteer:hover:not(.active) {
-    background-color: #977914;
+    background-color: #F9A620;
 }
 
 /* slideshow gallery */
@@ -304,15 +306,15 @@ img {
 
 .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto auto auto;
         gap: 30px;
         background-color: #ffffff;
         padding: 30px;
-        margin: 50px 100px 0px 100px;
+        margin: 50px 100px 100px 100px;
+        height: auto;
 }      
 
 .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     font-size: 30px;
 }
@@ -320,11 +322,26 @@ img {
 /* impacto ----------------------------------------------------------*/
 .intro-impacto {
     text-align: center;
-    margin: 15px 300px 15px 300px;
+    margin: 15px 200px 15px 200px;
+    color:#243119;
+    background-color: white; 
+}
+
+.intro-text {
+    padding: 10px;
+}
+
+.intro-impacto h2 {
+    font-size: 80px;  
 }
 
 .intro-impacto p {
-    font-size: 25px;
+    font-size: 30px;  
+}
+
+
+#grid-impacto h3 {
+    font-size: 70px;
 }
 
 .dato-impacto {
@@ -332,29 +349,69 @@ img {
 }
 
 #grid-impacto {
-    gap:50px
+    color:white;
+    gap:50px;
+    height: 50%;
+    padding: 50px 50px 0px 50px;
+    background-image: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), url(../../static/media/hand-with-plant.jpg);
+    background-size: cover;  
 }
 
-/* ABOUT */
-.grid-historia {
-        display: grid;
-        grid-template-columns: auto auto;
-        gap:30px;
-        background-color: #92ac95;
-        padding: 50px 150px 50px 150px; 
-} 
-.grid-historia > div {
-    text-align: center;
-    font-size: 25px;
+#grid-impacto i {
+    font-size: 3em;
+    padding-bottom: 50px;
+}
+#grid-impacto i img{
+    width: 150px;
+
+}
+
+/* ABOUT --------------------------------------------------------------*/
+.fixed-alignment {
+    display: inline-flex;    
+    list-style: none;
+    align-items: center;
+}
+.text-box {
+    background-color: white;
+    padding: 150px;
+    color:rgb(41, 40, 46);
+    width: 50%;
+    height: 500px;
+}
+.picture-box {
+    background-image: url(../../static/media/fotox.jpg);
+    background-color: whitesmoke;
+    background-size: cover;
+    padding:150px;
+    width: 50%;
+    height: 500px;
+}
+.text-quienes-somos {
+    text-align: left;
+    font-size: 1.5rem;
+}
+.frase  {
+    background-image: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)), url(../../static/media/planta.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 40vh;
+    background-attachment: fixed;
+}
+
+.frase h2 {
+    font-family: "Homemade Apple";
+    color: white;
+    font-size: 40px;
+    padding: 7%;
+}
     
-}
-#vision {
-    background-color: rgb(64, 100, 55);
-}
-
 /*teammates*/
+#junta-titulo {
+    font-size: 45px;
+}
 
-.bloque_referencias{
+.bloque_miembros{
     margin: 50px 100px 50px 100px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -396,7 +453,7 @@ img {
     font-weight: 300;
 }
 
-.bloque_referencias2{
+.bloque_miembros2{
     margin: 50px 270px 50px 270px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -405,40 +462,191 @@ img {
     padding-bottom: 5rem;
 }
 
-/* ACTIVIDADES */
+/* mision vision valores */
 
-.grid-actividad {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap:30px;
-    background-color: #92ac95;
-    padding: 25px 150px 25px 150px; 
-} 
-.grid-actividad > div {
-text-align: center;
-font-size: 25px;
+
+.mision-cover { 
+    width: 100%;
+    height:50vh;
+    background-image: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15)), url(../../static/media/saveEarth.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-.titulo-actividad {
+.MVV-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+    padding: 30px;
+    margin: 50px 100px 0px 100px;
+    height: auto; 
+    margin-top: -80px;  
+}  
+
+.MVV-container > div {
+text-align: center;
+font-size: 30px;
+background-color: #f3f3f3;
+padding: 50px;
+}
+
+.MVV-text {
+    padding-top: 25px;
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+.MVV-container i img{
+    width: 200px;
     padding: 25px;
-    padding-bottom: 0px;
-    background-color: #92ac95;
-    font-family: "Source Sans Pro";
-    color: rgb(56, 54, 42);
-    font-size: 25px;
+}
+
+#img-MVV {
+    background-image: url(../../static/media/rotuloMVV.jpg);
+    background-size: cover;
+    padding: none;
+    margin: none;
+    width: 400px;
+    height: 100%;
+}
+
+/* ACTIVIDADES --------------------------------------------------------*/
+
+.actividades-container {
+    width: 100%;
+    height: 65vh;
+    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url(../../static/media/actividad.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.actividad-text {
+    text-align: left;
+    padding-left: 150px;
+    font-size: 40px;
+}
+
+.actividad-text h1{
+color: white;
+}
+
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerontop {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.left {
+    width: 50%;
+    height: 500px;
+    background: url(../media/actividades.jpg) no-repeat center / cover;
+}
+
+.right {
+    max-width: 50%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+}
+.content h1,p {
+    text-align: left;
+    color:#3d4762;
+}
+
+.content h1 {
+    font-size: 3.5rem;
+}
+
+.content p {
+    padding-top: 50px;
+    font-size: 1.25rem;
+    text-align: justify;
+    width:100%;
 }
 
 .btn-actividad {
     width:auto;
+    text-align: right;
 }
 
-
-
-/* CATALOGO */
-
-
-
 /* CONTACTO */
+
+.contact-container {
+    width: 100%;
+    height: 65vh;
+    background-image: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)), url(../../static/media/guantes-y-planta.jpg);
+    background-size: cover;
+}
+
+.inicio {
+    text-align: center;
+    padding-top: 250px;
+}
+
+.contact-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contact-text h1 {
+    font-size: 100px;
+    color: white;
+}
+
+.redes-sociales {
+    font-size: 25px;
+    color: white;
+    display:inline-flex;
+    gap: 200px;
+    padding: 50px;
+}
+
+.redes-iconos {
+    display: inline-flex;
+    color: white;
+    gap: 10px;
+}
+
+.redes-iconos a {
+    color: white;
+}
+
+/* contact form*/
+
+.form-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 30px;
+    gap: 75px;
+    height: auto; 
+    margin: 0px 20px 0px 20px;
+    font-size: 1.5rem;
+    align-items: center;
+}  
+
+.row {
+    padding-top: 15px;
+}
+
+.col-75 input, textarea {
+    font-size: 1.25rem;
+}
+
 .contact {
     margin: 50px;
     display: grid;
@@ -493,6 +701,20 @@ input[type=submit]:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* LOGIN AND REGISTER */
 
 .frame {
@@ -513,10 +735,10 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-  }
-  
+}
+
   /* Set a style for all buttons */
-  button {
+button {
     background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
@@ -524,52 +746,52 @@ input[type=text], input[type=password] {
     border: none;
     cursor: pointer;
     width: 100%;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     opacity: 0.8;
-  }
-  
+}
+
   /* Extra styles for the cancel button */
-  .cancelbtn {
+.cancelbtn {
     width: auto;
     padding: 10px 18px;
     background-color: #f44336;
-  }
-  .signbtn {
+}
+.signbtn {
     width: auto;
     padding: 10px 18px;
     background-color: #04AA6D;
-  }
-  
+}
+
   /* Center the image and position the close button */
-  .imgcontainer {
+.imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
-  }
-  
-  img.avatar {
+}
+
+img.avatar {
     width: 20%;
     border-radius: 50%;
-  }
-  
-  .container-login {
+}
+
+.container-login {
     padding: 16px;
-  }
+}
 .container-button {
     padding: 16px;
     display: inline-block;
     width: 100%;
 }
 
-  span.psw {
+span.psw {
     float: right;
     padding-top: 16px;
-  }
-  
+}
+
   /* The Modal (background) */
-  .modal {
+.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -581,10 +803,10 @@ input[type=text], input[type=password] {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
-  }
-  
+}
+
   /* Modal Content/Box */
-  .modal-content {
+.modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
@@ -638,6 +860,74 @@ span.psw {
     align-items: center;
 }
 }
+
+
+/* PARTE LILLY NO SET */
+
+.contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+    
+    background-position: center;
+    background-size: cover;
+}
+
+#contenedorcentrado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:row;
+    
+    min-width: 380px;
+    max-width: 900px;
+    width: 90%;
+    
+    background-color: #5f6769;
+    
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#login {
+    width: 100%;
+    max-width: 320px;
+    min-width: 320px;
+    padding: 30px 30px 50px 30px;
+    background-color: #719192;
+    
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    
+    box-sizing: border-box;
+    
+    opacity: 1;
+    filter: alpha(opacity=1);
+}
+
+
+
+
+
 
 /* PERFIL */
 .grid-perfil {

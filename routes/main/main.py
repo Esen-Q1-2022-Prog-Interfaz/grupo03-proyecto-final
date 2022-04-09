@@ -1,6 +1,16 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
+from flask_login import login_user, logout_user, current_user
 from db.cloud_connection import CloudinaryConnection
+from forms.form_contactanos import FormContactanos
+from forms.login_form import LoginForm
+from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
+from utils_app.bcrypt import bcrypt
+from models.juntaDirectiva import JuntaDirectiva
+from models.actividades import Actividades
+from models.usuarios import Usuarios
+from models.contactanos import Contactanos
+from db.db import db
 
 main = Blueprint("main", __name__)
 
@@ -36,33 +46,66 @@ def home():
 
 @main.route("/about")
 def about():
-    return render_template("main/about.html")
+    JDList = JuntaDirectiva.query.all()
+    return render_template("main/about.html", JDList=JDList)
 
 
 @main.route("/activities")
 def activities():
-    return render_template("main/activities.html")
+    activitiesList = Actividades.query.all()
+    return render_template("main/activities.html", activitiesList=activitiesList)
 
 
-@main.route("/catalog")
-def catalog():
-    return render_template("main/catalog.html")
-
-
-@main.route("/contact")
+@main.route("/contact", methods=["POST", "GET"])
 def contact():
-    return render_template("main/contact.html")
+    form = FormContactanos()
+    if form.validate_on_submit():
+        nombre = form.nombre.data
+        apellido =  form.apellido.data
+        telefono = form.telefono.data
+        text_area = form.text_area.data
+        newMessage = Contactanos(nombre, apellido, telefono, text_area, False)        
+        db.session.add(newMessage)
+        db.session.commit()
+        return redirect(url_for("main.contact"))
+
+    return render_template("main/contact.html", form=form)
 
 
-@main.route("/login")
+@main.route("/login", methods=["POST", "GET"])
 def login():
-    return render_template("main/login.html")
+    form = LoginForm()
+    if form.validate_on_submit():
+        correo = form.correo.data
+        contra = form.contrasenna.data
+        user = Usuarios.query.filter_by(correo=correo).first()
+        if user:
+            if bcrypt.check_password_hash(user.contrasenna, contra):
+                login_user(user)
+                return f"Estas logeado {current_user}"
+                # TODO: poner en lugar de iniciar sesion nombre del usuario logeado, o sea modificar el html 
+    return render_template("main/login.html", form=form)
 
+@main.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("main.login"))
 
-@main.route("/register")
+@main.route("/register", methods=["POST", "GET"])
 def register():
-    return render_template("main/register.html")
-
+    form = RegisterForm()
+    if form.validate_on_submit():
+        correo = form.correo.data
+        nombre = form.nombre.data
+        apellido =  form.apellido.data
+        telefono = form.telefono.data
+        password = form.contrasenna.data
+        hashed_password = bcrypt.generate_password_hash(password)
+        newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA") 
+        db.session.add(newUser)
+        db.session.commit()
+        return redirect (url_for("main.login"))
+    return render_template("main/register.html", form=form)
 
 @main.route("/profile")
 def profile():
