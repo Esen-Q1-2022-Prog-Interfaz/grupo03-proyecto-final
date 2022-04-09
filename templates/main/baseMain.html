@@ -113,9 +113,12 @@
                 }
             </script> -->
         <li class="login">
+        {% if user.is_authenticated %}
+            <a href="{{ url_for('main.profile') }}">Perfil</a>
+        {% else %}
           <a href="{{ url_for('main.login') }}">Iniciar sesión</a>
+        {% endif %}
         </li>
-        <li><a href="{{ url_for('main.profile') }}">Perfil</a></li>
       </ul>
     </div>
 
