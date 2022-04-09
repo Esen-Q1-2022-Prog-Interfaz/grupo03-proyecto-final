@@ -9,12 +9,12 @@
         <img src="../../static/media/avatar.png"  class="foto-perfil" alt="" />
     </div>
     <div class="perfil-datos">
-        <p class="dato"><b>Nombre:</b>  Marcela Jazmín</p>
-        <p class="dato"><b>Apellido:</b>  Gallardo Velásquez</p>
-        <p class="dato"><b>Correo electronico:</b>  correo@gmail.com</p>
-        <p class="dato"><b>Telefono:</b>  44444444</p>
-        <p class="dato"><b>Año universitario:</b>  Tercer año</p>
-        <p class="dato"><b>Carrera:</b>  Ingenieria de Negocios</p> 
+        <p class="dato"><b>Nombre:</b> {{user.nombre}} </p>
+        <p class="dato"><b>Apellido:</b> {{user.apellido}} </p>
+        <p class="dato"><b>Correo electronico:</b>  {{user.correo}}</p>
+        <p class="dato"><b>Telefono:</b>  {{user.telefono}}</p>
+        <p class="dato"><b>Año universitario:</b>  Aun no added a la db :(</p>
+        <p class="dato"><b>Carrera:</b>  Aun no added a la db :(</p> 
     </div>
 </div>
 
@@ -65,7 +65,7 @@
 </div>
 
 <div class="logout_button">
-    <a href="#"><div class="logout">Volver a página principal</div></a>  
+    <a href="{{ url_for('main.logout') }}"><div class="logout">Desloguear</div></a>  
 </div>
 
 {% endblock %} 

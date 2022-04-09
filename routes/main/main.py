@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_required, login_user, logout_user, current_user
 from db.cloud_connection import CloudinaryConnection
 from forms.form_contactanos import FormContactanos
 from forms.login_form import LoginForm
@@ -41,19 +41,20 @@ def home():
         "main/home.html",
         fotos_data=fotos_data,
         next_act=next_act,
+        user=current_user
     )
 
 
 @main.route("/about")
 def about():
     JDList = JuntaDirectiva.query.all()
-    return render_template("main/about.html", JDList=JDList)
+    return render_template("main/about.html", JDList=JDList, user=current_user)
 
 
 @main.route("/activities")
 def activities():
     activitiesList = Actividades.query.all()
-    return render_template("main/activities.html", activitiesList=activitiesList)
+    return render_template("main/activities.html", activitiesList=activitiesList, user=current_user)
 
 
 @main.route("/contact", methods=["POST", "GET"])
@@ -69,7 +70,7 @@ def contact():
         db.session.commit()
         return redirect(url_for("main.contact"))
 
-    return render_template("main/contact.html", form=form)
+    return render_template("main/contact.html", form=form, user=current_user)
 
 
 @main.route("/login", methods=["POST", "GET"])
@@ -82,14 +83,14 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.contrasenna, contra):
                 login_user(user)
-                return f"Estas logeado {current_user}"
-                # TODO: poner en lugar de iniciar sesion nombre del usuario logeado, o sea modificar el html 
-    return render_template("main/login.html", form=form)
+
+                return redirect(url_for("main.home"))
+    return render_template("main/login.html", form=form, user=current_user)
 
 @main.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for("main.login"))
+    return redirect(url_for("main.home"))
 
 @main.route("/register", methods=["POST", "GET"])
 def register():
@@ -105,8 +106,9 @@ def register():
         db.session.add(newUser)
         db.session.commit()
         return redirect (url_for("main.login"))
-    return render_template("main/register.html", form=form)
+    return render_template("main/register.html", form=form, user=current_user)
 
 @main.route("/profile")
+@login_required
 def profile():
-    return render_template("main/profile.html")
+    return render_template("main/profile.html", user=current_user)
