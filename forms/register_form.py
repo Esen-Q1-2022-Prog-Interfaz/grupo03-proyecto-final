@@ -1,3 +1,4 @@
+from random import choices
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, SelectField, PasswordField
 from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
@@ -9,6 +10,12 @@ YEARS_UNI = [
     ("3", "Tercer año"),
     ("4", "Cuarto año"),
     ("5", "Quinto año"),
+]
+CARRERAS=[
+    ("1", "Ingeniería de Negocios"),
+    ("2", "Licenciatura en Economía"),
+    ("3", "Licenciatura en Ciencias Jurídicas"),
+    
 ]
 
 class RegisterForm(FlaskForm):
@@ -48,13 +55,11 @@ class RegisterForm(FlaskForm):
         render_kw={"placeholder":"Ingresa tu telefono"}
     )
     
-    year_uni = SelectField(
-        label="Año universitario",
-        validators=[
-            InputRequired()
-        ],
-        choices=YEARS_UNI,
-        render_kw={"placeholder":"Ingresa tu año unversisario"}
+    carrera = SelectField(
+        label="Carrera Universitaria",
+        validators=[InputRequired()],
+        choices= CARRERAS,
+        render_kw={"placeholder":"Ingresa la carrera que cursas"}
     )
 
     contrasenna = PasswordField(

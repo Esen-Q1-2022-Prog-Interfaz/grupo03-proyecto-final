@@ -11,6 +11,7 @@ from models.actividades import Actividades
 from models.usuarios import Usuarios
 from models.contactanos import Contactanos
 from db.db import db
+from datetime import date
 
 main = Blueprint("main", __name__)
 
@@ -36,12 +37,13 @@ def home():
         )
         for i in range(1, 13)
     }
-
+    actividadesActivas = Actividades.query.filter_by(estado=2).all()
     return render_template(
         "main/home.html",
         fotos_data=fotos_data,
         next_act=next_act,
-        user=current_user
+        user=current_user,
+        actividadesActivas=actividadesActivas
     )
 
 
@@ -102,9 +104,15 @@ def register():
         telefono = form.telefono.data
         password = form.contrasenna.data
         hashed_password = bcrypt.generate_password_hash(password)
-        newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA") 
+        carrera = form.carrera.data
+        anno = [int(i) for i in list(correo)[0:4]]
+        annoo = int(''.join(map(str, anno)))
+        print(type(annoo))
+        
+        newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA", carrera, annoo)
         db.session.add(newUser)
         db.session.commit()
+        
         return redirect (url_for("main.login"))
     return render_template("main/register.html", form=form, user=current_user)
 

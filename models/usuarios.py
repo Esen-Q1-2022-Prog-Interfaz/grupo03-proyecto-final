@@ -15,6 +15,7 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
         anno : int
         telefono : str
         correo : str
+        carrera: str
     """
 
     # Campos tabla
@@ -25,6 +26,9 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
     apellido = db.Column(db.String(50), nullable=False)
     telefono = db.Column(db.String(50), nullable=False)
     departamento = db.Column(db.String(50), nullable=False)
+    carrera = db.Column(db.String(50), nullable=False)
+    anno = db.Column(db.Integer, nullable=False)
+    
 
     def __init__(
         self,
@@ -34,6 +38,8 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
         apellido: str,
         telefono: str,
         departamento: str,
+        carrera: str,
+        anno: int,
     ) -> None:
 
         self.correo = correo
@@ -42,6 +48,8 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
         self.apellido = apellido
         self.telefono = telefono
         self.departamento = departamento
+        self.carrera = carrera
+        self.anno = anno
 
     def __repr__(self) -> str:
         return f"""Usuario(
@@ -51,7 +59,9 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
             {self.apellido}, 
             {self.telefono}, 
             {self.departamento},
-            {self.correo})""".strip()
+            {self.correo}
+            {self.carrera}
+            {self.anno})""".strip()
 
 
     def get_carnet(self, carnet_: Union[str, None]):

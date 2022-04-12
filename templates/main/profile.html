@@ -13,8 +13,17 @@
         <p class="dato"><b>Apellido:</b> {{user.apellido}} </p>
         <p class="dato"><b>Correo electronico:</b>  {{user.correo}}</p>
         <p class="dato"><b>Telefono:</b>  {{user.telefono}}</p>
-        <p class="dato"><b>Año universitario:</b>  Aun no added a la db :(</p>
-        <p class="dato"><b>Carrera:</b>  Aun no added a la db :(</p> 
+        <p class="dato"><b>Año de Ingreso a la Escuela:</b>  {{user.anno}}</p>
+        {% if user.carrera == 1 %}
+            <p class="dato"><b>Carrera:</b> Ingeniería de Negocios </p> 
+        {% elif user.carrera == 2 %}
+            <p class="dato"><b>Carrera:</b> Licenciatura en Economía </p> 
+        {% elif user.carrera == 3 %}
+            <p class="dato"><b>Carrera:</b> Licenciatura en Ciencias Jurídicas </p>
+        {% else %}
+            <p class="dato"><b>Carrera:</b> No aplica </p>
+        {% endif %}
+
     </div>
 </div>
 
