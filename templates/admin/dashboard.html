@@ -1,0 +1,191 @@
+{% extends './admin/baseAdmin.html' %} {% block title %}Dashboard{% endblock %}
+{%block contents %}
+<br> <br> 
+    <div class="verticalBar">
+            <ul>
+        <li><a href="#Miembros">Miembros</a></li>
+        <li><a href="#Inscripciones">Inscripciones</a></li>
+        <li><a href="#Actividades">Actividades</a></li>
+        <li><a href="#Voluntarios">Voluntarios</a></li>
+        <li><a href="#Mensajes">Mensajes</a></li>
+        <li><a href="#Notificaciones">Notificaciones</a></li>
+        </ul>
+    </div>
+
+    <div class="bodyDash">
+        <h1>Dashboard</h1>
+        <div id="Miembros">
+            <h2>Miembros</h2> <br>
+            <table class="tablaDash"> <!-- Solo que se vean los usuarios que son miembros de raices -->
+                <h3>Tabla Miembros</h3>
+                <tr>
+                    <th colspan="8">Tabla Miembros</th>
+                </tr>
+                <tr>
+                    <th>Id</th>
+                    <th>Carnet</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Año ESEN</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                </tr>
+                <tr class="">
+                    <td>1</td>
+                    <td>20204055</td>
+                    <td>Sofía</td>
+                    <td>Segura</td>
+                    <td>Tercero</td>
+                    <td>73748392</td>
+                    <td>sofia@mafer.com</td>
+                    <td><a href="">Delete</a></td>
+                </tr>
+            </table>
+
+            <br>
+            <table class="tablaDash"> <!-- junta directiva de raices -->
+                <h3>Tabla Junta Directiva</h3>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cargo</th>
+                    <th>Correo</th>
+                    <th>Link de Foto</th>
+                </tr>
+                <tr class="">
+                    <td>1</td>
+                    <td>Sofía</td>
+                    <td>Segura</td>
+                    <td>Presidenta</td>
+                    <td>sofia@mafer.com</td>
+                    <td>holacernaaquivalafoto.com</td>
+                    <td><a href="">Update</a></td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div id="Inscripciones">
+            <table class="tablaDash"> <!-- incripciones de actividades de raices -->
+            <h2>Inscripciones</h2>
+            <tr>
+                <th>Id</th>
+                <th>Voluntario</th>
+                <th>Actividad</th>
+                <th>Asistencia</th>
+                <th>Pago</th>
+                <th>Kg de reciclaje</th>
+                <th>Horas totales</th>
+            </tr>
+            <tr class="">
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Presente</td>
+                <td>Recibido</td>
+                <td>50</td>
+                <td>10</td>
+                <td><a href="">Update</a></td>
+            </tr>
+        </table>
+        <br>
+        <button class="btn-actividad">
+            Descargar
+        </button>
+        </div>
+
+
+        <div id="Actividades">
+            <h2>Actividades</h2>
+            <table class="tablaDash"> <!-- actividades de raices -->
+                <tr>
+                    <th>Id</th>
+                    <th>Descripción</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Ubicación</th>
+                    <th>Tipo de Horas</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Final</th>
+                    <th>Cantidad de Horas</th>
+                    <th>Cupos</th>
+                    <th>Estado</th>
+                </tr>
+                <tr class="">
+                    <td>1</td>
+                    <td>1</td>
+                    <td>Limpieza lago ilopango</td>
+                    <td>1</td>
+                    <td>Ilopango</td>
+                    <td>1</td>
+                    <td>2020-01-01</td>
+                    <td>2020-01-01</td>
+                    <td>10</td>
+                    <td>5</td>
+                    <td>finalizada</td>
+                    <td><a href="">Update</a></td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div id="Voluntarios">
+            <h2>Voluntarios</h2>
+            <table class="tablaDash"> <!-- voluntarios de raices -->
+                <tr>
+                    <th>Id</th>
+                    <th>Carnet</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Año ESEN</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                </tr>
+                <tr class="">
+                    <td>1</td>
+                    <td>20204055</td>
+                    <td>Sofía</td>
+                    <td>Segura</td>
+                    <td>Tercero</td>
+                    <td>73748392</td>
+                    <td>sofia@mafer.com</td>
+                    <td><a href="">Update</a></td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div id="Mensajes">
+            <h2>Mensajes</h2>
+            <table class="tablaDash"> <!-- mensajes de contacto -->
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>Mensaje</th>
+                    <th>Estado</th>
+                </tr>
+                <tr class="">
+                    <td>1</td>
+                    <td>Sofia</td>
+                    <td>Rivas</td>
+                    <td>721837462</td>
+                    <td>hola cerna, porfa bañate, oles a bolo</td>
+                    <td>ebrio</td>
+                    <td><a href="">Update</a></td>
+                </tr>
+            </table>
+            
+        </div>
+        <br>
+
+<!-- YO CREO QUE NO HAREMOS ESTE, NO ES TAN NECESARIO -->
+ <!--        <div id="Notificaciones">
+            <h2>Notificaciones</h2>
+        </div> -->
+
+    </div>
+
+    {% endblock %}

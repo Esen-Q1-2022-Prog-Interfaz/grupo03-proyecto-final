@@ -1,0 +1,126 @@
+{% extends './admin/baseAdmin.html' %} {% block title %}Inicio{% endblock %}
+{%block contents %}
+<h1>Raíces ESEN</h1>
+
+<div class="background-cover">
+  <div class="inicio">
+    <div class="box1">
+      <div class="center">
+        <h1>RAICES</h1>
+        <h3 class="ESEN">ESEN</h3>
+      </div>
+    </div>
+    <ul id="scroll">
+      <li><a class="btn-volunteer" href="{{ url_for('main.register') }}">¡Quiero ser voluntario!</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="back-color1">
+  <h2>¡Anímate a ser parte de nuestra familia!</h2>
+
+  <div class="containerSlideshow">
+    {% for i in fotos_data %}
+    <div class="mySlides">
+      <div class="numbertext">{{i}} / 6</div>
+      <img src="{{fotos_data[i].url}}" style="object-fit: cover" />
+    </div>
+
+    {% endfor %}
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <div class="row">
+      {% for i in fotos_data %}
+
+      <div class="column">
+        <img
+          class="demo cursor"
+          src="{{fotos_data[i].url}}"
+          style="width: 100%; object-fit: cover"
+          onclick="currentSlide({{ i }})"
+          alt="{{fotos_data[i].desc}}"
+        />
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="intro-impacto">
+  <h2>PROTEJAMOS NUESTRO PLANETA</h2>
+  <div class="intro-text">
+    <p>
+      En Raíces ESEN estamos comprometidos en ser parte de un cambio positivo en el medio ambiente. 
+      Con nuestros diferentes voluntariados hemos logrado:
+    </p>
+  </div>
+</div>
+  
+<div class="grid-container" id="grid-impacto">
+  <div> 
+    <i><img src="../../static/media/tree.png" alt=""></i>
+    <h3>100</h3>
+    <p class="dato-impacto">
+      árboles sembrados
+    </p>
+  </div>
+  <div>
+    <i><img src="../../static/media/recycle.png" alt=""></i>
+    <h3>500kg</h3>
+    <p class="dato-impacto">
+      reciclados
+    </p>
+  </div>
+  <div>
+    <i><img src="../../static/media/helping-hand.png" alt=""></i>
+    <h3>+200</h3>
+    <p class="dato-impacto">
+      voluntarios
+    </p>
+  </div>
+  <div>
+    <i><img src="../../static/media/turtle.png" alt=""></i>
+    <h3>80</h3>
+    <p class="dato-impacto">
+      charlas y foros
+    </p>
+  </div>
+  <br /><br />
+</div>
+
+<div class="back-color2">
+
+  <h2>PROXIMAS ACTIVIDADES</h2>
+
+  <div class="grid-container">
+    {% for i in next_act %}
+    <div>
+      <div class="container">
+        <img
+          src="{{ next_act[i].url }}"
+          alt="Avatar"
+          class="image"
+          style="width: 100%"
+        />
+        <div class="middle">
+          <div class="text">Ver actividad</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+
+
+<!-- Ejecucion del javascript del carrousel de imagenes-->
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/main.js') }}"></script>
+{% endblock %}
