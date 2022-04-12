@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, login_user, logout_user, current_user
-from db.cloud_connection import CloudinaryConnection
 from forms.form_contactanos import FormContactanos
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
@@ -19,12 +18,10 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def home():
-    cloud = CloudinaryConnection.get_connection()
-    img_url, data = cloud.get_image()
 
     fotos_data = {
         i: Photo(
-            url=img_url,
+            url="img_url",
             desc=f"The kitty number {i}",
         )
         for i in range(1, 11)
@@ -32,7 +29,7 @@ def home():
 
     next_act = {
         i: PhotoNext(
-            img_url,
+            "img_url",
             f"No se {i}",
             0,
         )
@@ -69,7 +66,7 @@ def inscripcion(nombreAct):
     cantidadKg=0
     horastotales=0
     evidencia=1
-    newIns = Inscripciones(idVoluntario, idActividad, estadoAsistencia, estadoPago, cantidadKg, horastotales, evidencia)
+    newIns = Inscripciones(idVoluntario, idActividad, estadoAsistencia, estadoPago, cantidadKg, horastotales)
     db.session.add(newIns)
     db.session.commit()
     return redirect(url_for("main.activities", nombreAct=nombreAct))
