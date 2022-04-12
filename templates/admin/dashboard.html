@@ -17,34 +17,39 @@
         <div id="Miembros">
             <h2>Miembros</h2> <br>
             <table class="tablaDash"> <!-- Solo que se vean los usuarios que son miembros de raices -->
-                <h3>Tabla Miembros</h3>
-                <tr>
-                    <th colspan="8">Tabla Miembros</th>
-                </tr>
+                <h3>Tabla Miembros</h3> <button> Añadir miembro </button>
+                <!-- Se deben printear solo los que tienen cargo=miembro -->
                 <tr>
                     <th>Id</th>
-                    <th>Carnet</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Año ESEN</th>
+                    <th>Año de ingreso a ESEN</th>
                     <th>Teléfono</th>
+                    <th>Departamento</th>
                     <th>Correo</th>
+                    <th>Eliminar</th>
+                    <th>Miembro</th>
+                    <th>Voluntario</th>
                 </tr>
+                {% for miembro in MiembrosFull %}
                 <tr class="">
-                    <td>1</td>
-                    <td>20204055</td>
-                    <td>Sofía</td>
-                    <td>Segura</td>
-                    <td>Tercero</td>
-                    <td>73748392</td>
-                    <td>sofia@mafer.com</td>
-                    <td><a href="">Delete</a></td>
+                    <td>{{ miembro.idVoluntario }}</td>
+                    <td>{{ miembro.nombre }}</td>
+                    <td>{{ miembro.apellido }}</td>
+                    <td>{{ miembro.anno }}</td>
+                    <td>{{ miembro.telefono }}</td>
+                    <td>{{ miembro.telefono }}</td>
+                    <td>{{ miembro.correo }}</td>
+                    <td><a href="{{ url_for('admin.deleteVoluntario' , idVoluntario=miembro.idVoluntario) }}">Dar de baja</a></td>
+                    <td><a href="{{ url_for('admin.hacerMiembro' , idVoluntario=miembro.idVoluntario) }}">Hacer miembro</a></td>
+                    <td><a href="{{ url_for('admin.hacerVoluntario' , idVoluntario=miembro.idVoluntario) }}">Hacer voluntario</a></td>
                 </tr>
+                {% endfor %}
             </table>
 
             <br>
             <table class="tablaDash"> <!-- junta directiva de raices -->
-                <h3>Tabla Junta Directiva</h3>
+                <h3>Tabla Junta Directiva</h3><button> Añadir miembro a Junta Directiva </button>
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
@@ -52,17 +57,22 @@
                     <th>Cargo</th>
                     <th>Correo</th>
                     <th>Link de Foto</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
                 </tr>
-                <tr class="">
-                    <td>1</td>
-                    <td>Sofía</td>
-                    <td>Segura</td>
-                    <td>Presidenta</td>
-                    <td>sofia@mafer.com</td>
-                    <td>holacernaaquivalafoto.com</td>
-                    <td><a href="">Update</a></td>
-                </tr>
-            </table>
+                {% for miembroJD in JDFull %}
+                    <tr class="">
+                        <td>{{ miembroJD.idPersona }}</td>
+                        <td>{{ miembroJD.nombre }}</td>
+                        <td>{{ miembroJD.apellido }}</td>
+                        <td>{{ miembroJD.cargo }}</td>
+                        <td>{{ miembroJD.correo }}</td>
+                        <td>{{ miembroJD.link }}</td>
+                        <td><a href="{{ url_for('admin.deleteJD' , idPersona=miembroJD.idPersona) }}">Eliminar</a></td>
+                        <td><a href="">Modificar</a></td>
+                    </tr>
+                {% endfor %}
+                </table>
         </div>
 
 
@@ -77,17 +87,24 @@
                 <th>Pago</th>
                 <th>Kg de reciclaje</th>
                 <th>Horas totales</th>
+                <th>Evidencia</th>
+                <th>Eliminar</th>
+                <th>Modificar</th>
             </tr>
-            <tr class="">
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>Presente</td>
-                <td>Recibido</td>
-                <td>50</td>
-                <td>10</td>
-                <td><a href="">Update</a></td>
-            </tr>
+            {% for ins in InscripcionesFull %}
+                <tr class="">
+                    <td>{{ins.idInscripcion}}</td>
+                    <td>{{ins.idVoluntario}}</td>
+                    <td>{{ins.idActividad}}</td>
+                    <td>{{ins.estadoAsistencia}}</td>
+                    <td>{{ins.estadoPago}}</td>
+                    <td>{{ins.cantidadKg}}</td>
+                    <td>{{ins.horasTotales}}</td>
+                    <td>{{ins.evidencia}}</td>
+                    <td><a href="">Eliminar</a></td>
+                    <td><a href="">Modificar</a></td>
+                </tr>
+            {% endfor %}
         </table>
         <br>
         <button class="btn-actividad">
@@ -97,13 +114,13 @@
 
 
         <div id="Actividades">
-            <h2>Actividades</h2>
+            <h2>Actividades</h2> <button> Añadir Actividad </button>
             <table class="tablaDash"> <!-- actividades de raices -->
                 <tr>
                     <th>Id</th>
                     <th>Descripción</th>
                     <th>Nombre</th>
-                    <th>Tipo</th>
+                    <th>Tipo Actividad</th>
                     <th>Ubicación</th>
                     <th>Tipo de Horas</th>
                     <th>Fecha Inicio</th>
@@ -111,46 +128,59 @@
                     <th>Cantidad de Horas</th>
                     <th>Cupos</th>
                     <th>Estado</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
                 </tr>
-                <tr class="">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>Limpieza lago ilopango</td>
-                    <td>1</td>
-                    <td>Ilopango</td>
-                    <td>1</td>
-                    <td>2020-01-01</td>
-                    <td>2020-01-01</td>
-                    <td>10</td>
-                    <td>5</td>
-                    <td>finalizada</td>
-                    <td><a href="">Update</a></td>
-                </tr>
+                {% for act in ActividadesFull%}
+                    <tr class="">
+                        <td>{{act.idActividad}}</td>
+                        <td>{{act.descripcion}}</td>
+                        <td>{{act.nombreActividad}}</td>
+                        <td>{{act.tipoActividad}}</td>
+                        <td>{{act.lugarActividad}}</td>
+                        <td>{{act.tipoHoras}}</td>
+                        <td>{{act.fechaInicio}}</td>
+                        <td>{{act.fechaFinal}}</td>
+                        <td>{{act.horasSociales}}</td>
+                        <td>{{act.cuposTotales}}</td>
+                        <td>{{act.estado}}</td>
+                        <td><a href="{{ url_for('admin.deleteActividad' , idActividad=act.idActividad) }}">Eliminar</a></td>
+                        <td><a href="">Modificar</a></td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
 
 
         <div id="Voluntarios">
-            <h2>Voluntarios</h2>
+            <h2>Voluntarios</h2> <button> Añadir voluntario </button>
+            <!-- Se deben printear los que Departamento=NA -->
             <table class="tablaDash"> <!-- voluntarios de raices -->
                 <tr>
                     <th>Id</th>
-                    <th>Carnet</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Año ESEN</th>
+                    <th>Año de ingreso a ESEN</th>
                     <th>Teléfono</th>
                     <th>Correo</th>
+                    <th>Eliminar</th>
+                    <th>Miembro</th>
+                    <th>Voluntario</th>
                 </tr>
                 <tr class="">
-                    <td>1</td>
-                    <td>20204055</td>
-                    <td>Sofía</td>
-                    <td>Segura</td>
-                    <td>Tercero</td>
-                    <td>73748392</td>
-                    <td>sofia@mafer.com</td>
-                    <td><a href="">Update</a></td>
+                    {% for miembro in MiembrosFull %}
+                    <tr class="">
+                        <td>{{ miembro.idVoluntario }}</td>
+                        <td>{{ miembro.nombre }}</td>
+                        <td>{{ miembro.apellido }}</td>
+                        <td>{{ miembro.anno }}</td>
+                        <td>{{ miembro.telefono }}</td>
+                        <td>{{ miembro.correo }}</td>
+                        <td><a href="{{ url_for('admin.deleteVoluntario' , idVoluntario=miembro.idVoluntario) }}">Dar de baja</a></td>
+                        <td><a href="{{ url_for('admin.hacerMiembro' , idVoluntario=miembro.idVoluntario) }}">Hacer miembro</a></td>
+                        <td><a href="{{ url_for('admin.hacerVoluntario' , idVoluntario=miembro.idVoluntario) }}">Hacer voluntario</a></td>
+                    </tr>
+                    {% endfor %}
                 </tr>
             </table>
         </div>
@@ -166,16 +196,30 @@
                     <th>Teléfono</th>
                     <th>Mensaje</th>
                     <th>Estado</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
                 </tr>
-                <tr class="">
-                    <td>1</td>
-                    <td>Sofia</td>
-                    <td>Rivas</td>
-                    <td>721837462</td>
-                    <td>hola cerna, porfa bañate, oles a bolo</td>
-                    <td>ebrio</td>
-                    <td><a href="">Update</a></td>
-                </tr>
+                {% for mes in MessagesFull%}
+                    <tr class="">
+                        <td>{{mes.idContacto}}</td>
+                        <td>{{mes.nombre}}</td>
+                        <td>{{mes.apellido}}</td>
+                        <td>{{mes.teléfono}}</td>
+                        <td>{{mes.mensaje}}</td>
+                        {% if mes.estado == 0 %}
+                            <td>No Leído</td>
+                        {% else %}
+                            <td>Leído</td>
+                        {% endif %}
+                        
+                        <td><a href="{{ url_for('admin.deleteMessage' , idContacto=mes.idContacto) }}">Eliminar</a></td>
+                        {% if mes.estado == 0 %}
+                            <td><a href="{{ url_for('admin.changeStatusMessage' , idContacto=mes.idContacto) }}">Marcar como Leído</a></td>
+                        {% elif mes.estado == 1 %}
+                            <td><a href="{{ url_for('admin.changeStatusMessage', idContacto=mes.idContacto) }}">Marcar como No Leído</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
             </table>
             
         </div>

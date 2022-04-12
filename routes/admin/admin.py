@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-from flask import Blueprint, send_file, session, render_template
-=======
-from flask import Blueprint, render_template
+from flask import Blueprint, redirect, render_template_string, send_file, session, render_template
+from flask import Blueprint, render_template, url_for, redirect
+from flask_login import login_required, login_user, logout_user, current_user
 from db.cloud_connection import CloudinaryConnection
 from db.utils.photos_model import Photo, PhotoNext
 from flask import Blueprint, send_file, session
->>>>>>> origin/administrador
 from db.make_excel import create_excel, delete_if_exist
 from models.usuarios import Usuarios
 from db.db import db
@@ -61,6 +59,22 @@ def about():
 def activities():
     return render_template("admin/activities.html")
 
+@admin.route("/activities/inscripcion", methods=["GET", "POST"])
+@login_required
+def inscripcion(nombreAct):
+    idVoluntario=current_user.idVoluntario
+    idActividad= nombreAct
+    estadoAsistencia=1
+    estadoPago=2
+    cantidadKg=0
+    horastotales=0
+    evidencia=1
+    newIns = Inscripciones(idVoluntario, idActividad, estadoAsistencia, estadoPago, cantidadKg, horastotales, evidencia)
+    db.session.add(newIns)
+    db.session.commit()
+    return redirect(url_for("main.activities", nombreAct=nombreAct))
+    
+
 
 @admin.route("/contact")
 def contact():
@@ -69,7 +83,162 @@ def contact():
 
 @admin.route("/dashboard")
 def dashboard():
-    return render_template("admin/dashboard.html")
+    if current_user.departamento == "Admin":
+        # VoluntariosFull = Usuarios.query.filter_by(Usuarios.departamento != "Baja").all()
+        # MiembrosFull2 = Usuarios.query.filter_by(departamento == "NA").all()
+        MiembrosFull = Usuarios.query.filter_by()
+        JDFull = JuntaDirectiva.query.all()
+        InscripcionesFull = Inscripciones.query.all()
+        ActividadesFull = Actividades.query.all()
+        MessagesFull = Contactanos.query.all()
+        return render_template("admin/dashboard.html",  MiembrosFull=MiembrosFull, JDFull=JDFull, InscripcionesFull=InscripcionesFull, ActividadesFull=ActividadesFull, MessagesFull=MessagesFull)
+    
+    else:
+        cloud = CloudinaryConnection.get_connection()
+        img_url, data = cloud.get_image()
+
+        fotos_data = {
+            i: Photo(
+                url=img_url,
+                desc=f"The kitty number {i}",
+            )
+            for i in range(1, 11)
+        }
+
+        next_act = {
+            i: PhotoNext(
+                img_url,
+                f"No se {i}",
+                0,
+            )
+            for i in range(1, 13)
+        }
+        actividadesActivas = Actividades.query.filter_by(estado=2).all()
+        return render_template(
+        "main/home.html",
+        fotos_data=fotos_data,
+        next_act=next_act,
+        user=current_user,
+        actividadesActivas=actividadesActivas
+    )
+
+@admin.route("/delete/user/<int:idVoluntario>")
+def deleteVoluntario(idVoluntario):
+    selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
+    correo = selectedUser.correo
+    contrasenna = selectedUser.contrasenna
+    nombre = selectedUser.nombre
+    apellido = selectedUser.apellido
+    telefono = selectedUser.telefono
+    carrera = selectedUser.carrera
+    anno = selectedUser.anno
+    departamento="Baja"
+    
+    selectedUser.correo = correo
+    selectedUser.contrasenna = contrasenna
+    selectedUser.nombre = nombre
+    selectedUser.apellido = apellido
+    selectedUser.telefono = telefono
+    selectedUser.carrera = carrera
+    selectedUser.anno = anno
+    selectedUser.departamento = departamento
+    db.session.add(selectedUser)
+    db.session.commit()
+    return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
+
+@admin.route("/Upgrade/user/<int:idVoluntario>")
+def hacerMiembro(idVoluntario):
+    selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
+    correo = selectedUser.correo
+    contrasenna = selectedUser.contrasenna
+    nombre = selectedUser.nombre
+    apellido = selectedUser.apellido
+    telefono = selectedUser.telefono
+    carrera = selectedUser.carrera
+    anno = selectedUser.anno
+    departamento="Miembro"
+    
+    selectedUser.correo = correo
+    selectedUser.contrasenna = contrasenna
+    selectedUser.nombre = nombre
+    selectedUser.apellido = apellido
+    selectedUser.telefono = telefono
+    selectedUser.carrera = carrera
+    selectedUser.anno = anno
+    selectedUser.departamento = departamento
+    db.session.add(selectedUser)
+    db.session.commit()
+    return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
+
+
+@admin.route("/downgrade/user/<int:idVoluntario>")
+def hacerVoluntario(idVoluntario):
+    selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
+    correo = selectedUser.correo
+    contrasenna = selectedUser.contrasenna
+    nombre = selectedUser.nombre
+    apellido = selectedUser.apellido
+    telefono = selectedUser.telefono
+    carrera = selectedUser.carrera
+    anno = selectedUser.anno
+    departamento="NA"
+    
+    selectedUser.correo = correo
+    selectedUser.contrasenna = contrasenna
+    selectedUser.nombre = nombre
+    selectedUser.apellido = apellido
+    selectedUser.telefono = telefono
+    selectedUser.carrera = carrera
+    selectedUser.anno = anno
+    selectedUser.departamento = departamento
+    db.session.add(selectedUser)
+    db.session.commit()
+    return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
+
+
+@admin.route("/delete/junta/<int:idPersona>")
+def deleteJD(idPersona):
+    selectedUserJD = JuntaDirectiva.query.filter_by(idPersona=idPersona).first()
+    db.session.delete(selectedUserJD)
+    db.session.commit()
+    return redirect(url_for("admin.dashboard", idPersona=idPersona))
+
+@admin.route("/delete/actividad/<int:idActividad>")
+def deleteActividad(idActividad):
+    selectedActividad = Actividades.query.filter_by(idActividad=idActividad).first()
+    db.session.delete(selectedActividad)
+    db.session.commit()
+    return redirect(url_for("admin.dashboard", idActividad=idActividad))
+
+@admin.route("/changeStatus/mensaje/<int:idContacto>")
+def changeStatusMessage(idContacto):
+    selectedMessage = Contactanos.query.filter_by(idContacto=idContacto).first()
+    # id = selectedMessage.idContacto
+    nombre = selectedMessage.nombre
+    apellido = selectedMessage.apellido
+    telefono = selectedMessage.telefono
+    mensaje = selectedMessage.mensaje
+    if selectedMessage.estado==0:
+        newStatus=1
+    else:
+        newStatus=0
+    
+    selectedMessage.nombre = nombre
+    selectedMessage.apellido = apellido
+    selectedMessage.telefono = telefono
+    selectedMessage.mensaje = mensaje
+    selectedMessage.estado = newStatus
+    db.session.add(selectedMessage)
+    db.session.commit()
+    return redirect(url_for("admin.dashboard", idContacto=idContacto))
+
+
+@admin.route("/delete/mensaje/<int:idContacto>")
+def deleteMessage(idContacto):
+    selectedMessage = Contactanos.query.filter_by(idContacto=idContacto).first()
+    db.session.delete(selectedMessage)
+    db.session.commit()
+    return redirect(url_for("admin.dashboard", idContacto=idContacto))
 
 
 @admin.route("/download")
@@ -188,10 +357,6 @@ def db_test():
     {contactanos}
     <h1>productos</h1>
     {juntaDirectiva}
-<<<<<<< HEAD
    """
 
 
-=======
-   """
->>>>>>> origin/administrador

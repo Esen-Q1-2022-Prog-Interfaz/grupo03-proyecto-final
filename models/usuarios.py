@@ -14,6 +14,7 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
         apellido : str
         anno : int
         telefono : str
+        cargo: str
         correo : str
         carrera: str
     """
@@ -25,6 +26,7 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
     nombre = db.Column(db.String(50), nullable=False)
     apellido = db.Column(db.String(50), nullable=False)
     telefono = db.Column(db.String(50), nullable=False)
+    cargo = db.Column(db.String(50), nullable=False)
     departamento = db.Column(db.String(50), nullable=False)
     carrera = db.Column(db.String(50), nullable=False)
     anno = db.Column(db.Integer, nullable=False)
@@ -37,6 +39,7 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
         nombre: str,
         apellido: str,
         telefono: str,
+        cargo: str,
         departamento: str,
         carrera: str,
         anno: int,
@@ -47,6 +50,7 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
         self.nombre = nombre
         self.apellido = apellido
         self.telefono = telefono
+        self.cargo = cargo
         self.departamento = departamento
         self.carrera = carrera
         self.anno = anno
@@ -58,6 +62,7 @@ class Usuarios(db.Model, UserMixin):  # type: ignore
             {self.nombre}, 
             {self.apellido}, 
             {self.telefono}, 
+            {self.cargo},
             {self.departamento},
             {self.correo}
             {self.carrera}

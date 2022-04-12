@@ -5,6 +5,7 @@ from forms.form_contactanos import FormContactanos
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
+from models.inscripciones import Inscripciones
 from utils_app.bcrypt import bcrypt
 from models.juntaDirectiva import JuntaDirectiva
 from models.actividades import Actividades
@@ -58,6 +59,21 @@ def activities():
     activitiesList = Actividades.query.all()
     return render_template("main/activities.html", activitiesList=activitiesList, user=current_user)
 
+@main.route("/activities/inscripcion", methods=["GET", "POST"])
+@login_required
+def inscripcion(nombreAct):
+    idVoluntario=current_user.idVoluntario
+    idActividad= nombreAct
+    estadoAsistencia=1
+    estadoPago=2
+    cantidadKg=0
+    horastotales=0
+    evidencia=1
+    newIns = Inscripciones(idVoluntario, idActividad, estadoAsistencia, estadoPago, cantidadKg, horastotales, evidencia)
+    db.session.add(newIns)
+    db.session.commit()
+    return redirect(url_for("main.activities", nombreAct=nombreAct))
+    
 
 @main.route("/contact", methods=["POST", "GET"])
 def contact():
@@ -109,7 +125,7 @@ def register():
         annoo = int(''.join(map(str, anno)))
         print(type(annoo))
         
-        newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA", carrera, annoo)
+        newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA", "NA", carrera, annoo)
         db.session.add(newUser)
         db.session.commit()
         
