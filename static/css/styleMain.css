@@ -26,7 +26,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #243119;
+    background-color: #384637;
     top: 0;
     width: 100%;
     font-size: 20px;
@@ -49,39 +49,42 @@ li a {
 }
 
 li a:hover {
-    background-color: #588157;
+    background-color: #748460;
 }
 
 /* titulos y subtitulos */
 h1{
     font-family: "Source Sans Pro";
-    color: rgb(56, 54, 42);
+    color: #384637;
 }
 
 h2 {
     padding-top: 50px;
     font-family: "Source Sans Pro";
     text-align: center;
+    color: #384637;
 }
 
+h3 {color: #384637;}
+
 .back-color1 {
-    background-color: #E8FCCF;
+    background-color: #e6e5e0;
     padding-bottom: 50px;
 }
 
 .back-color1 h2 {
-    color: #243119;
+    color: #384637;
     font-size: 55px;
 }
 
 .back-color2 {
-    background-color: #73ab84;
+    background-color: #CDCFA6;
     padding-bottom: 10px;
 }
 
 .back-color2 h2 {
-    color: white;
-    font-size: 75px;
+    color: #384637;
+    font-size: 55px;
 }
 
 .login{
@@ -109,12 +112,12 @@ h2 {
 
 .center h1 {
     font-size: 200px;
-    color: white;
+    color: #e6e5e0;
 }
 
 .ESEN {
     font-size: 100px;
-    color: white;
+    color: #e6e5e0;
     font-family: "Source Sans Pro";
 }
 .background-cover { 
@@ -164,7 +167,7 @@ img {
     top: 50%;
     width:fit-content;
     margin-top: 250px;
-    background-color: #FFD449;
+    background-color: #2e7072;
     list-style-type: none;
     font-size: 18px;
     font-weight: bold;
@@ -174,11 +177,11 @@ img {
 }
 
 .btn-volunteer {
-    color:#243119;
+    color:#e6e5e0;
 }
 
 .btn-volunteer:hover:not(.active) {
-    background-color: #F9A620;
+    background-color: #8AB9BB;
 }
 
 /* slideshow gallery */
@@ -329,19 +332,21 @@ img {
 
 .intro-text {
     padding: 10px;
+    color: black;
 }
 
 .intro-impacto h2 {
-    font-size: 80px;  
+    font-size: 55px;  
 }
 
 .intro-impacto p {
-    font-size: 30px;  
+    font-size: 1.7rem;  
 }
 
 
 #grid-impacto h3 {
     font-size: 70px;
+    color: #CDCFA6;
 }
 
 .dato-impacto {
@@ -376,8 +381,7 @@ img {
 }
 .text-box {
     background-color: white;
-    padding: 150px;
-    color:rgb(41, 40, 46);
+    padding: 125px;
     width: 50%;
     height: 500px;
 }
@@ -496,7 +500,7 @@ padding: 50px;
 .MVV-text {
     padding-top: 25px;
     font-size: 1.5rem;
-    text-align: justify;
+    text-align: left;
 }
 
 .MVV-container i img{
@@ -563,9 +567,14 @@ color: white;
     align-items: center;
     padding: 30px;
 }
-.content h1,p {
+.content p {
     text-align: left;
-    color:#3d4762;
+    color:black;
+}
+
+.content h1 {
+    text-align: left;
+    color: #2e7072;
 }
 
 .content h1 {
@@ -645,6 +654,22 @@ color: white;
     padding-top: 15px;
 }
 
+.row input[type=submit] {
+    background-color: #8AB9BB;
+    color: white;
+    font-size: 1.15rem;
+    padding: 12px 100px;
+    margin-left: 42%;
+    margin-bottom: 5%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.row input[type=submit]:hover {
+    background-color: #2E7072;
+}
+
 .col-75 input, textarea {
     font-size: 1.25rem;
 }
@@ -680,7 +705,7 @@ input[type=text], select, textarea {
 }
 
 input[type=submit] {
-    background-color: #04AA6D;
+    background-color: #8ab9bb;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -689,7 +714,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #2e7072;
 }
 
 .contact-info {
@@ -725,7 +750,7 @@ input[type=text], input[type=password] {
 
   /* Set a style for all buttons */
 button {
-    background-color: #04AA6D;
+    background-color: #8ab9bb;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -747,7 +772,7 @@ button:hover {
 .signbtn {
     width: auto;
     padding: 10px 18px;
-    background-color: #04AA6D;
+    background-color: #8ab9bb;
 }
 
   /* Center the image and position the close button */
@@ -772,11 +797,12 @@ img.avatar {
 }
 
 span.psw {
-    float: right;
+    justify-content: center;
+    display: flex;
 }
 
 span.psw a {
-    color: white;
+    color: black;
 }
 
 .registrate {
@@ -856,9 +882,8 @@ span.psw {
 
 .background-image-login {
     background-image: url(../media/background-tree.jpg);
-    background-size:cover;
+    background-size:cover;  
     height: 100vh;
-    
 }
 
 .contenedor {
@@ -906,11 +931,12 @@ span.psw {
     display: grid;
     grid-template-columns: auto auto;
     padding-top: 16px;
+    gap: 200px;
 }
 
 .btn-login input[type=submit] {
-    background-color: #CDCFA6;
-    color: white;
+    background-color: #ebdfc4;
+    color: #384637;
     font-size: 1.15rem;
     font-weight: bold;
     padding: 12px;
@@ -920,7 +946,31 @@ span.psw {
     cursor: pointer;
 }
 
+/* REGISTER */
 
+.frame-register {
+    width: 100%;
+    padding: 10px;
+}
+
+.background-image-register {
+    background-image: url(../media/background-tree.jpg);
+    background-size:cover;  
+}
+
+#register {
+    width: 70%;
+    padding: 50px;
+    color: white;
+    font-size: 1.15rem;
+    background-color: #38463760;
+}
+
+.columnas-register {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 50px;
+}
 
 /* PERFIL */
 .grid-perfil {
