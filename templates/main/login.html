@@ -2,13 +2,11 @@
 {%block contents %}
 <h1>Iniciar sesión</h1>
 
-
+<div class="background-image-login">
 <div class="frame">
   <form method="post">
     {{ form.hidden_tag() }}
-    <div class="imgcontainer">
-      <img src="../../static/media/avatar.png" alt="Avatar" class="avatar" />
-    </div>
+    
 
     <div id="contenedor">
       <div id="contenedorcentrado">
@@ -21,25 +19,32 @@
           <br>
           {{ form.contrasenna }}
           <br>
+
+          <div class="recuerdame-contra">
+            <div>
+            <input type="checkbox" checked="checked" name="remember" />Recuérdame
+            </div>
+            <div>
+            <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
+            </div>
+          </div>
+
+          <br>
+          <div class="btn-login">
           {{ form.submit }}
+          </div>
           <br>
           <label>
-            <input type="checkbox" checked="checked" name="remember" />Recuérdame
+          <span class="registrate">¿No tienes una cuenta?<a href="{{ url_for('main.register') }}">¡Regístrate!</a></span>
           </label>
         </div>
       </div> 
     </div>
     <div class="container">
       <button type="button" class="cancelbtn">Cancelar</button>
-      <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
-      <br>
-      <span class="psw"
-        >¿No tienes una cuenta?
-        <a href="{{ url_for('main.register') }}">¡Regístrate!</a></span
-      >
     </div>
   </form>
 </div>
-
+</div>
 
 {% endblock %}

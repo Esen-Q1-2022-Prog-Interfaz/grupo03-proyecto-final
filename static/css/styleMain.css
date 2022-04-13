@@ -346,6 +346,8 @@ img {
 
 .dato-impacto {
     font-size: 25px;
+    color: white;
+    text-align: center;
 }
 
 #grid-impacto {
@@ -696,36 +698,19 @@ input[type=submit]:hover {
     padding: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* LOGIN AND REGISTER */
 
 .frame {
-    width: 80%;
+    width: 100%;
     padding: 10px;
 }
 
+/*
 form {
     border: 3px solid #f1f1f1;
     padding: 5%;
 }
+*/
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -787,9 +772,11 @@ img.avatar {
 
 span.psw {
     float: right;
-    padding-top: 16px;
 }
 
+.registrate {
+    align-items: center;
+}
   /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -862,19 +849,19 @@ span.psw {
 }
 
 
-/* PARTE LILLY NO SET */
+.background-image-login {
+    background-image: url(../media/background-tree.jpg);
+    background-size:cover;
+    height: 100vh;
+    
+}
 
 .contenedor {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
-    padding: 0;
-    min-width: 100vw;
-    min-height: 100vh;
     width: 100%;
     height: 100%;
-    
     background-position: center;
     background-size: cover;
 }
@@ -884,31 +871,15 @@ span.psw {
     align-items: center;
     justify-content: center;
     flex-direction:row;
-    
-    min-width: 380px;
-    max-width: 900px;
-    width: 90%;
-    
-    background-color: #5f6769;
-    
-    border-radius: 10px 10px 10px 10px;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    
-    padding: 30px;
+    width: 100%;
+    padding: 100px;
     box-sizing: border-box;
 }
 
 #login {
-    width: 100%;
-    max-width: 320px;
-    min-width: 320px;
-    padding: 30px 30px 50px 30px;
-    background-color: #719192;
+    width: 50%;
+    padding: 50px;
+    background-color: #51783f30;
     
     -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
@@ -924,8 +895,21 @@ span.psw {
     filter: alpha(opacity=1);
 }
 
+.recuerdame-contra {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top: 16px;
+}
 
-
+.btn-login input[type=submit] {
+    background-color: #a9e141;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 
 
