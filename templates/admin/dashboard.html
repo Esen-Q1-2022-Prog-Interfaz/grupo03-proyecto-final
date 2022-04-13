@@ -28,7 +28,6 @@
                     <th>Departamento</th>
                     <th>Correo</th>
                     <th>Eliminar</th>
-                    <th>Miembro</th>
                     <th>Voluntario</th>
                 </tr>
                 {% for miembro in MiembrosFull %}
@@ -38,10 +37,9 @@
                     <td>{{ miembro.apellido }}</td>
                     <td>{{ miembro.anno }}</td>
                     <td>{{ miembro.telefono }}</td>
-                    <td>{{ miembro.telefono }}</td>
+                    <td>{{ miembro.departamento }}</td>
                     <td>{{ miembro.correo }}</td>
                     <td><a href="{{ url_for('admin.deleteVoluntario' , idVoluntario=miembro.idVoluntario) }}">Dar de baja</a></td>
-                    <td><a href="{{ url_for('admin.hacerMiembro' , idVoluntario=miembro.idVoluntario) }}">Hacer miembro</a></td>
                     <td><a href="{{ url_for('admin.hacerVoluntario' , idVoluntario=miembro.idVoluntario) }}">Hacer voluntario</a></td>
                 </tr>
                 {% endfor %}
@@ -107,9 +105,13 @@
             {% endfor %}
         </table>
         <br>
-        <button class="btn-actividad">
+        <form style="width:fit-content; margin:0; padding:0" class="btn-actividad" action="{{url_for("admin.download_excel")}}">
+            <input type="submit" value="Descargar" />
+        </form>
+        
+        <!-- <button class="btn-actividad" type="button" onclick="location.href={{url_for("admin.download_excel")}}">
             Descargar
-        </button>
+        </button> -->
         </div>
 
 
@@ -165,10 +167,9 @@
                     <th>Correo</th>
                     <th>Eliminar</th>
                     <th>Miembro</th>
-                    <th>Voluntario</th>
                 </tr>
                 <tr class="">
-                    {% for miembro in MiembrosFull %}
+                    {% for miembro in VoluntarioFull %}
                     <tr class="">
                         <td>{{ miembro.idVoluntario }}</td>
                         <td>{{ miembro.nombre }}</td>
@@ -178,7 +179,6 @@
                         <td>{{ miembro.correo }}</td>
                         <td><a href="{{ url_for('admin.deleteVoluntario' , idVoluntario=miembro.idVoluntario) }}">Dar de baja</a></td>
                         <td><a href="{{ url_for('admin.hacerMiembro' , idVoluntario=miembro.idVoluntario) }}">Hacer miembro</a></td>
-                        <td><a href="{{ url_for('admin.hacerVoluntario' , idVoluntario=miembro.idVoluntario) }}">Hacer voluntario</a></td>
                     </tr>
                     {% endfor %}
                 </tr>

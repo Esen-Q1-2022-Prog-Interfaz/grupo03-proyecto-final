@@ -1,3 +1,4 @@
+from random import randint
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, login_user, logout_user, current_user
 from forms.form_contactanos import FormContactanos
@@ -15,13 +16,27 @@ from datetime import date
 
 main = Blueprint("main", __name__)
 
+images_random_ids = [
+    "1MgiiLYn9wPtCEN5hBHwvJejEhFt_R10X",
+    "16mHFP9gq-McNvphRBZbYM5QYwGHteabx",
+    "1pF6jyqFSYLXOvFWxL9wLdehLPUym2qOV"
+]
+
+STRING_SHARING = "https://drive.google.com/uc?id"
+
+def get_image_id_from_link(link : str) -> str:
+    id_photo = ""
+    split_string = link.replace("https://drive.google.com/", "").split("/")
+    id_photo = split_string[-2]
+    return id_photo
+
 
 @main.route("/")
 def home():
 
     fotos_data = {
         i: Photo(
-            url="img_url",
+            url= STRING_SHARING + "=" + images_random_ids[randint(0, 2)],
             desc=f"The kitty number {i}",
         )
         for i in range(1, 11)
@@ -29,9 +44,9 @@ def home():
 
     next_act = {
         i: PhotoNext(
-            "img_url",
+            STRING_SHARING + "=" + images_random_ids[randint(0, 2)],
             f"No se {i}",
-            0,
+            0
         )
         for i in range(1, 13)
     }

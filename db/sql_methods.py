@@ -66,7 +66,7 @@ def get_view_registro_academico() -> list[VistaRegistro]:
     sql_statement = (
         f"SELECT "
         # Campos a retornar
-        + f"{DB_USUARIOS}.{CARNET}, "
+        + f"{DB_USUARIOS}.{CORREO}, "
         + f"{DB_ACT}.{NAME_ACT}, "
         + f'CONCAT({DB_USUARIOS}.{NOMBRE}, " ", {DB_USUARIOS}.{APELLIDO}) AS "Nombre y apellido", '
         + f"{DB_ACT}.{HORAS_SOCIALES}"

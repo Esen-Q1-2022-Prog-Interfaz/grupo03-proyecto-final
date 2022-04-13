@@ -7,6 +7,7 @@ from db.make_excel import create_excel, delete_if_exist
 from models.usuarios import Usuarios
 from db.db import db
 from datetime import datetime
+from random import randint
 
 # Vistas
 from db.sql_methods import get_view_inscripciones, get_view_registro_academico
@@ -18,15 +19,32 @@ from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
 
+datetime.today().isoformat()
+
 admin = Blueprint("admin", __name__, url_prefix="/admin")
+
+images_random_ids = [
+    "1MgiiLYn9wPtCEN5hBHwvJejEhFt_R10X",
+    "16mHFP9gq-McNvphRBZbYM5QYwGHteabx",
+    "1pF6jyqFSYLXOvFWxL9wLdehLPUym2qOV"
+]
+
+STRING_SHARING = "https://drive.google.com/uc?id"
+
+def get_image_id_from_link(link : str) -> str:
+    id_photo = ""
+    split_string = link.replace("https://drive.google.com/", "").split("/")
+    id_photo = split_string[-2]
+    return id_photo
 
 @admin.route("/")
 def home():
     if "path_excel" in session:
         delete_if_exist(session["path_excel"])
+
     fotos_data = {
         i: Photo(
-            url="img_url",
+            url= STRING_SHARING + "=" + images_random_ids[randint(0, 2)],
             desc=f"The kitty number {i}",
         )
         for i in range(1, 11)
@@ -34,12 +52,13 @@ def home():
 
     next_act = {
         i: PhotoNext(
-            "img_url",
+            STRING_SHARING + "=" + images_random_ids[randint(0, 2)],
             f"No se {i}",
             0,
         )
         for i in range(1, 13)
     }
+    print(next_act)
 
     return render_template(
         "admin/home.html",
@@ -81,42 +100,44 @@ def contact():
 
 @admin.route("/dashboard")
 def dashboard():
-    if current_user.departamento == "Admin":
+    if current_user.departamento == "Admin" or 1 == 1:
         # VoluntariosFull = Usuarios.query.filter_by(Usuarios.departamento != "Baja").all()
         # MiembrosFull2 = Usuarios.query.filter_by(departamento == "NA").all()
-        MiembrosFull = Usuarios.query.filter_by()
+        
+        MiembrosFull = Usuarios.query.filter_by(cargo="miembro").all()
+        VoluntarioFull = Usuarios.query.filter_by(cargo="NA").all()
         JDFull = JuntaDirectiva.query.all()
         InscripcionesFull = Inscripciones.query.all()
         ActividadesFull = Actividades.query.all()
         MessagesFull = Contactanos.query.all()
-        return render_template("admin/dashboard.html",  MiembrosFull=MiembrosFull, JDFull=JDFull, InscripcionesFull=InscripcionesFull, ActividadesFull=ActividadesFull, MessagesFull=MessagesFull)
+        return render_template("admin/dashboard.html", VoluntarioFull=VoluntarioFull,  MiembrosFull=MiembrosFull, JDFull=JDFull, InscripcionesFull=InscripcionesFull, ActividadesFull=ActividadesFull, MessagesFull=MessagesFull)
     
-    else:
+    return redirect(url_for("main.home"))
 
-        fotos_data = {
-            i: Photo(
-                url="img_url",
-                desc=f"The kitty number {i}",
-            )
-            for i in range(1, 11)
-        }
+    #     fotos_data = {
+    #         i: Photo(
+    #             url="img_url",
+    #             desc=f"The kitty number {i}",
+    #         )
+    #         for i in range(1, 11)
+    #     }
 
-        next_act = {
-            i: PhotoNext(
-                "img_url",
-                f"No se {i}",
-                0,
-            )
-            for i in range(1, 13)
-        }
-        actividadesActivas = Actividades.query.filter_by(estado=2).all()
-        return render_template(
-        "main/home.html",
-        fotos_data=fotos_data,
-        next_act=next_act,
-        user=current_user,
-        actividadesActivas=actividadesActivas
-    )
+    #     next_act = {
+    #         i: PhotoNext(
+    #             "img_url",
+    #             f"No se {i}",
+    #             0,
+    #         )
+    #         for i in range(1, 13)
+    #     }
+    #     actividadesActivas = Actividades.query.filter_by(estado=2).all()
+    #     return render_template(
+    #     "main/home.html",
+    #     fotos_data=fotos_data,
+    #     next_act=next_act,
+    #     user=current_user,
+    #     actividadesActivas=actividadesActivas
+    # )
 
 @admin.route("/delete/user/<int:idVoluntario>")
 def deleteVoluntario(idVoluntario):

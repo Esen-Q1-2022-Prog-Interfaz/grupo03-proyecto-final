@@ -61,12 +61,12 @@ class VistaRegistro:
 
     def __init__(
         self,
-        carnet: str,
+        correo: str,
         actividad: str,
         nombre_apellido: str,
         total_horas: int,
     ) -> None:
-        self.carnet = carnet
+        self.carnet = VistaRegistro.get_carnet(correo)
         self.actividad = actividad
         self.nombre_apellido = nombre_apellido
         self.total_horas = total_horas
@@ -75,6 +75,14 @@ class VistaRegistro:
     def clean_query(cls, raw_query: list[tuple]) -> list[VistaRegistro]:
         """Limpia el query retornando registros del modelo VistaRegistro"""
         return [cls(*raw_vol) for raw_vol in raw_query]
+
+    @staticmethod
+    def get_carnet(correo_: str):
+        carnet = "NA"
+        if correo_.endswith("@esen.edu.sv"):
+            carnet = correo_.removesuffix("@esen.edu.sv")
+        return carnet
+
 
     def __repr__(self) -> str:
         return f"""
