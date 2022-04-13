@@ -343,7 +343,6 @@ img {
     font-size: 1.7rem;  
 }
 
-
 #grid-impacto h3 {
     font-size: 70px;
     color: #CDCFA6;
@@ -650,6 +649,15 @@ color: white;
     align-items: center;
 }  
 
+
+
+
+
+
+
+
+
+
 .row {
     padding-top: 15px;
 }
@@ -669,6 +677,18 @@ color: white;
 .row input[type=submit]:hover {
     background-color: #2E7072;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 .col-75 input, textarea {
     font-size: 1.25rem;
@@ -721,6 +741,118 @@ input[type=submit]:hover {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+}
+
+/* CONTACT BUTTON - POP UP MESSAGE */
+
+.center {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.content {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
+#click{
+    display: none;
+}
+.click-me{
+    display: block;
+    width: 160px;
+    height: 50px;
+    color: white;
+    background: #8ab9bb;
+    border: 1px solid #8ab9bb;
+    text-align: center;
+    font-size: 22px;
+    line-height: 50px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .5s;
+}
+.click-me:hover {
+    background: #2e7072;
+    color: white;
+}
+.content{
+    opacity: 0;
+    visibility: hidden;
+    width: 400px;
+    height: 350px;
+    background: white;
+    border-radius: 3px;
+    transition: .3s ease-in;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.4);
+}
+#click:checked ~ .content{
+    opacity: 1;
+    visibility: visible;
+}
+.header-pop-up{
+    height: 68px;
+    background: #2e7072;
+    overflow: hidden;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
+}
+.header-pop-up h2{
+    padding-left: 32px;
+    font-weight: normal;
+}
+.fa-times{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.fa-check{
+    font-size: 50px;
+    color: #2e7072;
+    font-weight: bold;
+    height: 80px;
+    width: 80px;
+    border: 2px solid #2e7072;
+    text-align: center;
+    padding-top: 13px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    margin: 30px 0 0 160px;
+}
+.center .content p{
+    padding-top: 10px;
+    font-size: 19px;
+    color: #1a1a1a;
+    text-align: center;
+}
+.line{
+    position: absolute;
+    bottom: 65px;
+    width: 100%;
+    height: 1px;
+    background: silver;
+}
+.close-btn{
+    position: absolute;
+    bottom: 12px;
+    right: 25px;
+    border: 1px solid #8ab9bb;
+    border-radius: 3px;
+    color: #8ab9bb;
+    padding: 8px 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.close-btn:hover{
+    background: #2e7072;
+    color: white;
+    transition: .5s;
 }
 
 /* LOGIN AND REGISTER */
@@ -1007,9 +1139,9 @@ span.psw {
     border-collapse: collapse;
     width: 100%;
     font-size: 20px;
-  }
-  
-  .tabla-user th {
+}
+
+.tabla-user th {
     text-align: center;
     background-color: #4c7a49;
     border-radius: 10px;
@@ -1017,23 +1149,23 @@ span.psw {
     border: 2px solid white;
     color: #ffffff;
     font-family: "Mulish";
-  }
+}
 
-  .tabla-user td {
+.tabla-user td {
     text-align: center;
     border-radius: 10px;
     padding: 10px;
     border: 2px solid white;
     font-family: "Mulish";
-  }
+}
 
-  .tabla-user tr {
+.tabla-user tr {
     background-color: #b8ddb5;
-  }
+}
 
-  .tabla-user tr:hover {
+.tabla-user tr:hover {
     background-color: #87b884;
-  }
+}
 
 .logout_button {
     padding: 0px 0px 50px 500px;
@@ -1061,5 +1193,3 @@ span.psw {
 .logout_button a:hover {
     color:black
 }
-  
- 
