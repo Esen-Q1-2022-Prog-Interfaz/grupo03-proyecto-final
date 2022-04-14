@@ -1,5 +1,5 @@
 from random import randint
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 from forms.form_contactanos import FormContactanos
 from forms.login_form import LoginForm
@@ -98,9 +98,10 @@ def contact():
         newMessage = Contactanos(nombre, apellido, telefono, text_area, False)        
         db.session.add(newMessage)
         db.session.commit()
-        return redirect(url_for("main.contact"))
-
-    return render_template("main/contact.html", form=form, user=current_user)
+        return redirect(url_for("main.contact", is_posted=True))
+    
+    is_posted = request.args.get("is_posted") if "is_posted" in request.args else False
+    return render_template("main/contact.html", form=form, user=current_user, is_posted=is_posted)
 
 
 @main.route("/login", methods=["POST", "GET"])

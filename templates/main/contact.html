@@ -34,7 +34,7 @@
   <!-- 
       <form action="https://formsubmit.co/valeria.benitezs@outlook.com" method="POST">
   -->
-  <form action="{{ url_for('main.contact') }}" method="post">
+  <form id="form-contact" action="{{ url_for('main.contact') }}" method="post">
     {{ form.hidden_tag() }}
 
   <div class="form-container">
@@ -92,7 +92,7 @@
 
   <div class="center">
     <input type="checkbox" id="click">
-    <label for="click" class="click-me">Enviar</label>
+    <!-- <label for="click" class="click-me">Enviar</label> -->
     <div class="content">
         <div class="header-pop-up">
             <h2>Mensaje enviado</h2>
@@ -108,13 +108,19 @@
 
   </form>
 
+  
+{% if is_posted %}
+<script>
+  let popUp = document.querySelector(".content");
+  popUp.setAttribute("style", "visibility:visible;opacity:1;");
+
+  let btnClose = document.querySelector(".close-btn");
+  btnClose.onclick = function() {
+    popUp.setAttribute("style", "visibility:hidden;opacity:0;")
+  }
+</script>
+{% endif %}
+
 </div>
-
-
-
-
-
-
-
 
 {% endblock %}
