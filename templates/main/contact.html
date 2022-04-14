@@ -96,7 +96,7 @@
     <div class="content">
         <div class="header-pop-up">
             <h2>Mensaje enviado</h2>
-            <label for="click" class="fas fa-times"></label>
+            <label id="close-button-x" for="click" class="fas fa-times"></label>
         </div>
         <label for="click" class="fas fa-check"></label>
         <p>¡Tu mensaje ha sido enviado con éxito! Nos comunicaremos contigo lo más pronto posible.</p>
@@ -115,9 +115,12 @@
   popUp.setAttribute("style", "visibility:visible;opacity:1;");
 
   let btnClose = document.querySelector(".close-btn");
-  btnClose.onclick = function() {
+  let btnCloseX = document.querySelector("#close-button-x");
+  function changeVisi() {
     popUp.setAttribute("style", "visibility:hidden;opacity:0;")
   }
+  btnClose.onclick = changeVisi
+  btnCloseX.onclick = changeVisi 
 </script>
 {% endif %}
 
