@@ -111,6 +111,8 @@
   
 {% if is_posted %}
 <script>
+  let form = document.getElementById("form-contact")
+  form.scrollIntoView();
   let popUp = document.querySelector(".content");
   popUp.setAttribute("style", "visibility:visible;opacity:1;");
 
