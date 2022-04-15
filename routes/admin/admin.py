@@ -31,6 +31,18 @@ images_random_ids = [
 
 STRING_SHARING = "https://drive.google.com/uc?id"
 
+def add_Act():
+    act_1 = Actividades("no se aun", "no se", 2, "sepa hudas", 1, datetime(2022, 5, 7), datetime(2022, 7, 7), 23, 34,  1)
+    act_2 = Actividades("no se aun", "no se 2", 2, "sepa hudas", 1, datetime(2022, 5, 7), datetime(2022, 7, 7), 23, 34,  1)
+
+    act_3 = Actividades("no se aun", "no se 3", 2, "sepa hudas", 1, datetime(2022, 5, 7), datetime(2022, 7, 7), 23, 34,  1)
+    
+    db.session.add(act_1)
+    db.session.add(act_2)
+    db.session.add(act_3)
+    db.session.commit()
+
+
 def get_image_id_from_link(link : str) -> str:
     id_photo = ""
     split_string = link.replace("https://drive.google.com/", "").split("/")
@@ -39,6 +51,7 @@ def get_image_id_from_link(link : str) -> str:
 
 @admin.route("/")
 def home():
+    add_Act()
     if "path_excel" in session:
         delete_if_exist(session["path_excel"])
 
