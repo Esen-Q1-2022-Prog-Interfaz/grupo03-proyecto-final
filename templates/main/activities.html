@@ -19,20 +19,24 @@
         <div class="containerontop" id="about-us-container">
             <div class="left"></div>
             <div class="right">
-                    <div>
-                    <div class="content" id={{activity.idActividad}}>
-                        <h1>{{activity.nombreActividad}}</h1>
-                        <p>{{activity.descripcion}}</p>
-                        <p>Numero de cuposs: {{activity.cuposTotales}} </p><br><br>
-                        <div>
-                            <button class="btn-actividad"> 
-                                <a href="{{ url_for('main.inscripcion', nombreAct=activity.nombreActividad) }}">
+                <div id="{{activity.idActividad}}">
+                    <h1>{{activity.nombreActividad}}</h1>
+                    <p>{{activity.descripcion}}</p>
+                    <p>Numero de cuposs: {{activity.cuposTotales}} </p><br><br>
+                        {% if activity.idActividad in ins_act  %}
+                            <div class="btn-actividad">
+                                <button>
+                                    Inscrito
+                                </button>
+                            </div>    
+                        {% else %}
+                            <a class="btn-actividad" href="{{ url_for('main.inscripcion', idActividad=activity.idActividad) }}">
+                                <button>
                                     Inscribirse
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    </div>
+                                </button>
+                            </a>
+                        {% endif %}
+                </div>
             </div>
         </div>
     </section>

@@ -53,9 +53,6 @@ class Inscripciones(db.Model):  # type: ignore
         #self.evidencia = evidencia
         
         actividad = Actividades.get_activity(self.idActividad)
-        #SOLIS    #SOLIS    #SOLIS    #SOLIS    #SOLIS    #SOLIS    #SOLIS    #SOLIS    
-        #¿Qué está guardado en "actividad"? Porque estás metiendole actividades.X where idActividad==idActividad, qué es X?
-        
         if actividad != 3: #Let TipoActividad=3 means its webinar
             self.evidencia = 0 #Let 0=No Aplica
         else:

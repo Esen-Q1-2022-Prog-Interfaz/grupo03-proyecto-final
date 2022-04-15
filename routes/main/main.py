@@ -69,22 +69,24 @@ def about():
 @main.route("/activities")
 def activities():
     activitiesList = Actividades.query.all()
-    return render_template("main/activities.html", activitiesList=activitiesList, user=current_user)
+    ins_act = db.session.query(Actividades.idActividad).join(Inscripciones).join(Usuarios).filter(Inscripciones.idVoluntario == current_user.idVoluntario).all() if current_user.is_authenticated else []
+    inscrip_acti = [act.idActividad for act in ins_act]
+    return render_template("main/activities.html", activitiesList=activitiesList, user=current_user, ins_act=inscrip_acti)
 
-@main.route("/activities/inscripcion", methods=["GET", "POST"])
+@main.route("/activities/inscripcion/<string:idActividad>", methods=["GET", "POST"])
 @login_required
-def inscripcion(nombreAct):
+def inscripcion(idActividad):
     idVoluntario=current_user.idVoluntario
-    idActividad= nombreAct
     estadoAsistencia=1
     estadoPago=2
     cantidadKg=0
     horastotales=0
-    evidencia=1
+    print(idActividad)
     newIns = Inscripciones(idVoluntario, idActividad, estadoAsistencia, estadoPago, cantidadKg, horastotales)
+    print(newIns)
     db.session.add(newIns)
     db.session.commit()
-    return redirect(url_for("main.activities", nombreAct=nombreAct))
+    return redirect(url_for("main.activities", idActividad=idActividad))
     
 
 @main.route("/contact", methods=["POST", "GET"])
@@ -148,4 +150,12 @@ def register():
 @main.route("/profile")
 @login_required
 def profile():
-    return render_template("main/profile.html", user=current_user)
+    actividades_dict = {}
+    ins_act = []
+    inscripciones = Inscripciones.query.filter_by(idVoluntario=current_user.idVoluntario).all()
+    for ins in inscripciones:
+        if ins.idActividad not in actividades_dict:
+            activity = Actividades.query.get(ins.idActividad)
+            actividades_dict[ins.idActividad] = activity
+        ins_act.append((ins, actividades_dict[ins.idActividad]))
+    return render_template("main/profile.html", user=current_user, ins_act=ins_act)
