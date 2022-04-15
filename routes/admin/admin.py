@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template_string, send_file, session, render_template
+from flask import Blueprint, redirect, render_template_string, request, send_file, session, render_template
 from flask import Blueprint, render_template, url_for, redirect
 from flask_login import login_required, login_user, logout_user, current_user
 from db.utils.photos_model import Photo, PhotoNext
@@ -117,8 +117,8 @@ def dashboard():
         # VoluntariosFull = Usuarios.query.filter_by(Usuarios.departamento != "Baja").all()
         # MiembrosFull2 = Usuarios.query.filter_by(departamento == "NA").all()
         
-        MiembrosFull = Usuarios.query.filter_by(cargo="miembro").all()
-        VoluntarioFull = Usuarios.query.filter_by(cargo="NA").all()
+        MiembrosFull = Usuarios.query.filter_by(departamento="miembro").all()
+        VoluntarioFull = Usuarios.query.filter_by(departamento="NA").all()
         JDFull = JuntaDirectiva.query.all()
         InscripcionesFull = Inscripciones.query.all()
         ActividadesFull = Actividades.query.all()
@@ -176,30 +176,32 @@ def deleteVoluntario(idVoluntario):
     db.session.commit()
     return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
 
-@admin.route("/Upgrade/user/<int:idVoluntario>")
+@admin.route("/Upgrade/user/<int:idVoluntario>", methods=["POST", "GET"])
 def hacerMiembro(idVoluntario):
-    selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
-    correo = selectedUser.correo
-    contrasenna = selectedUser.contrasenna
-    nombre = selectedUser.nombre
-    apellido = selectedUser.apellido
-    telefono = selectedUser.telefono
-    carrera = selectedUser.carrera
-    anno = selectedUser.anno
-    departamento="Miembro"
-    
-    selectedUser.correo = correo
-    selectedUser.contrasenna = contrasenna
-    selectedUser.nombre = nombre
-    selectedUser.apellido = apellido
-    selectedUser.telefono = telefono
-    selectedUser.carrera = carrera
-    selectedUser.anno = anno
-    selectedUser.departamento = departamento
-    db.session.add(selectedUser)
-    db.session.commit()
-    return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
-
+    if request.method == "POST":
+        selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
+        correo = selectedUser.correo
+        contrasenna = selectedUser.contrasenna
+        nombre = selectedUser.nombre
+        apellido = selectedUser.apellido
+        telefono = selectedUser.telefono
+        carrera = selectedUser.carrera
+        anno = selectedUser.anno
+        departamento=request.form.get("position")
+        
+        selectedUser.correo = correo
+        selectedUser.contrasenna = contrasenna
+        selectedUser.nombre = nombre
+        selectedUser.apellido = apellido
+        selectedUser.telefono = telefono
+        selectedUser.carrera = carrera
+        selectedUser.anno = anno
+        selectedUser.departamento = departamento
+        db.session.add(selectedUser)
+        db.session.commit()
+        return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
+    else:
+        return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
 
 @admin.route("/downgrade/user/<int:idVoluntario>")
 def hacerVoluntario(idVoluntario):

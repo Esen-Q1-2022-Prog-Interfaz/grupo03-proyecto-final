@@ -178,8 +178,32 @@
                         <td>{{ miembro.telefono }}</td>
                         <td>{{ miembro.correo }}</td>
                         <td><a href="{{ url_for('admin.deleteVoluntario' , idVoluntario=miembro.idVoluntario) }}">Dar de baja</a></td>
-                        <td><a href="{{ url_for('admin.hacerMiembro' , idVoluntario=miembro.idVoluntario) }}">Hacer miembro</a></td>
+                        <td><div onclick="showSelect('{{miembro.idVoluntario}}')">Hacer miembro</div></td>
+                        <td id="volun-{{miembro.idVoluntario}}" style="display:none">
+                            <form action="{{ url_for('admin.hacerMiembro' , idVoluntario=miembro.idVoluntario) }}" method="post">
+                                <select name="position" id="position">
+                                    <option value="miembro">Miembro</option>
+                                    <option value="miembro">Miembro</option>
+                                    <option value="miembro">Miembro</option>
+                                </select>
+                                <div style="display: flex;justify-content:space-evenly;">
+                                    <h3 onclick="hideSelect('{{miembro.idVoluntario}}')">Hide</h3>
+                                    <input type="submit" value="Add">
+                                </div> 
+                            </form>
+                        </td> 
                     </tr>
+                    <script>
+                        function showSelect(idVol) {
+                            let tdForm = document.getElementById("volun-" + idVol);
+                            tdForm.setAttribute("style", "display:inline-block")
+                        }
+
+                        function hideSelect(idVol) {
+                            let tdForm = document.getElementById("volun-" + idVol);
+                            tdForm.setAttribute("style", "display:none")
+                        }
+                    </script>
                     {% endfor %}
                 </tr>
             </table>
