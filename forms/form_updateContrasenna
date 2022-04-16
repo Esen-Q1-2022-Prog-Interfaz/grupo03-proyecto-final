@@ -1,10 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
-from models.usuarios import Usuarios
 
 
-class FormContactanos(FlaskForm):
+class FormContrasenna(FlaskForm):
     contrasenna = PasswordField(
         label="Contraseña",
         validators=[

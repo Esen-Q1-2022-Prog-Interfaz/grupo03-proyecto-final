@@ -159,3 +159,5 @@ def profile():
             actividades_dict[ins.idActividad] = activity
         ins_act.append((ins, actividades_dict[ins.idActividad]))
     return render_template("main/profile.html", user=current_user, ins_act=ins_act)
+
+
