@@ -77,17 +77,18 @@ def home():
         "admin/home.html",
         fotos_data=fotos_data,
         next_act=next_act,
+        user=current_user,
     )
 
 
 @admin.route("/about")
 def about():
-    return render_template("admin/about.html")
+    return render_template("admin/about.html", user=current_user,)
 
 
 @admin.route("/activities")
 def activities():
-    return render_template("admin/activities.html")
+    return render_template("admin/activities.html", user=current_user,)
 
 @admin.route("/activities/inscripcion", methods=["GET", "POST"])
 @login_required
@@ -108,7 +109,7 @@ def inscripcion(nombreAct):
 
 @admin.route("/contact")
 def contact():
-    return render_template("admin/contact.html")
+    return render_template("admin/contact.html", user=current_user,)
 
 
 @admin.route("/dashboard")
@@ -123,7 +124,7 @@ def dashboard():
         InscripcionesFull = Inscripciones.query.all()
         ActividadesFull = Actividades.query.all()
         MessagesFull = Contactanos.query.all()
-        return render_template("admin/dashboard.html", VoluntarioFull=VoluntarioFull,  MiembrosFull=MiembrosFull, JDFull=JDFull, InscripcionesFull=InscripcionesFull, ActividadesFull=ActividadesFull, MessagesFull=MessagesFull)
+        return render_template("admin/dashboard.html", VoluntarioFull=VoluntarioFull,  MiembrosFull=MiembrosFull, JDFull=JDFull, InscripcionesFull=InscripcionesFull, ActividadesFull=ActividadesFull, MessagesFull=MessagesFull, user=current_user)
     
     return redirect(url_for("main.home"))
 

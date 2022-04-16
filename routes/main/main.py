@@ -1,7 +1,10 @@
 from random import randint
+import string
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 from forms.form_contactanos import FormContactanos
+from forms.form_peticion_reset import FormPeticionContrasenna
+from forms.form_updateContrasenna import FormContrasenna
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
@@ -24,6 +27,10 @@ images_random_ids = [
 
 STRING_SHARING = "https://drive.google.com/uc?id"
 
+def randoString(num):
+    letters = string.ascii_lowercase
+    return "".join([letters[randint(0, len(letters) - 1)] for i in range(num)])
+
 def get_image_id_from_link(link : str) -> str:
     id_photo = ""
     split_string = link.replace("https://drive.google.com/", "").split("/")
@@ -39,7 +46,7 @@ def home():
             url= STRING_SHARING + "=" + images_random_ids[randint(0, 2)],
             desc=f"The kitty number {i}",
         )
-        for i in range(1, 11)
+        for i in range(1, 16)
     }
 
     next_act = {
@@ -50,6 +57,8 @@ def home():
         )
         for i in range(1, 13)
     }
+    print([v for i, v in fotos_data.items()])
+
     actividadesActivas = Actividades.query.filter_by(estado=2).all()
     return render_template(
         "main/home.html",
@@ -160,4 +169,22 @@ def profile():
         ins_act.append((ins, actividades_dict[ins.idActividad]))
     return render_template("main/profile.html", user=current_user, ins_act=ins_act)
 
+@main.route(f"/{randoString(20)}", methods=["POST", "GET"])
+def password_refresh():
+    form = FormPeticionContrasenna()
+    if form.validate_on_submit():
+        user = Usuarios.query.filter_by(correo=form.correo.data).first()
+        msg = Contactanos(user.nombre, user.apellido, user.telefono, f"Link para resesetear contraseña de correo {user.correo} y id {user.idVoluntario}", False)
+        db.session.add(msg)
+        db.session.commit()
+    return render_template("main/peticion_reset.html", form=form, user=current_user)
 
+@main.route(f"/reset/<int:id>", methods=["POST", "GET"])
+def password_reset(id):
+    form = FormContrasenna()
+    if form.validate_on_submit():
+        newUser = Usuarios.query.filter_by(correo=form.correo.data).first()
+        newUser.contrasenna = form.contrasenna
+        db.session.add(newUser)
+        db.session.commit()
+    return render_template("main/reset_password.html", form=form, user=current_user, id=id)
