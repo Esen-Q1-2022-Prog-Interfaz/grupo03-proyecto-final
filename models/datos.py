@@ -7,7 +7,7 @@ class Datos(db.Model):  # type: ignore
         numArboles: int
         cantRec: int
         numVoluntariuos: int
-        numCharlas: int
+        numtortugas: int
         
     """
 
@@ -16,20 +16,20 @@ class Datos(db.Model):  # type: ignore
     numArboles = db.Column(db.Integer, nullable = False)
     cantRec = db.Column(db.Integer, nullable = False)
     numVoluntarios = db.Column(db.Integer, nullable = False)
-    numCharlas = db.Column(db.Integer, nullable = False)
+    numtortugas = db.Column(db.Integer, nullable = False)
     
     def __init__(
         self,
         numArboles: int,
         cantRec: int,
         numVoluntarios : int,
-        numCharlas: int
+        numtortugas: int
     ) -> None:
 
         self.numArboles = numArboles
         self.cantRec = cantRec
         self.numVoluntarios = numVoluntarios
-        self.numCharlas = numCharlas
+        self.numtortugas = numtortugas
 
     def __repr__(self) -> str:
 
@@ -39,7 +39,7 @@ class Datos(db.Model):  # type: ignore
         {self.numArboles},
         {self.cantRec},
         {self.numVoluntarios},
-        {self.numCharlas},
+        {self.numtortugas},
         )
         """.strip()
 
