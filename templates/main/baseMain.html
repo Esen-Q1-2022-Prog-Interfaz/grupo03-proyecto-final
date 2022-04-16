@@ -114,7 +114,14 @@
             </script> -->
         <li class="login">
         {% if user.is_authenticated %}
-            <a href="{{ url_for('main.profile') }}">Perfil</a>
+            <div class="dropdown" style="float:right;">
+                <button class="dropbtn"><i class="fa-regular fa-circle-user"></i></button>
+                <div class="dropdown-content">
+                <a href="{{ url_for('main.profile') }}">Perfil</a>
+                <a href="{{ url_for('main.logout') }}">Desloguear</a> 
+                </div>
+            </div> 
+            
         {% else %}
           <a href="{{ url_for('main.login') }}">Iniciar sesión</a>
         {% endif %}

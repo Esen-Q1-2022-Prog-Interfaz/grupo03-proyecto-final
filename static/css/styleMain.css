@@ -52,6 +52,50 @@ li a:hover {
     background-color: #748460;
 }
 
+.dropdown {
+    float: relative;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 20px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #5c725b;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #748460;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
 /* titulos y subtitulos */
 h1{
     font-family: "Source Sans Pro";
@@ -1109,7 +1153,7 @@ span.psw {
     display: grid;
     grid-template-columns: auto auto;
     gap:30px;
-    background-color: #8fc078;
+    background-color: #ced1cc;
     padding: 50px 150px 50px 150px; 
 }
 
@@ -1157,13 +1201,14 @@ span.psw {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
+    background-color: #4CAF50; 
     color: white;
 }
 
 
 .logout_button {
     padding: 0px 0px 50px 500px;
+    position: absolute;
 }
 
 .logout {
@@ -1175,14 +1220,14 @@ span.psw {
     border-radius: 15px;
     width: 200px;
     height: 65px;
-    background-color: rgb(245, 179, 81);
+    background-color: #8AB9BB;
     box-shadow: 5px 5px 10px;
     padding: 10px;
+    color: white;
 }
 
 .logout:hover {
-    background-color: rgb(202, 133, 48);
-    color: black;
+    background-color: #2E7072;
 }
 
 .logout_button a:hover {
