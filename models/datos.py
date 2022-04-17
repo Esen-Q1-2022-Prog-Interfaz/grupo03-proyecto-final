@@ -12,7 +12,7 @@ class Datos(db.Model):  # type: ignore
     """
 
     # Campos tabla
-    idDatos = db.Column(db.Integer, primarykey = True)
+    idDatos = db.Column(db.Integer, primary_key = True)
     numArboles = db.Column(db.Integer, nullable = False)
     cantRec = db.Column(db.Integer, nullable = False)
     numVoluntarios = db.Column(db.Integer, nullable = False)
@@ -32,9 +32,7 @@ class Datos(db.Model):  # type: ignore
         self.numCharlas = numCharlas
 
     def __repr__(self) -> str:
-
-        return f"""
-        Datos(
+        return f"""Datos(
         {self.idDatos},
         {self.numArboles},
         {self.cantRec},

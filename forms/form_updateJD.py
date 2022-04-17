@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import InputRequired, Length
+from wtforms.fields import StringField, SubmitField, SelectField, PasswordField, IntegerField
 
 
-class FormContactanos(FlaskForm):
+class FormUpdateJD(FlaskForm):
     nombre = StringField(
         "Nombre",
         validators=[InputRequired(), Length(min=2, max=10)],

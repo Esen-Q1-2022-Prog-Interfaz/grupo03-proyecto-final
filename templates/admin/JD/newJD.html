@@ -1,0 +1,86 @@
+{% extends './admin/baseAdmin.html' %} {% block title %}New Activity{% endblock %}
+{%block contents %}
+<h1>New Activity</h1>
+
+
+<div class="contact-container">
+  <div class="inicio">
+    <div class="box1">
+      <div class="contact-text">
+        
+        <h1>Nueva Actividad</h1>
+        
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container" id="center-items">
+
+  <form id="form-addActivity" action="{{ url_for('admin.addJD') }}" method="post">
+    {{ form.hidden_tag() }}
+
+
+    <div class="row">
+      <div class="col-25">
+        {{ form.nombre.label }}
+      </div>
+      <div class="col-75">
+        {{ form.nombre }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        {{ form.apellido.label }}
+      </div>
+      <div class="col-75">
+        {{ form.apellido }}
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+          {{ form.cargo.label }}
+        </div>
+        <div class="col-75">
+          {{ form.cargo }}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          {{ form.correo.label }}
+        </div>
+        <div class="col-75">
+          {{ form.correo }}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          {{ form.link.label }}
+        </div>
+        <div class="col-75">
+          {{ form.link }}
+        </div>
+      </div>
+    
+  </div>
+
+  <br>
+
+  <div class="row">
+    {{ form.submit }}
+  </div>  
+
+  </form>
+</div>
+
+
+{% endblock %}

@@ -8,6 +8,12 @@ from models.usuarios import Usuarios
 from db.db import db
 from datetime import datetime
 from random import randint
+from models.datos import Datos
+from forms.form_addJD import FormAddJD
+from forms.form_updateActivity import FormUpdateActivity
+from forms.form_updateJD import FormUpdateJD
+from forms.form_addActividad import FormAddActivity
+from models.actividades import Actividades
 
 # Vistas
 from db.sql_methods import get_view_inscripciones, get_view_registro_academico
@@ -120,8 +126,8 @@ def dashboard():
         # VoluntariosFull = Usuarios.query.filter_by(Usuarios.departamento != "Baja").all()
         # MiembrosFull2 = Usuarios.query.filter_by(departamento == "NA").all()
         
-        MiembrosFull = Usuarios.query.filter_by(departamento="miembro").all()
-        VoluntarioFull = Usuarios.query.filter_by(departamento="NA").all()
+        MiembrosFull = Usuarios.query.filter_by(cargo="miembro").all()
+        VoluntarioFull = Usuarios.query.filter_by(cargo="NA").all()
         JDFull = JuntaDirectiva.query.all()
         InscripcionesFull = Inscripciones.query.all()
         ActividadesFull = Actividades.query.all()
@@ -191,6 +197,7 @@ def hacerMiembro(idVoluntario):
         carrera = selectedUser.carrera
         anno = selectedUser.anno
         departamento=request.form.get("position")
+        cargo = "miembro"
         
         selectedUser.correo = correo
         selectedUser.contrasenna = contrasenna
@@ -200,11 +207,68 @@ def hacerMiembro(idVoluntario):
         selectedUser.carrera = carrera
         selectedUser.anno = anno
         selectedUser.departamento = departamento
+        selectedUser.cargo = cargo
         db.session.add(selectedUser)
         db.session.commit()
         return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
     else:
         return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
+
+@admin.route("/NewActivity", methods=["POST", "GET"])
+def addActivity():
+    user=current_user
+    form  = FormAddActivity()
+    if form.validate_on_submit():
+        descripcion = form.descripcion.data
+        nombre = form.nombre.data
+        tipoActividad = form.tipoActividad.data
+        lugarActividad = form.lugarActividad.data
+        tipoHoras = form.tipoHoras.data
+        fechaInicio = form.fechaInicio.data
+        fechaFinal = form.fechaFinal.data
+        horasSociales = form.horasSociales.data
+        cuposTotales = form.cuposTotales.data
+        estado = 1
+        newAct = Actividades(
+            descripcion,
+            nombre,
+            tipoActividad, 
+            lugarActividad,
+            tipoHoras,
+            fechaInicio,
+            fechaFinal,
+            horasSociales,
+            cuposTotales,
+            estado,
+            )
+        db.session.add(newAct)
+        db.session.commit()
+        return redirect(url_for("admin.dashboard"))
+    return render_template("admin/activities/newActivity.html", form=form, user=user)
+
+
+@admin.route("/NewJD", methods=["POST", "GET"])
+def addJD():
+    user = current_user
+    form  = FormAddJD()
+    if form.validate_on_submit():
+        nombre = form.nombre.data
+        apellido = form.apellido.data
+        cargo = form.cargo.data
+        correo = form.correo.data
+        link = form.link.data
+        newJD = JuntaDirectiva(
+            nombre,
+            apellido, 
+            cargo,
+            correo,
+            link,
+            )
+        db.session.add(newJD)
+        db.session.commit()
+        return redirect(url_for("admin.dashboard"))
+    return render_template("admin/JD/newJD.html", form=form, user=user)
+
 
 @admin.route("/downgrade/user/<int:idVoluntario>")
 def hacerVoluntario(idVoluntario):
@@ -217,6 +281,7 @@ def hacerVoluntario(idVoluntario):
     carrera = selectedUser.carrera
     anno = selectedUser.anno
     departamento="NA"
+    cargo="NA"
     
     selectedUser.correo = correo
     selectedUser.contrasenna = contrasenna
@@ -226,6 +291,7 @@ def hacerVoluntario(idVoluntario):
     selectedUser.carrera = carrera
     selectedUser.anno = anno
     selectedUser.departamento = departamento
+    selectedUser.cargo = cargo
     db.session.add(selectedUser)
     db.session.commit()
     return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))

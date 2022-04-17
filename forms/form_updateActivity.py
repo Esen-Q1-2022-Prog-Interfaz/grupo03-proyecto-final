@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import InputRequired, Length
+from wtforms.fields import StringField, SubmitField, SelectField, PasswordField, IntegerField
+
 
 TipoActividad=[
     ("1", "Reciclaje"),
@@ -21,7 +23,7 @@ Estados=[
     ("3", "Cancelada"),
 ]
 
-class FormContactanos(FlaskForm):
+class FormUpdateActivity(FlaskForm):
     descripcion = StringField(
         "descripcion",
         validators=[InputRequired(), Length(min=2, max=2000)],

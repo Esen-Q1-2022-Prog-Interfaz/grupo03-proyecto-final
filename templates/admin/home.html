@@ -62,38 +62,40 @@
     </p>
   </div>
 </div>
-  
+{% for datoEsp in datosList %}
 <div class="grid-container" id="grid-impacto">
   <div> 
     <i><img src="../../static/media/tree.png" alt=""></i>
-    <h3>100</h3>
+    <h3>{{datoEsp.numArboles}}</h3>
     <p class="dato-impacto">
-      árboles sembrados
+      Árboles sembrados
     </p>
   </div>
   <div>
     <i><img src="../../static/media/recycle.png" alt=""></i>
-    <h3>500kg</h3>
+    <h3>{{datoEsp.cantRec}} kg</h3>
     <p class="dato-impacto">
-      reciclados
+      Reciclados
     </p>
   </div>
   <div>
     <i><img src="../../static/media/helping-hand.png" alt=""></i>
-    <h3>+200</h3>
+    <h3>{{datoEsp.numVoluntarios}}</h3>
     <p class="dato-impacto">
-      voluntarios
+      Voluntarios
     </p>
   </div>
   <div>
     <i><img src="../../static/media/turtle.png" alt=""></i>
-    <h3>80</h3>
+    <h3>{{datoEsp.numCharlas}}</h3>
     <p class="dato-impacto">
-      charlas y foros
+      Tortugas liberadas
     </p>
   </div>
   <br /><br />
 </div>
+{% endfor %}
+
 
 <div class="back-color2">
 

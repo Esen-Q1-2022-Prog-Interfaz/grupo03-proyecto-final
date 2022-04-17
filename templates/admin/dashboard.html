@@ -47,7 +47,7 @@
 
             <br>
             <table class="tablaDash"> <!-- junta directiva de raices -->
-                <h3>Tabla Junta Directiva</h3><button> Añadir miembro a Junta Directiva </button>
+                <h2>Junta Directiva</h2> <button><a href="{{ url_for('admin.addJD') }}"> Añadir miembro </a></button>
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
@@ -116,7 +116,7 @@
 
 
         <div id="Actividades">
-            <h2>Actividades</h2> <button> Añadir Actividad </button>
+            <h2>Actividades</h2> <button><a href="{{ url_for('admin.addActivity') }}"> Añadir Actividad </a></button>
             <table class="tablaDash"> <!-- actividades de raices -->
                 <tr>
                     <th>Id</th>
