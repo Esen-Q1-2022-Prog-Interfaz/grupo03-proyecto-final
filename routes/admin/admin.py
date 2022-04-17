@@ -81,6 +81,7 @@ def home():
     )
 
 
+
 @admin.route("/about")
 def about():
     return render_template("admin/about.html", user=current_user,)
