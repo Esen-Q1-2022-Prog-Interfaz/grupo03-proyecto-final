@@ -228,8 +228,19 @@
                         <td>{{mes.idContacto}}</td>
                         <td>{{mes.nombre}}</td>
                         <td>{{mes.apellido}}</td>
-                        <td>{{mes.teléfono}}</td>
-                        <td>{{mes.mensaje}}</td>
+                        <td>{{mes.telefono}}</td>
+                        {% if mes.mensaje.startswith("Reset password>>") %}
+                            <td>
+                                Petición para resetear contraseña: correo {{mes.mensaje.replace('Reset password>>', '').split(";")[0]}} 
+                                <a href="{{url_for('admin.generate_link', id=mes.mensaje.replace('Reset password>>', '').split(";")[1], correo=mes.mensaje.replace('Reset password>>', '').split(";")[0])}}">
+                                    <button>
+                                        Generar link
+                                    </button>
+                                </a>
+                            </td>
+                        {% else %}
+                            <td>{{mes.mensaje}}</td>
+                        {% endif %}
                         {% if mes.estado == 0 %}
                             <td>No Leído</td>
                         {% else %}

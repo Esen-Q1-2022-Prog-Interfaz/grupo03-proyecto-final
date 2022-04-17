@@ -18,6 +18,7 @@ from models.inscripciones import Inscripciones
 from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
+from utils_app.cryptography import CryptographyToken
 
 datetime.today().isoformat()
 
@@ -284,6 +285,15 @@ def download_excel():
     else:
         return "Hubo un error procesando los datos"
 
+def generate_link_reset_password(id, correo_init):
+    cryptography_tool = CryptographyToken()
+    return f"/reset/password/{cryptography_tool.encrypt_token(id)}/{cryptography_tool.encrypt_token(correo_init)}"
+
+
+@admin.route(f"/reset/password/<id>/<correo>", methods=["POST", "GET"])
+def generate_link(id, correo):
+    link = generate_link_reset_password(id, correo)
+    return render_template("admin/reset_link.html", user=current_user, link=link)
 
 # @admin.route("/test")
 # def db_test():

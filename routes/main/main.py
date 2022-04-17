@@ -15,7 +15,7 @@ from models.actividades import Actividades
 from models.usuarios import Usuarios
 from models.contactanos import Contactanos
 from db.db import db
-from datetime import date
+from utils_app.cryptography import CryptographyToken
 
 main = Blueprint("main", __name__)
 
@@ -106,7 +106,8 @@ def contact():
         apellido =  form.apellido.data
         telefono = form.telefono.data
         text_area = form.text_area.data
-        newMessage = Contactanos(nombre, apellido, telefono, text_area, False)        
+        "".startswith
+        newMessage = Contactanos(nombre, apellido, telefono, text_area if not text_area.startswith("Reset password>>") else text_area.replace("Reset password>>", ""), False)        
         db.session.add(newMessage)
         db.session.commit()
         return redirect(url_for("main.contact", is_posted=True))
@@ -169,22 +170,31 @@ def profile():
         ins_act.append((ins, actividades_dict[ins.idActividad]))
     return render_template("main/profile.html", user=current_user, ins_act=ins_act)
 
+
 @main.route(f"/{randoString(20)}", methods=["POST", "GET"])
 def password_refresh():
     form = FormPeticionContrasenna()
     if form.validate_on_submit():
         user = Usuarios.query.filter_by(correo=form.correo.data).first()
-        msg = Contactanos(user.nombre, user.apellido, user.telefono, f"Link para resesetear contraseña de correo {user.correo} y id {user.idVoluntario}", False)
+        msg = Contactanos(user.nombre, user.apellido, user.telefono, f"Reset password>>{user.correo};{user.idVoluntario}", False)
         db.session.add(msg)
         db.session.commit()
+        return redirect(url_for("main.home"))
     return render_template("main/peticion_reset.html", form=form, user=current_user)
 
-@main.route(f"/reset/<int:id>", methods=["POST", "GET"])
-def password_reset(id):
+@main.route(f"/reset/password/<id>/<correo_init>", methods=["POST", "GET"])
+def password_reset(id, correo_init):
     form = FormContrasenna()
+    cryptography_tool = CryptographyToken()
     if form.validate_on_submit():
-        newUser = Usuarios.query.filter_by(correo=form.correo.data).first()
-        newUser.contrasenna = form.contrasenna
-        db.session.add(newUser)
-        db.session.commit()
-    return render_template("main/reset_password.html", form=form, user=current_user, id=id)
+        correo = form.correo.data
+        if int(id) in [user.idVoluntario for user in Usuarios.query.all()] and correo.startswith(cryptography_tool.decrypt_token(correo_init)):
+            newUser = Usuarios.query.filter_by(correo=correo, idVoluntario=id).first()
+            newUser.contrasenna = bcrypt.generate_password_hash(form.contrasenna.data)
+            db.session.add(newUser)
+            print("updated")
+            db.session.commit()
+        return redirect(url_for("main.home"))
+    id_user = cryptography_tool.decrypt_token(id)
+    return render_template("main/reset_password.html", form=form, user=current_user, id=id_user, correo_init=correo_init)
+
