@@ -61,13 +61,6 @@ class FormUpdateActivity(FlaskForm):
         validators=[InputRequired(), Length(min=3, max=20)],
         render_kw={"placeholder": "Ingresa las horas sociales asistencia o por kilo, según aplique"},
     )
-    
-# En las fechas podemos implementar un datepicker en el html para evitar que pongan la fecha con mal formato
-    fechaInicio = IntegerField(
-        "Fecha de Inicio",
-        validators=[InputRequired(), Length(min=3, max=20)],
-        render_kw={"placeholder": "Ingresa la fecha de inicio"},
-    )
 
 # En las fechas podemos implementar un datepicker en el html para evitar que pongan la fecha con mal formato
     fechaFinal = IntegerField(

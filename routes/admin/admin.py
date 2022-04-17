@@ -136,30 +136,6 @@ def dashboard():
     
     return redirect(url_for("main.home"))
 
-    #     fotos_data = {
-    #         i: Photo(
-    #             url="img_url",
-    #             desc=f"The kitty number {i}",
-    #         )
-    #         for i in range(1, 11)
-    #     }
-
-    #     next_act = {
-    #         i: PhotoNext(
-    #             "img_url",
-    #             f"No se {i}",
-    #             0,
-    #         )
-    #         for i in range(1, 13)
-    #     }
-    #     actividadesActivas = Actividades.query.filter_by(estado=2).all()
-    #     return render_template(
-    #     "main/home.html",
-    #     fotos_data=fotos_data,
-    #     next_act=next_act,
-    #     user=current_user,
-    #     actividadesActivas=actividadesActivas
-    # )
 
 @admin.route("/delete/user/<int:idVoluntario>")
 def deleteVoluntario(idVoluntario):
@@ -245,6 +221,39 @@ def addActivity():
         db.session.commit()
         return redirect(url_for("admin.dashboard"))
     return render_template("admin/activities/newActivity.html", form=form, user=user)
+
+@admin.route("/updateActivity", methods=["POST", "GET"])
+def updateActivity():
+    user=current_user
+    form  = FormAddActivity()
+    if form.validate_on_submit():
+        descripcion = form.descripcion.data
+        nombre = form.nombre.data
+        tipoActividad = form.tipoActividad.data
+        lugarActividad = form.lugarActividad.data
+        tipoHoras = form.tipoHoras.data
+        fechaInicio = form.fechaInicio.data
+        fechaFinal = form.fechaFinal.data
+        horasSociales = form.horasSociales.data
+        cuposTotales = form.cuposTotales.data
+        estado = 1
+        newAct = Actividades(
+            descripcion,
+            nombre,
+            tipoActividad, 
+            lugarActividad,
+            tipoHoras,
+            fechaInicio,
+            fechaFinal,
+            horasSociales,
+            cuposTotales,
+            estado,
+            )
+        db.session.add(newAct)
+        db.session.commit()
+        return redirect(url_for("admin.dashboard"))
+    return render_template("admin/activities/updateActivity.html", form=form, user=user)
+
 
 
 @admin.route("/NewJD", methods=["POST", "GET"])
