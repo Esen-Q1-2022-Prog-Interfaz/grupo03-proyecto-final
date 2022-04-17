@@ -602,6 +602,22 @@ color: white;
     background: url(../media/actividades.jpg) no-repeat center / cover;
 }
 
+.left1 {
+    width: 50%;
+    height: 500px;
+    background: url(../media/background-tree.jpg) no-repeat center / cover;
+}
+.left2 {
+    width: 50%;
+    height: 500px;
+    background: url(../media/recycle.png) no-repeat center / cover;
+}
+.left3 {
+    width: 50%;
+    height: 500px;
+    background: url(../media/charity.png) no-repeat center / cover;
+}
+
 .right {
     max-width: 50%;
     min-height: 500px;

@@ -17,7 +17,13 @@
 {% for activity in activitiesList %}
     <section>
         <div class="containerontop" id="about-us-container">
-            <div class="left"></div>
+            {% if  activity.tipoActividad == 1%}
+            <div class="left1"></div>
+            {% elif  activity.tipoActividad == 0 %}
+            <div class="left2"></div>
+            {% else %}
+            <div class="left3"></div>
+            {% endif %}            
             <div class="right">
                 <div id="{{activity.idActividad}}">
                     <h1>{{activity.nombreActividad}}</h1>
