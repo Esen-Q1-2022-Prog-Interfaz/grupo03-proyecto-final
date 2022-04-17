@@ -1,3 +1,4 @@
+import datetime
 from random import choices
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, SelectField, PasswordField
@@ -47,12 +48,12 @@ class RegisterForm(FlaskForm):
     )
 
     telefono = StringField(
-        label="Telefono +503",
+        label="Telefono (+503)",
         validators=[
             InputRequired(),
-            Length(max=8),
+            Length(max=9),
         ],
-        render_kw={"placeholder":"Ingresa tu telefono"}
+        render_kw={"placeholder":"Ingresa tu teléfono: 0000-0000"}
     )
     
     carrera = SelectField(
@@ -76,7 +77,7 @@ class RegisterForm(FlaskForm):
         validators=[
             InputRequired(),
             Length(min=2, max=15),
-            EqualTo("contrasenna", message='Las contraseñas son distintas')
+            EqualTo("contrasenna", message='Las contraseñas deben ser iguales')
 
         ],
         render_kw={"placeholder":"Ingresa de nuevo tu contraseña"}
@@ -91,4 +92,7 @@ class RegisterForm(FlaskForm):
             raise ValidationError("El correo ingresado no es institucional")
         elif current_mail:
             raise ValidationError("El correo ingresado ya ha sido utilizado")
+        elif not 1998 > int(correo_typed[:7]) or int(datetime.date.today().year) < int(correo_typed[:7]):
+            raise ValidationError("El año del correo es inválido")
+
 

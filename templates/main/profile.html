@@ -31,7 +31,7 @@
     <h1 style="text-align: center; margin: 40px; font-size: 47px">Tus actividades</h1>
     <table class="tabla-user">
         <tr>
-            <th>Descripción de la actividad</th>
+            <th colspan="2" >Nombre de la actividad</th>
             <th>Tipo de horas</th>
             <th>Cantidad de horas</th>
             <th>Fecha de inicio</th>
@@ -40,6 +40,7 @@
         </tr>
         {% for ins, act in ins_act %}
             <tr class="linea">
+                <td><a href="{{url_for('main.desinscribirse', insc=ins.idInscripcion)}}"><button>Desinscribirse</button></a></td>
                 <td>{{act.nombreActividad}}</td>
                 {% if act.tipoHoras ==1 %}
                     <td>Medioambientales</td>
@@ -57,7 +58,7 @@
                     <td>Pagado</td>
                 {% else %}
                     <td>No pagado aún</td>
-                {% endif %}            
+                {% endif %}        
             </tr>
         {% endfor %}
     </table>    

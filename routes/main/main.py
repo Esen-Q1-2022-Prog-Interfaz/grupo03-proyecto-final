@@ -1,6 +1,6 @@
 from random import randint
 import string
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import Blueprint, flash, render_template, redirect, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 from forms.form_contactanos import FormContactanos
 from forms.form_peticion_reset import FormPeticionContrasenna
@@ -149,12 +149,15 @@ def register():
         anno = [int(i) for i in list(correo)[0:4]]
         annoo = int(''.join(map(str, anno)))
         print(type(annoo))
-        
+    
         newUser = Usuarios(correo, hashed_password, nombre, apellido, telefono, "NA", "NA", carrera, annoo)
         db.session.add(newUser)
         db.session.commit()
         
         return redirect (url_for("main.login"))
+    elif form.is_submitted():
+        for field, error in form.errors.items():
+            flash(f"{error[0]}")
     return render_template("main/register.html", form=form, user=current_user)
 
 @main.route("/profile")
@@ -169,6 +172,14 @@ def profile():
             actividades_dict[ins.idActividad] = activity
         ins_act.append((ins, actividades_dict[ins.idActividad]))
     return render_template("main/profile.html", user=current_user, ins_act=ins_act)
+
+@main.route("/desinscribirse/<int:insc>")
+@login_required
+def desinscribirse(insc):
+    inscripcion = Inscripciones.query.get(insc)
+    db.session.delete(inscripcion)
+    db.session.commit()
+    return redirect(url_for('main.profile'))
 
 
 @main.route(f"/{randoString(20)}", methods=["POST", "GET"])
