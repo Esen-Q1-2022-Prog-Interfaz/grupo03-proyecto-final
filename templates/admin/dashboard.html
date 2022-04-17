@@ -17,7 +17,7 @@
         <div id="Miembros">
             <h2>Miembros</h2> <br>
             <table class="tablaDash"> <!-- Solo que se vean los usuarios que son miembros de raices -->
-                <h3>Tabla Miembros</h3> <button> Añadir miembro </button>
+                <h3>Tabla Miembros</h3>
                 <!-- Se deben printear solo los que tienen cargo=miembro -->
                 <tr>
                     <th>Id</th>
@@ -155,7 +155,7 @@
 
 
         <div id="Voluntarios">
-            <h2>Voluntarios</h2> <button> Añadir voluntario </button>
+            <h2>Voluntarios</h2> 
             <!-- Se deben printear los que Departamento=NA -->
             <table class="tablaDash"> <!-- voluntarios de raices -->
                 <tr>
@@ -182,9 +182,9 @@
                         <td id="volun-{{miembro.idVoluntario}}" style="display:none">
                             <form action="{{ url_for('admin.hacerMiembro' , idVoluntario=miembro.idVoluntario) }}" method="post">
                                 <select name="position" id="position">
-                                    <option value="miembro">Miembro</option>
-                                    <option value="miembro">Miembro</option>
-                                    <option value="miembro">Miembro</option>
+                                    <option value="Operaciones">Operaciones</option>
+                                    <option value="Finanzas">Finanzas</option>
+                                    <option value="Trips">Trips</option>
                                 </select>
                                 <div style="display: flex;justify-content:space-evenly;">
                                     <h3 onclick="hideSelect('{{miembro.idVoluntario}}')">Hide</h3>

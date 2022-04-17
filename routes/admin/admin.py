@@ -59,7 +59,7 @@ def home():
     fotos_data = {
         i: Photo(
             url= STRING_SHARING + "=" + images_random_ids[randint(0, 2)],
-            desc=f"The kitty number {i}",
+            desc=f"",
         )
         for i in range(1, 11)
     }
@@ -80,6 +80,7 @@ def home():
         next_act=next_act,
         user=current_user,
     )
+
 
 
 @admin.route("/about")

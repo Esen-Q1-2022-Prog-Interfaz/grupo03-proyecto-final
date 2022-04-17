@@ -41,18 +41,26 @@
         {% for ins, act in ins_act %}
             <tr class="linea">
                 <td>{{act.nombreActividad}}</td>
-                <td>{{act.tipoHoras}}</td>
+                {% if act.tipoHoras ==1 %}
+                    <td>Medioambientales</td>
+                {% elif act.tipoHoras ==0 %}
+                    <td>Normales</td>
+                {% else %}
+                    <td>Administrativas</td>
+                {% endif %}                
                 <td>{{act.horasSociales}}</td>
                 <td>{{act.fechaInicio}}</td>
                 <td>{{act.fechaFinal}}</td>
-                <td>{{ins.estadoPago}}</td>
+                {% if act.estadoPago ==1 %}
+                    <td>No Aplica</td>
+                {% elif act.estadoPago ==0 %}
+                    <td>Pagado</td>
+                {% else %}
+                    <td>No pagado aún</td>
+                {% endif %}            
             </tr>
         {% endfor %}
     </table>    
-</div>
-
-<div class="logout_button">
-    <a href="{{ url_for('main.logout') }}"><div class="logout">Desloguear</div></a>  
 </div>
 
 {% endblock %} 
