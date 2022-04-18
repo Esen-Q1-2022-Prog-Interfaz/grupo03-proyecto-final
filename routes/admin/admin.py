@@ -32,9 +32,6 @@ admin = Blueprint("admin", __name__, url_prefix="/admin")
 
 @admin.route("/")
 def home():
-    if "path_excel" in session:
-        delete_if_exist(session["path_excel"])
-
     img_random = get_random_images_list()
     
     fotos_data = {
@@ -325,6 +322,9 @@ def deleteMessage(idContacto):
 
 @admin.route("/download")
 def download_excel():
+    if "path_excel" in session:
+        delete_if_exist(session["path_excel"])
+
     data = get_view_registro_academico()
     path = create_excel(data)
     if path:
