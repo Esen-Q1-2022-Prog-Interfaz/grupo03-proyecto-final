@@ -30,7 +30,8 @@ def get_image_id_from_link(link: str) -> str:
 
 def get_random_images_list(images = images_random_ids):
     photos_random = ["1Xbks6kNge06OAKOIGRQjbV1Fc5szm3XW"]
-    for i in range(len(images) - 2, 0, -1):
+    for i in range(len(images) - 1, 0, -1):
         ends = i - 1 if i > 0 else i
-        photos_random.append( images.pop(randint(0, ends)) )
+        photos_random.append(images.pop(randint(0, ends)) )
+        images_random_ids.extend(photos_random)
     return photos_random

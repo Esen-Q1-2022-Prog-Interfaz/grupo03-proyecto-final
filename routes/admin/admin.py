@@ -1,4 +1,12 @@
-from flask import Blueprint, redirect, render_template_string, request, send_file, session, render_template
+from flask import (
+    Blueprint,
+    redirect,
+    render_template_string,
+    request,
+    send_file,
+    session,
+    render_template,
+)
 from flask import Blueprint, render_template, url_for, redirect
 from flask_login import login_required, login_user, logout_user, current_user
 from db.utils.photos_model import Photo, PhotoNext
@@ -22,15 +30,20 @@ from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
 from utils_app.cryptography import CryptographyToken
-from utils_app.random_images import STRING_SHARING, get_image_id_from_link, get_random_images_list
+from utils_app.random_images import (
+    STRING_SHARING,
+    get_image_id_from_link,
+    get_random_images_list,
+)
 
 
 admin = Blueprint("admin", __name__, url_prefix="/admin")
 
+
 @admin.route("/")
 def home():
     img_random = get_random_images_list()
-    
+
     fotos_data = {
         i: Photo(
             url=STRING_SHARING + "=" + i,
@@ -40,10 +53,7 @@ def home():
     }
 
     next_act = {
-        i: PhotoNext(
-            STRING_SHARING + "=" + i, f"No se {i}", 0
-        )
-        for i in img_random
+        i: PhotoNext(STRING_SHARING + "=" + i, f"No se {i}", 0) for i in img_random
     }
 
     return render_template(
@@ -54,52 +64,76 @@ def home():
     )
 
 
-
 @admin.route("/about")
 def about():
-    return render_template("admin/about.html", user=current_user,)
+    return render_template(
+        "admin/about.html",
+        user=current_user,
+    )
 
 
 @admin.route("/activities")
 def activities():
-    return render_template("admin/activities.html", user=current_user,)
+    return render_template(
+        "admin/activities.html",
+        user=current_user,
+    )
+
 
 @admin.route("/activities/inscripcion", methods=["GET", "POST"])
 @login_required
 def inscripcion(nombreAct):
-    idVoluntario=current_user.idVoluntario # type: ignore
-    idActividad= nombreAct
-    estadoAsistencia=1
-    estadoPago=2
-    cantidadKg=0
-    horastotales=0
-    evidencia=1
-    newIns = Inscripciones(idVoluntario, idActividad, estadoAsistencia, estadoPago, cantidadKg, horastotales)
+    idVoluntario = current_user.idVoluntario  # type: ignore
+    idActividad = nombreAct
+    estadoAsistencia = 1
+    estadoPago = 2
+    cantidadKg = 0
+    horastotales = 0
+    evidencia = 1
+    newIns = Inscripciones(
+        idVoluntario,
+        idActividad,
+        estadoAsistencia,
+        estadoPago,
+        cantidadKg,
+        horastotales,
+    )
     db.session.add(newIns)
     db.session.commit()
     return redirect(url_for("main.activities", nombreAct=nombreAct))
-    
 
 
 @admin.route("/contact")
 def contact():
-    return render_template("admin/contact.html", user=current_user,)
+    return render_template(
+        "admin/contact.html",
+        user=current_user,
+    )
 
 
 @admin.route("/dashboard")
 def dashboard():
-    if current_user.departamento == "Admin" or 1 == 1: # type: ignore
+    if current_user.departamento == "Admin" or 1 == 1:  # type: ignore
         # VoluntariosFull = Usuarios.query.filter_by(Usuarios.departamento != "Baja").all()
         # MiembrosFull2 = Usuarios.query.filter_by(departamento == "NA").all()
-        
+
         MiembrosFull = Usuarios.query.filter_by(cargo="miembro").all()
         VoluntarioFull = Usuarios.query.filter_by(cargo="NA").all()
         JDFull = JuntaDirectiva.query.all()
         InscripcionesFull = Inscripciones.query.all()
         ActividadesFull = Actividades.query.all()
         MessagesFull = Contactanos.query.all()
-        return render_template("admin/dashboard.html", VoluntarioFull=VoluntarioFull,  MiembrosFull=MiembrosFull, JDFull=JDFull, InscripcionesFull=InscripcionesFull, ActividadesFull=ActividadesFull, MessagesFull=MessagesFull, user=current_user)
-    
+        return render_template(
+            "admin/dashboard.html",
+            VoluntarioFull=VoluntarioFull,
+            MiembrosFull=MiembrosFull,
+            JDFull=JDFull,
+            InscripcionesFull=InscripcionesFull,
+            ActividadesFull=ActividadesFull,
+            MessagesFull=MessagesFull,
+            user=current_user,
+        )
+
     return redirect(url_for("main.home"))
 
 
@@ -113,8 +147,8 @@ def deleteVoluntario(idVoluntario):
     telefono = selectedUser.telefono
     carrera = selectedUser.carrera
     anno = selectedUser.anno
-    departamento="Baja"
-    
+    departamento = "Baja"
+
     selectedUser.correo = correo
     selectedUser.contrasenna = contrasenna
     selectedUser.nombre = nombre
@@ -127,6 +161,7 @@ def deleteVoluntario(idVoluntario):
     db.session.commit()
     return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
 
+
 @admin.route("/Upgrade/user/<int:idVoluntario>", methods=["POST", "GET"])
 def hacerMiembro(idVoluntario):
     if request.method == "POST":
@@ -138,9 +173,9 @@ def hacerMiembro(idVoluntario):
         telefono = selectedUser.telefono
         carrera = selectedUser.carrera
         anno = selectedUser.anno
-        departamento=request.form.get("position")
+        departamento = request.form.get("position")
         cargo = "miembro"
-        
+
         selectedUser.correo = correo
         selectedUser.contrasenna = contrasenna
         selectedUser.nombre = nombre
@@ -156,10 +191,11 @@ def hacerMiembro(idVoluntario):
     else:
         return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
 
+
 @admin.route("/NewActivity", methods=["POST", "GET"])
 def addActivity():
-    user=current_user
-    form  = FormAddActivity()
+    user = current_user
+    form = FormAddActivity()
     if form.validate_on_submit():
         descripcion = form.descripcion.data
         nombre = form.nombre.data
@@ -174,7 +210,7 @@ def addActivity():
         newAct = Actividades(
             descripcion,
             nombre,
-            tipoActividad, 
+            tipoActividad,
             lugarActividad,
             tipoHoras,
             fechaInicio,
@@ -182,17 +218,18 @@ def addActivity():
             horasSociales,
             cuposTotales,
             estado,
-            )
+        )
         db.session.add(newAct)
         db.session.commit()
         return redirect(url_for("admin.dashboard"))
     return render_template("admin/activities/newActivity.html", form=form, user=user)
 
+
 @admin.route("/updateActivity/<int:idActividad>", methods=["POST", "GET"])
 def updateActivity(idActividad):
     user = current_user
     currentActividad = Actividades.query.filter_by(idActividad=idActividad).first()
-    form  = FormUpdateActivity(actividades=currentActividad)
+    form = FormUpdateActivity(actividades=currentActividad)
     if form.validate_on_submit():
         descripcion = form.descripcion.data
         nombre = form.nombre.data
@@ -204,7 +241,7 @@ def updateActivity(idActividad):
         horasSociales = form.horasSociales.data
         cuposTotales = form.cuposTotales.data
         Estado = form.Estado.data
-        
+
         currentActividad.descripcion = descripcion
         currentActividad.nombre = nombre
         currentActividad.tipoActividad = tipoActividad
@@ -217,40 +254,62 @@ def updateActivity(idActividad):
         currentActividad.Estado = Estado
         db.session.add(currentActividad)
         db.session.commit()
-        return redirect(url_for("admin.dashboard", form=form, user=user, currentActividad=currentActividad, idActividad=idActividad))
-    return render_template("admin/activities/updateActivity.html", form=form, user=user, currentActividad=currentActividad, idActividad=idActividad)
+        return redirect(
+            url_for(
+                "admin.dashboard",
+                form=form,
+                user=user,
+                currentActividad=currentActividad,
+                idActividad=idActividad,
+            )
+        )
+    form.fechaInicio.data = currentActividad.fechaInicio
+    form.fechaFinal.data = currentActividad.fechaFinal
+
+    print(form.fechaInicio.data)
+    return render_template(
+        "admin/activities/updateActivity.html",
+        form=form,
+        user=user,
+        currentActividad=currentActividad,
+        idActividad=idActividad,
+    )
+
 
 @admin.route("/NewJD", methods=["POST", "GET"])
 def addJD():
     user = current_user
-    form  = FormAddJD()
+    form = FormAddJD()
     if form.validate_on_submit():
         nombre = form.nombre.data
         apellido = form.apellido.data
         cargo = form.cargo.data
         correo = form.correo.data
-        link = STRING_SHARING +  "=" + get_image_id_from_link(form.link.data)
+        link = STRING_SHARING + "=" + get_image_id_from_link(form.link.data)
         newJD = JuntaDirectiva(
-            correo, nombre, apellido, cargo, link,
-            )
+            correo,
+            nombre,
+            apellido,
+            cargo,
+            link,
+        )
         db.session.add(newJD)
         db.session.commit()
         return redirect(url_for("admin.dashboard"))
     return render_template("admin/JD/newJD.html", form=form, user=user)
 
 
-
 @admin.route("/updateJD/<int:idPersona>", methods=["POST", "GET"])
 def updateJD(idPersona):
     user = current_user
     currentJD = JuntaDirectiva.query.filter_by(idPersona=idPersona).first()
-    form  = FormUpdateJD(juntadirectiva=currentJD)
+    form = FormUpdateJD(juntadirectiva=currentJD)
     if form.validate_on_submit():
         nombre = form.nombre.data
         apellido = form.apellido.data
         cargo = form.cargo.data
         correo = form.correo.data
-        link = STRING_SHARING +  "=" + get_image_id_from_link(form.link.data)
+        link = STRING_SHARING + "=" + get_image_id_from_link(form.link.data)
         currentJD.nombre = nombre
         currentJD.apellido = apellido
         currentJD.cargo = cargo
@@ -258,8 +317,22 @@ def updateJD(idPersona):
         currentJD.link = link
         db.session.add(currentJD)
         db.session.commit()
-        return redirect(url_for("admin.dashboard", form=form, user=user, idPersona=idPersona, currentJD=currentJD))
-    return render_template("admin/JD/updateJD.html", form=form, user=user, idPersona=idPersona, currentJD=currentJD)
+        return redirect(
+            url_for(
+                "admin.dashboard",
+                form=form,
+                user=user,
+                idPersona=idPersona,
+                currentJD=currentJD,
+            )
+        )
+    return render_template(
+        "admin/JD/updateJD.html",
+        form=form,
+        user=user,
+        idPersona=idPersona,
+        currentJD=currentJD,
+    )
 
 
 @admin.route("/downgrade/user/<int:idVoluntario>")
@@ -272,9 +345,9 @@ def hacerVoluntario(idVoluntario):
     telefono = selectedUser.telefono
     carrera = selectedUser.carrera
     anno = selectedUser.anno
-    departamento="NA"
-    cargo="NA"
-    
+    departamento = "NA"
+    cargo = "NA"
+
     selectedUser.correo = correo
     selectedUser.contrasenna = contrasenna
     selectedUser.nombre = nombre
@@ -295,12 +368,14 @@ def deleteJD(idPersona):
     db.session.commit()
     return redirect(url_for("admin.dashboard", idPersona=idPersona))
 
+
 @admin.route("/delete/actividad/<int:idActividad>")
 def deleteActividad(idActividad):
     Actividades.query.filter_by(idActividad=idActividad).delete()
-    Inscripciones.query.filter_by(idActividad = idActividad).delete()
+    Inscripciones.query.filter_by(idActividad=idActividad).delete()
     db.session.commit()
     return redirect(url_for("admin.dashboard", idActividad=idActividad))
+
 
 @admin.route("/changeStatus/mensaje/<int:idContacto>")
 def changeStatusMessage(idContacto):
@@ -310,11 +385,11 @@ def changeStatusMessage(idContacto):
     apellido = selectedMessage.apellido
     telefono = selectedMessage.telefono
     mensaje = selectedMessage.mensaje
-    if selectedMessage.estado==0:
-        newStatus=1
+    if selectedMessage.estado == 0:
+        newStatus = 1
     else:
-        newStatus=0
-    
+        newStatus = 0
+
     selectedMessage.nombre = nombre
     selectedMessage.apellido = apellido
     selectedMessage.telefono = telefono
@@ -346,6 +421,7 @@ def download_excel():
     else:
         return "Hubo un error procesando los datos"
 
+
 def generate_link_reset_password(id, correo_init):
     cryptography_tool = CryptographyToken()
     return f"/reset/password/{cryptography_tool.encrypt_token(id)}/{cryptography_tool.encrypt_token(correo_init)}"
@@ -355,4 +431,3 @@ def generate_link_reset_password(id, correo_init):
 def generate_link(id, correo):
     link = generate_link_reset_password(id, correo)
     return render_template("admin/reset_link.html", user=current_user, link=link)
-

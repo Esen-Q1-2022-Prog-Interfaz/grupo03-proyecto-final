@@ -23,7 +23,10 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def home():
+
+
     img_random = get_random_images_list()
+
     fotos_data = {
         i: Photo(
             url=STRING_SHARING + "=" + i,
@@ -31,6 +34,7 @@ def home():
         )
         for i in img_random
     }
+    print(fotos_data)
 
     next_act = {
         i: PhotoNext(STRING_SHARING + "=" + i, f"No se {i}", 0) for i in img_random

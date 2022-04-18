@@ -58,6 +58,7 @@ class FormUpdateActivity(FlaskForm):
     
     fechaInicio = DateField(
         "Fecha de inicio",
+         format='%Y-%m-%d',
         validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa la fecha de inicio"},
     )
@@ -65,6 +66,7 @@ class FormUpdateActivity(FlaskForm):
 # En las fechas podemos implementar un datepicker en el html para evitar que pongan la fecha con mal formato
     fechaFinal = DateField(
         "Fecha de finalización",
+         format='%Y-%m-%d',
         validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa la fecha de finalización"},
     )
