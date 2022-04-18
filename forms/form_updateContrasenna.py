@@ -5,7 +5,7 @@ from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
 
 class FormContrasenna(FlaskForm):
     correo = EmailField(
-        "Escribe tu mail",
+        "Escribe tu correo",
         validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa tu correo"},
     )
@@ -25,4 +25,4 @@ class FormContrasenna(FlaskForm):
         render_kw={"placeholder": "Ingresa de nuevo tu contraseña"},
     )
 
-    submit = SubmitField("Enviar")
+    submit = SubmitField("Modificar")

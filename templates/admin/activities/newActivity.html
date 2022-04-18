@@ -3,22 +3,17 @@
 <h1>New Activity</h1>
 
 
-<div class="contact-container">
+<div class="newAct-container">
   <div class="inicio">
     <div class="box1">
-      <div class="contact-text">
+      <div class="newAct-text">
         
         <h1>Nueva Actividad</h1>
-        
-
-
+      
       </div>
     </div>
   </div>
 </div>
-
-
-
 
 <div class="container" id="center-items">
 
@@ -26,7 +21,9 @@
     {{ form.hidden_tag() }}
 
   <div class="form-container">
+    
     <div>
+    
     <div class="row">
       <div class="col-25">
         {{ form.descripcion.label }}
@@ -63,14 +60,18 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-25">
-          {{ form.tipoHoras.label }}
-        </div>
-        <div class="col-75">
-          {{ form.tipoHoras }}
-        </div>
+    <div class="row">
+      <div class="col-25">
+        {{ form.tipoHoras.label }}
       </div>
+      <div class="col-75">
+        {{ form.tipoHoras }}
+      </div>
+    </div>
+
+    </div>
+
+    <div>
 
       <div class="row">
         <div class="col-25">
@@ -107,8 +108,10 @@
           {{ form.cuposTotales }}
         </div>
       </div>
-    </div>
 
+    </div>
+    
+  </div>
     
   </div>
 

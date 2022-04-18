@@ -56,3 +56,54 @@
     background-color: #4CAF50;
     color: white;
   }
+
+/* nueva actividad ------------------------------------------------------ */
+
+.newAct-container {
+  width: 100%;
+  height: 40vh;
+  background-image: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)), url(../../static/media/guantes-y-planta.jpg);
+  background-size: cover;
+}
+
+.inicio {
+  text-align: center;
+  padding-top: 250px;
+}
+.newAct-text {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.newAct-text h1 {
+  font-size: 70px;
+  color: white;
+}
+
+input[type=text],input[type=date],input[type=number], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #8ab9bb;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #2e7072;
+}
+
+
