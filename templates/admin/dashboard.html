@@ -67,7 +67,7 @@
                         <td>{{ miembroJD.correo }}</td>
                         <td>{{ miembroJD.link }}</td>
                         <td><a href="{{ url_for('admin.deleteJD' , idPersona=miembroJD.idPersona) }}">Eliminar</a></td>
-                        <td><a href="">Modificar</a></td>
+                        <td><a href="{{ url_for('admin.updateJD' , idPersona=miembroJD.idPersona) }}">Modificar</a></td>
                     </tr>
                 {% endfor %}
                 </table>
@@ -94,11 +94,29 @@
                     <td>{{ins.idInscripcion}}</td>
                     <td>{{ins.idVoluntario}}</td>
                     <td>{{ins.idActividad}}</td>
-                    <td>{{ins.estadoAsistencia}}</td>
-                    <td>{{ins.estadoPago}}</td>
+                    {% if ins.estadoAsistencia == 1 %}
+                        <td>Asistió</td>
+                    {% elif ins.estadoAsistencia == 2 %}
+                        <td>No Asistió</td>
+                    {% elif ins.estadoAsistencia == 3 %}
+                        <td>Canceló</td>
+                    {% endif %}
+                    {% if ins.estadoPago == 1 %}
+                        <td>Pagado</td>
+                    {% elif ins.estadoPago == 2 %}
+                        <td>No Pagado</td>
+                    {% elif ins.estadoPago == 3 %}
+                        <td>No Aplica</td>
+                    {% endif %}
                     <td>{{ins.cantidadKg}}</td>
                     <td>{{ins.horasTotales}}</td>
-                    <td>{{ins.evidencia}}</td>
+                    {% if ins.evidencia == 1 %}
+                        <td>Enviada</td>
+                    {% elif ins.evidencia == 2 %}
+                        <td>No Enviada</td>
+                    {% elif ins.evidencia == 3 %}
+                        <td>No Aplica</td>
+                    {% endif %}
                     <td><a href="">Eliminar</a></td>
                     <td><a href="">Modificar</a></td>
                 </tr>
@@ -133,24 +151,44 @@
                     <th>Eliminar</th>
                     <th>Modificar</th>
                 </tr>
-                {% for act in ActividadesFull%}
-                    <tr class="">
-                        <td>{{act.idActividad}}</td>
-                        <td>{{act.descripcion}}</td>
-                        <td>{{act.nombreActividad}}</td>
-                        <td>{{act.tipoActividad}}</td>
-                        <td>{{act.lugarActividad}}</td>
-                        <td>{{act.tipoHoras}}</td>
-                        <td>{{act.fechaInicio}}</td>
-                        <td>{{act.fechaFinal}}</td>
-                        <td>{{act.horasSociales}}</td>
-                        <td>{{act.cuposTotales}}</td>
-                        <td>{{act.estado}}</td>
-                        <td><a href="{{ url_for('admin.deleteActividad' , idActividad=act.idActividad) }}">Eliminar</a></td>
-                        <td><a href="">Modificar</a></td>
-                    </tr>
+                {% for act in ActividadesFull %}
+                <tr class="">
+                    <td>{{act.idActividad}}</td>
+                    <td>{{act.descripcion}}</td>
+                    <td>{{act.nombreActividad}}</td>
+                    {% if act.tipoActividad == 1 %}
+                        <td>Limpieza</td>
+                    {% elif act.tipoActividad == 2 %}
+                        <td>Reciclaje</td>
+                    {% elif act.tipoActividad == 3 %}
+                        <td>Charlas</td>
+                    {% else %}
+                        <td>Otro tipo</td>
+                    {% endif %}
+                    <td>{{act.lugarActividad}}</td>
+                    {% if act.tipoHoras == 1 %}
+                        <td>Medioambientales</td>
+                    {% elif act.tipoHoras == 2 %}
+                        <td>Normales</td>
+                    {% elif act.tipoHoras == 3 %}
+                        <td>Administrativas</td>
+                    {% endif %}
+                    <td>{{act.fechaInicio}}</td>
+                    <td>{{act.fechaFinal}}</td>
+                    <td>{{act.horasSociales}}</td>
+                    <td>{{act.cuposTotales}}</td>
+                    {% if act.estado == 0 %}
+                        <td>Cancelada</td>
+                    {% elif act.estado == 1 %}
+                        <td>Terminada</td>
+                    {% elif act.estado == 2 %}
+                        <td>En progreso</td>
+                    {% endif %}
+                    <td><a href="{{ url_for('admin.deleteActividad' , idActividad=act.idActividad) }}">Eliminar</a></td>
+                    <td><a href="{{ url_for('admin.updateActivity' , idActividad=act.idActividad) }}">Modificar</a></td>
+                </tr>
                 {% endfor %}
-            </table>
+                            </table>
         </div>
 
 

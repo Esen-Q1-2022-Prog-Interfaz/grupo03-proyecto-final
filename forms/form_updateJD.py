@@ -35,4 +35,4 @@ class FormUpdateJD(FlaskForm):
         render_kw={"placeholder": "Ingresa el link de la foto"},
     )
 
-    submit = SubmitField("Enviar")
+    submit = SubmitField("Modificar")

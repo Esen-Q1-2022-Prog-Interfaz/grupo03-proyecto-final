@@ -1,33 +1,38 @@
-{% extends './admin/baseAdmin.html' %} {% block title %}New Activity{% endblock %}
+{% extends './admin/baseAdmin.html' %} {% block title %}Update Activity{% endblock %}
 {%block contents %}
-<h1>New Activity</h1>
+<h1>Update Activity</h1>
 
 
-<div class="contact-container">
+<div class="newAct-container">
   <div class="inicio">
     <div class="box1">
-      <div class="contact-text">
+      <div class="newAct-text">
         
-        <h1>Nueva Actividad</h1>
-      
+        <h1>Actualizar Actividad</h1>
+        
+
+
       </div>
     </div>
   </div>
 </div>
 
+
 <div class="container" id="center-items">
 
-  <form id="form-addActivity" action="{{ url_for('admin.addActivity') }}" method="post">
+  <form id="form-addActivity" action="{{ url_for('admin.updateActivity', idActividad=idActividad) }}" method="post">
     {{ form.hidden_tag() }}
 
   <div class="form-container">
+
     <div>
+
     <div class="row">
       <div class="col-25">
         {{ form.descripcion.label }}
       </div>
       <div class="col-75">
-        {{ form.descripcion }}
+        {{ form.descripcion(value=currentActividad.descripcion) }}
       </div>
     </div>
 
@@ -36,7 +41,7 @@
         {{ form.nombre.label }}
       </div>
       <div class="col-75">
-        {{ form.nombre }}
+        {{ form.nombre(value=currentActividad.nombreActividad) }}
       </div>
     </div>
 
@@ -45,7 +50,7 @@
         {{ form.tipoActividad.label }}
       </div>
       <div class="col-75">
-        {{ form.tipoActividad }}
+        {{ form.tipoActividad(value=currentActividad.tipoActividad) }}
       </div>
     </div>
 
@@ -54,7 +59,7 @@
           {{ form.lugarActividad.label }}
         </div>
         <div class="col-75">
-          {{ form.lugarActividad }}
+          {{ form.lugarActividad(value=currentActividad.lugarActividad) }}
         </div>
       </div>
 
@@ -63,16 +68,20 @@
           {{ form.tipoHoras.label }}
         </div>
         <div class="col-75">
-          {{ form.tipoHoras }}
+          {{ form.tipoHoras(value=currentActividad.tipoHoras) }}
         </div>
-      </div>
+
+
+    </div>
+
+    <div>
 
       <div class="row">
         <div class="col-25">
           {{ form.fechaInicio.label }}
         </div>
         <div class="col-75">
-          {{ form.fechaInicio }}
+          {{ form.fechaInicio(value=currentActividad.fechaInicio) }}
         </div>
       </div>
 
@@ -81,7 +90,7 @@
           {{ form.fechaFinal.label }}
         </div>
         <div class="col-75">
-          {{ form.fechaFinal }}
+          {{ form.fechaFinal(value=currentActividad.fechaFinal) }}
         </div>
       </div>
 
@@ -90,7 +99,7 @@
           {{ form.horasSociales.label }}
         </div>
         <div class="col-75">
-          {{ form.horasSociales }}
+          {{ form.horasSociales(value=currentActividad.horasSociales) }}
         </div>
       </div>
 
@@ -99,12 +108,23 @@
           {{ form.cuposTotales.label }}
         </div>
         <div class="col-75">
-          {{ form.cuposTotales }}
+          {{ form.cuposTotales(value=currentActividad.cuposTotales) }}
         </div>
       </div>
-    </div>
 
+      <div class="row">
+        <div class="col-25">
+          {{ form.Estado.label }}
+        </div>
+        <div class="col-75">
+          {{ form.Estado(value=currentActividad.Estado) }}
+        </div>
+      </div>
+
+    </div>
     
+  </div>
+
   </div>
 
   <br>

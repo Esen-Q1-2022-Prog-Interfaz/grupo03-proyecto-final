@@ -24,15 +24,15 @@ class FormAddJD(FlaskForm):
     )
 
     correo = StringField(
-        "correo",
+        "Correo",
         validators=[InputRequired(), Length(min=3, max=20)],
         render_kw={"placeholder": "Ingresa el correo"},
     )
     
     link = StringField(
-        "link",
+        "Link",
         validators=[InputRequired(), Length(min=3, max=1000)],
         render_kw={"placeholder": "Ingresa el link: https://drive.google.com/file/d/.../view"},
     )
 
-    submit = SubmitField("Enviar")
+    submit = SubmitField("Agregar")

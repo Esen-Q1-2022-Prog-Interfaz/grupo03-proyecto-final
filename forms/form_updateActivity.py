@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import InputRequired, Length
-from wtforms.fields import StringField, SubmitField, SelectField, PasswordField, IntegerField
+from wtforms.fields import StringField, SubmitField, SelectField, PasswordField, IntegerField, DateField
 
 
 TipoActividad=[
@@ -56,28 +56,28 @@ class FormUpdateActivity(FlaskForm):
         render_kw={"placeholder":"Ingresa el tipo de horas de la actividad"}
     )
     
-    fechaInicio = IntegerField(
+    fechaInicio = DateField(
         "Horas Sociales",
-        validators=[InputRequired(), Length(min=3, max=20)],
-        render_kw={"placeholder": "Ingresa las horas sociales asistencia o por kilo, según aplique"},
+        validators=[InputRequired()],
+        render_kw={"placeholder": "Ingresa lafecha de inicio"},
     )
 
 # En las fechas podemos implementar un datepicker en el html para evitar que pongan la fecha con mal formato
-    fechaFinal = IntegerField(
+    fechaFinal = DateField(
         "Fecha de fin",
-        validators=[InputRequired(), Length(min=3, max=20)],
+        validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa la fecha de finalización"},
     )
     
     horasSociales = IntegerField(
         "Horas Sociales",
-        validators=[InputRequired(), Length(min=3, max=20)],
+        validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa las horas sociales asistencia o por kilo, según aplique"},
     )
     
     cuposTotales = IntegerField(
         "Cupos totales",
-        validators=[InputRequired(), Length(min=3, max=20)],
+        validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa los cupos totales para la actividad"},
     )
     
