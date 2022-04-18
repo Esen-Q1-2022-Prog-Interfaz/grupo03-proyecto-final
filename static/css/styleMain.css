@@ -459,7 +459,12 @@ img {
     font-size: 45px;
 }
 
+.center-contacts {
+    align-content: center;
+}
+
 .bloque_miembros{
+    align-items: center;
     margin: 50px 100px 50px 100px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -632,10 +637,7 @@ color: white;
 
 .content h1 {
     text-align: left;
-    color: #2e7072;
-}
-
-.content h1 {
+    color: #a2432b;
     font-size: 3.5rem;
 }
 
@@ -647,9 +649,22 @@ color: white;
 }
 
 .btn-actividad {
-    width:auto;
     text-align: right;
 }
+
+.btn-act {
+    width: 150px;
+    font-size: 1.15rem;
+}
+
+.content-act h1 {
+    font-size: 3rem;
+}
+.content-act p {
+    font-size: 1.25rem;
+    padding-top: 25px;
+}
+
 
 /* CONTACTO */
 
