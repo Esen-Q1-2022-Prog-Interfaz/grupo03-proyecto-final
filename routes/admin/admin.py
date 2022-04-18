@@ -6,9 +6,6 @@ from flask import Blueprint, send_file, session
 from db.make_excel import create_excel, delete_if_exist
 from models.usuarios import Usuarios
 from db.db import db
-from datetime import datetime
-from random import randint
-from models.datos import Datos
 from forms.form_addJD import FormAddJD
 from forms.form_updateActivity import FormUpdateActivity
 from forms.form_updateJD import FormUpdateJD
@@ -32,9 +29,6 @@ admin = Blueprint("admin", __name__, url_prefix="/admin")
 
 @admin.route("/")
 def home():
-    if "path_excel" in session:
-        delete_if_exist(session["path_excel"])
-
     img_random = get_random_images_list()
     
     fotos_data = {
@@ -301,15 +295,14 @@ def hacerVoluntario(idVoluntario):
 
 @admin.route("/delete/junta/<int:idPersona>")
 def deleteJD(idPersona):
-    selectedUserJD = JuntaDirectiva.query.filter_by(idPersona=idPersona).first()
-    db.session.delete(selectedUserJD)
+    JuntaDirectiva.query.filter_by(idPersona=idPersona).delete()
     db.session.commit()
     return redirect(url_for("admin.dashboard", idPersona=idPersona))
 
 @admin.route("/delete/actividad/<int:idActividad>")
 def deleteActividad(idActividad):
-    selectedActividad = Actividades.query.filter_by(idActividad=idActividad).first()
-    db.session.delete(selectedActividad)
+    Actividades.query.filter_by(idActividad=idActividad).delete()
+    Inscripciones.query.filter_by(idActividad = idActividad).delete()
     db.session.commit()
     return redirect(url_for("admin.dashboard", idActividad=idActividad))
 
@@ -338,7 +331,7 @@ def changeStatusMessage(idContacto):
 
 @admin.route("/delete/mensaje/<int:idContacto>")
 def deleteMessage(idContacto):
-    selectedMessage = Contactanos.query.filter_by(idContacto=idContacto).first()
+    selectedMessage = Contactanos.query.get(idContacto)
     db.session.delete(selectedMessage)
     db.session.commit()
     return redirect(url_for("admin.dashboard", idContacto=idContacto))
@@ -346,6 +339,9 @@ def deleteMessage(idContacto):
 
 @admin.route("/download")
 def download_excel():
+    if "path_excel" in session:
+        delete_if_exist(session["path_excel"])
+
     data = get_view_registro_academico()
     path = create_excel(data)
     if path:

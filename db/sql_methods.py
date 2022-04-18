@@ -28,25 +28,27 @@ def get_view_registro_academico() -> list[VistaRegistro]:
 
 
 def get_view_registro_academico_per_act(idActividad: int):
-    query = (
-        db.session.query(
+    query = db.session.query(
             # Campos a ser seleccionados
             Usuarios.correo,
             Usuarios.nombre,
             Usuarios.apellido,
+            # cosas de actividad
             Actividades.nombreActividad,
             Actividades.tipoHoras,
             Actividades.tipoActividad,
+            Actividades.horasSociales,
             Actividades.lugarActividad,
+            Actividades.fechaFinal,
+            Actividades.fechaInicio,
+            # Condicionales
+            Actividades.estado,
             Inscripciones.cantidadKg,
             Inscripciones.evidencia,
             Inscripciones.estadoPago,
             Inscripciones.estadoAsistencia,
-        )
-        .filter(Actividades.idActividad == idActividad)
-        .all()
-    )  # type: ignore
+        ).filter(Actividades.idActividad == idActividad).all()   # type: ignore
 
-    print(query)
-    for i in query:
-        print(i.nombreActividad)
+    return VistaRegistro.clean_query(query)
+    
+
