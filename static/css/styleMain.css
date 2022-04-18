@@ -428,7 +428,7 @@ img {
     height: 500px;
 }
 .picture-box {
-    background-image: url(../../static/media/fotox.jpg);
+    background-image: url(../../static/media/miembros.png);
     background-color: whitesmoke;
     background-size: cover;
     padding:150px;
@@ -436,12 +436,12 @@ img {
     height: 500px;
 }
 .picture-box2 {
-    background-image: url(../../static/media/background-tree.jpg);
+    background-image: url(../../static/media/LogoColores.png);
     background-color: whitesmoke;
     background-size: cover;
     padding:150px;
     width: 50%;
-    height: 500px;
+    height: 600px;
 }
 
 .text-quienes-somos {
