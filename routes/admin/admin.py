@@ -31,9 +31,18 @@ datetime.today().isoformat()
 admin = Blueprint("admin", __name__, url_prefix="/admin")
 
 images_random_ids = [
-    "1MgiiLYn9wPtCEN5hBHwvJejEhFt_R10X",
-    "16mHFP9gq-McNvphRBZbYM5QYwGHteabx",
-    "1pF6jyqFSYLXOvFWxL9wLdehLPUym2qOV"
+    "1jMXR6Z8hcaefNpy0onfj02DxXoUaH07t",
+    "1j3WSIKdk6oxB9pQGzHFU0DBDKZ4X41MD",
+    "1V1ICCns-Lmb3hSHEICAnARB8g9elsoi-",
+    "1Xbks6kNge06OAKOIGRQjbV1Fc5szm3XW",
+    "14cWoHbhQ6nEJAC-nESZqltBLBuoSfsU9",
+    "1Eb_0sjjEPADUGN8LPvja95NSP1u5rj2j",
+    "1Ir7qmxQv7Ovg0PiDwDUGJwHj8PGdRKQf",
+    "1NtXst6YtFsKtehB1bMARJ2nmk9OfGR3Q",
+    "1VC4iwmzidL0hAPvzi8EAiJxCE6uau7En",
+    "1rIgoOXYfc0v3sRB7dOujhqU4V4tTBHUH",
+    "1BIhJNBvecOy6iaXe1I1IrKLfdCr5OhcX",
+    "1O1sJdclVCmPBucSo7qpD7wEk-HYKxkPz"
 ]
 
 STRING_SHARING = "https://drive.google.com/uc?id"
