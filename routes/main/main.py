@@ -8,10 +8,10 @@ from forms.form_updateContrasenna import FormContrasenna
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
-from forms.form_addJD import FormAddJD
-from forms.form_updateActivity import FormUpdateActivity
-from forms.form_updateJD import FormUpdateJD
-from forms.form_addActividad import FormAddActivity
+# from forms.form_addJD import FormAddJD
+# from forms.form_updateActivity import FormUpdateActivity
+# from forms.form_updateJD import FormUpdateJD
+# from forms.form_addActividad import FormAddActivity
 from models.datos import Datos
 from models.inscripciones import Inscripciones
 from utils_app.bcrypt import bcrypt
@@ -86,14 +86,14 @@ def about():
 @main.route("/activities")
 def activities():
     activitiesList = Actividades.query.all()
-    ins_act = db.session.query(Actividades.idActividad).join(Inscripciones).join(Usuarios).filter(Inscripciones.idVoluntario == current_user.idVoluntario).all() if current_user.is_authenticated else []
+    ins_act = db.session.query(Actividades.idActividad).join(Inscripciones).join(Usuarios).filter(Inscripciones.idVoluntario == current_user.idVoluntario).all() if current_user.is_authenticated else [] # type: ignore
     inscrip_acti = [act.idActividad for act in ins_act]
     return render_template("main/activities.html", activitiesList=activitiesList, user=current_user, ins_act=inscrip_acti)
 
 @main.route("/activities/inscripcion/<string:idActividad>", methods=["GET", "POST"])
 @login_required
 def inscripcion(idActividad):
-    idVoluntario=current_user.idVoluntario
+    idVoluntario=current_user.idVoluntario # type: ignore
     estadoAsistencia=1
     estadoPago=2
     cantidadKg=0
@@ -173,7 +173,7 @@ def register():
 def profile():
     actividades_dict = {}
     ins_act = []
-    inscripciones = Inscripciones.query.filter_by(idVoluntario=current_user.idVoluntario).all()
+    inscripciones = Inscripciones.query.filter_by(idVoluntario=current_user.idVoluntario).all() # type: ignore
     for ins in inscripciones:
         if ins.idActividad not in actividades_dict:
             activity = Actividades.query.get(ins.idActividad)

@@ -19,7 +19,7 @@ class Actividades(db.Model):  # type: ignore
 
     # Campos tabla
     idActividad = db.Column(db.Integer, primary_key=True)
-    descripcion = db.Column(db.String(5000), nullable=False)
+    descripcion = db.Column(db.String(500), nullable=False)
     nombreActividad = db.Column(db.String(50), nullable=False)
     tipoActividad = db.Column(db.Integer, nullable=False)
     lugarActividad = db.Column(db.String(200), nullable=False)

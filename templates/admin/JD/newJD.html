@@ -1,6 +1,6 @@
-{% extends './admin/baseAdmin.html' %} {% block title %}New Activity{% endblock %}
+{% extends './admin/baseAdmin.html' %} {% block title %}Nuevo miembro{% endblock %}
 {%block contents %}
-<h1>New Activity</h1>
+<h1>Nuevo miembro</h1>
 
 
 <div class="contact-container">
@@ -8,7 +8,7 @@
     <div class="box1">
       <div class="contact-text">
         
-        <h1>Nueva Actividad</h1>
+        <h1>Nuevo miembro</h1>
         
 
 
@@ -61,13 +61,27 @@
           {{ form.correo }}
         </div>
       </div>
-
+ 
       <div class="row">
         <div class="col-25">
           {{ form.link.label }}
         </div>
         <div class="col-75">
-          {{ form.link }}
+          {{ form.link(id="link-image-id") }}
+          <img id="preview-link" src="" alt="image-preview">
+          <script>
+            function previewImage(event) {
+              event.preventDefault();
+              const sharing_link = "https://drive.google.com/uc?id="; 
+              const image = document.getElementById("preview-link");
+              const inputText = document.getElementById("link-image-id");
+              const link = inputText.value
+              const idLinkDrive = link.replace("/view", "").replace("https://drive.google.com/file/d/", "")
+              image.src = sharing_link + idLinkDrive; 
+            }
+          </script>
+    
+          <button onclick="previewImage(event)">Ver imagen</button>
         </div>
       </div>
     
