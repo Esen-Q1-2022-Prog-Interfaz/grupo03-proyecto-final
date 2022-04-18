@@ -25,19 +25,19 @@
             <div class="left3"></div>
             {% endif %}            
             <div class="right">
-                <div id="{{activity.idActividad}}">
+                <div  class="content-act" id="{{activity.idActividad}}">
                     <h1>{{activity.nombreActividad}}</h1>
                     <p>{{activity.descripcion}}</p>
                     <p>Numero de cuposs: {{activity.cuposTotales}} </p><br><br>
                         {% if activity.idActividad in ins_act  %}
                             <div class="btn-actividad">
-                                <button>
+                                <button class="btn-act">
                                     Inscrito
                                 </button>
                             </div>    
                         {% else %}
                             <a class="btn-actividad" href="{{ url_for('main.inscripcion', idActividad=activity.idActividad) }}">
-                                <button>
+                                <button class="btn-act">
                                     Inscribirse
                                 </button>
                             </a>

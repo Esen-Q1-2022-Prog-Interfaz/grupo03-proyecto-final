@@ -1,7 +1,8 @@
 {% extends './main/baseMain.html' %} {% block title %}¿Quiénes somos?{% endblock
   %} {% block contents %}
   
-  <div class="fixed-alignment">  
+  <div class="fixed-alignment"> 
+    
     <div class="text-box">
       <div class="text-quienes-somos">
         <h1>¿Quiénes somos?</h1>
@@ -13,8 +14,27 @@
         </p>
       </div>
     </div>
+
     <div class=picture-box></div>
   </div>
+  <div class="fixed-alignment"> 
+    
+    <div class=picture-box2></div>
+
+    <div class="text-box">
+      <div class="text-quienes-somos">
+        <h1>Nuestra historia</h1>
+        <br>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni iste ea minus dolorum voluptatibus aliquam. Sequi, vel! Tenetur illum quaerat, optio voluptate quas ab. Expedita nisi atque recusandae soluta dicta.  
+        </p>
+      </div>
+    </div>
+
+    
+  </div>
+
+
   
   <div class="">
       <div class="mision-cover"></div>
@@ -49,6 +69,7 @@
   
   <h2 id="junta-titulo">Conoce a nuestro equipo</h2><br />
   
+  <div class="center-contacts">
   <div class="bloque_miembros">
     {% for person in JDList %}
     <div class="caja_ref">
@@ -61,6 +82,7 @@
       </p>
     </div>
     {% endfor %}
+  </div>
   </div>
 
 
