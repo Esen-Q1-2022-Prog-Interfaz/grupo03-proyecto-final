@@ -218,9 +218,7 @@ def updateActivity(idActividad):
         db.session.add(currentActividad)
         db.session.commit()
         return redirect(url_for("admin.dashboard", form=form, user=user, currentActividad=currentActividad, idActividad=idActividad))
-    # form.descripcion.data=currentActividad.dewscric
     return render_template("admin/activities/updateActivity.html", form=form, user=user, currentActividad=currentActividad, idActividad=idActividad)
-
 
 @admin.route("/NewJD", methods=["POST", "GET"])
 def addJD():
