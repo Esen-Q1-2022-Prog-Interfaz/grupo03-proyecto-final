@@ -22,93 +22,68 @@
 
 <div class="container" id="center-items">
 
-  <form id="form-addActivity" action="{{ url_for('admin.addActivity') }}" method="post">
+  <form id="form-addActivity" action="{{ url_for('admin.updateJD', idPersona=idPersona) }}" method="post">
     {{ form.hidden_tag() }}
 
-  <div class="form-container">
-    <div>
-    <div class="row">
-      <div class="col-25">
-        {{ form.descripcion.label }}
-      </div>
-      <div class="col-75">
-        {{ form.descripcion }}
-      </div>
-    </div>
 
     <div class="row">
       <div class="col-25">
         {{ form.nombre.label }}
       </div>
       <div class="col-75">
-        {{ form.nombre }}
+        {{ form.nombre(value=currentJD.nombre) }}
       </div>
     </div>
 
     <div class="row">
       <div class="col-25">
-        {{ form.tipoActividad.label }}
+        {{ form.apellido.label }}
       </div>
       <div class="col-75">
-        {{ form.tipoActividad }}
+        {{ form.apellido(value=currentJD.apellido) }}
       </div>
     </div>
 
     <div class="row">
         <div class="col-25">
-          {{ form.lugarActividad.label }}
+          {{ form.cargo.label }}
         </div>
         <div class="col-75">
-          {{ form.lugarActividad }}
+          {{ form.cargo(value=currentJD.cargo) }}
         </div>
       </div>
 
       <div class="row">
         <div class="col-25">
-          {{ form.tipoHoras.label }}
+          {{ form.correo.label }}
         </div>
         <div class="col-75">
-          {{ form.tipoHoras }}
+          {{ form.correo(value=currentJD.correo) }}
         </div>
       </div>
-
+ 
       <div class="row">
         <div class="col-25">
-          {{ form.fechaInicio.label }}
+          {{ form.link.label }}
         </div>
         <div class="col-75">
-          {{ form.fechaInicio }}
+          {{ form.link(id="link-image-id", value=currentJD.link) }}
+          <img id="preview-link" src="" alt="image-preview">
+          <script>
+            function previewImage(event) {
+              event.preventDefault();
+              const sharing_link = "https://drive.google.com/uc?id="; 
+              const image = document.getElementById("preview-link");
+              const inputText = document.getElementById("link-image-id");
+              const link = inputText.value
+              const idLinkDrive = link.replace("/view", "").replace("https://drive.google.com/file/d/", "")
+              image.src = sharing_link + idLinkDrive; 
+            }
+          </script>
+    
+          <button onclick="previewImage(event)">Ver imagen</button>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-25">
-          {{ form.fechaFinal.label }}
-        </div>
-        <div class="col-75">
-          {{ form.fechaFinal }}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-25">
-          {{ form.horasSociales.label }}
-        </div>
-        <div class="col-75">
-          {{ form.horasSociales }}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-25">
-          {{ form.cuposTotales.label }}
-        </div>
-        <div class="col-75">
-          {{ form.cuposTotales }}
-        </div>
-      </div>
-    </div>
-
     
   </div>
 
@@ -120,6 +95,5 @@
 
   </form>
 </div>
-
 
 {% endblock %}

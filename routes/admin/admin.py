@@ -194,10 +194,11 @@ def addActivity():
         return redirect(url_for("admin.dashboard"))
     return render_template("admin/activities/newActivity.html", form=form, user=user)
 
-@admin.route("/updateActivity", methods=["POST", "GET"])
-def updateActivity():
-    user=current_user
-    form  = FormAddActivity()
+@admin.route("/updateActivity/<int:idActividad>", methods=["POST", "GET"])
+def updateActivity(idActividad):
+    user = current_user
+    currentActividad = Actividades.query.filter_by(idActividad=idActividad).first()
+    form  = FormUpdateActivity(actividades=currentActividad)
     if form.validate_on_submit():
         descripcion = form.descripcion.data
         nombre = form.nombre.data
@@ -208,24 +209,22 @@ def updateActivity():
         fechaFinal = form.fechaFinal.data
         horasSociales = form.horasSociales.data
         cuposTotales = form.cuposTotales.data
-        estado = 1
-        newAct = Actividades(
-            descripcion,
-            nombre,
-            tipoActividad, 
-            lugarActividad,
-            tipoHoras,
-            fechaInicio,
-            fechaFinal,
-            horasSociales,
-            cuposTotales,
-            estado,
-            )
-        db.session.add(newAct)
+        Estado = form.Estado.data
+        
+        currentActividad.descripcion = descripcion
+        currentActividad.nombre = nombre
+        currentActividad.tipoActividad = tipoActividad
+        currentActividad.lugarActividad = lugarActividad
+        currentActividad.tipoHoras = tipoHoras
+        currentActividad.fechaInicio = fechaInicio
+        currentActividad.fechaFinal = fechaFinal
+        currentActividad.horasSociales = horasSociales
+        currentActividad.cuposTotales = cuposTotales
+        currentActividad.Estado = Estado
+        db.session.add(currentActividad)
         db.session.commit()
-        return redirect(url_for("admin.dashboard"))
-    return render_template("admin/activities/updateActivity.html", form=form, user=user)
-
+        return redirect(url_for("admin.dashboard", form=form, user=user, currentActividad=currentActividad, idActividad=idActividad))
+    return render_template("admin/activities/updateActivity.html", form=form, user=user, currentActividad=currentActividad, idActividad=idActividad)
 
 
 @admin.route("/NewJD", methods=["POST", "GET"])
@@ -249,6 +248,29 @@ def addJD():
         db.session.commit()
         return redirect(url_for("admin.dashboard"))
     return render_template("admin/JD/newJD.html", form=form, user=user)
+
+
+
+@admin.route("/updateJD/<int:idPersona>", methods=["POST", "GET"])
+def updateJD(idPersona):
+    user = current_user
+    currentJD = JuntaDirectiva.query.filter_by(idPersona=idPersona).first()
+    form  = FormUpdateJD(juntadirectiva=currentJD)
+    if form.validate_on_submit():
+        nombre = form.nombre.data
+        apellido = form.apellido.data
+        cargo = form.cargo.data
+        correo = form.correo.data
+        link = STRING_SHARING +  "=" + get_image_id_from_link(form.link.data)
+        currentJD.nombre = nombre
+        currentJD.apellido = apellido
+        currentJD.cargo = cargo
+        currentJD.correo = correo
+        currentJD.link = link
+        db.session.add(currentJD)
+        db.session.commit()
+        return redirect(url_for("admin.dashboard", form=form, user=user, idPersona=idPersona, currentJD=currentJD))
+    return render_template("admin/JD/updateJD.html", form=form, user=user, idPersona=idPersona, currentJD=currentJD)
 
 
 @admin.route("/downgrade/user/<int:idVoluntario>")
