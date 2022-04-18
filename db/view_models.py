@@ -66,7 +66,6 @@ class VistaRegistro:
             carnet = correo_.removesuffix("@esen.edu.sv")
         return carnet
 
-
     def __repr__(self) -> str:
         return f"""
         VistaReistro(

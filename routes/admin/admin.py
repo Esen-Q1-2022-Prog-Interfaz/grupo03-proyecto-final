@@ -6,9 +6,6 @@ from flask import Blueprint, send_file, session
 from db.make_excel import create_excel, delete_if_exist
 from models.usuarios import Usuarios
 from db.db import db
-from datetime import datetime
-from random import randint
-from models.datos import Datos
 from forms.form_addJD import FormAddJD
 from forms.form_updateActivity import FormUpdateActivity
 from forms.form_updateJD import FormUpdateJD

@@ -1,4 +1,3 @@
-
 from random import randint
 import string
 
@@ -26,10 +25,7 @@ def randoString(num):
 
 
 def get_image_id_from_link(link: str) -> str:
-    id_photo = ""
-    split_string = link.replace("https://drive.google.com/", "").split("/")
-    id_photo = split_string[-2]
-    return id_photo
+    return replace("/view", "").replace("https://drive.google.com/file/d/", "")
 
 
 def get_random_images_list(images = images_random_ids):
