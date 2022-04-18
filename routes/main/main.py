@@ -142,7 +142,7 @@ def login():
 
 
 @main.route("/logout")
-def logout():
+def logout():z
     logout_user()
     return redirect(url_for("main.home"))
 
@@ -158,6 +158,8 @@ def register():
         password = form.contrasenna.data
         hashed_password = bcrypt.generate_password_hash(password)
         carrera = form.carrera.data
+        departamento="NA"
+        cargo = "NA"
         anno = [int(i) for i in list(correo)[0:4]]
         annoo = int("".join(map(str, anno)))
         print(type(annoo))
@@ -168,8 +170,8 @@ def register():
             nombre,
             apellido,
             telefono,
-            "NA",
-            "NA",
+            cargo,
+            departamento,
             carrera,
             annoo,
         )
