@@ -4,7 +4,6 @@ from wtforms.validators import InputRequired, Length
 from wtforms.fields import StringField, SubmitField, SelectField, PasswordField, IntegerField, DateField, DateTimeField
 
 
-
 # Estados=[
 #     ("1", "En progreso"),
 #     ("2", "Terminada"),
@@ -13,9 +12,9 @@ from wtforms.fields import StringField, SubmitField, SelectField, PasswordField,
 
 class FormAddActivity(FlaskForm):
     descripcion = StringField(
-        "descripcion",
+        "Descripción",
         validators=[InputRequired(), Length(min=2, max=2000)],
-        render_kw={"placeholder": "Ingresa la descripcion"},
+        render_kw={"placeholder": "Ingresa la descripción de la actividad"},
     )
 
     nombre = StringField(
@@ -25,7 +24,7 @@ class FormAddActivity(FlaskForm):
     )
 
     tipoActividad = IntegerField(
-        label="Tipo de Actividad",
+        label="Tipo de actividad",
         validators=[InputRequired()],
         render_kw={"placeholder":"Ingresa el tipo de actividad"}
     )
@@ -37,14 +36,14 @@ class FormAddActivity(FlaskForm):
     )
     
     tipoHoras = IntegerField(
-        label="Tipo de Horas",
+        label="Tipo de horas",
         validators=[InputRequired()],
         render_kw={"placeholder":"Ingresa el tipo de horas de la actividad"}
     )
     
     
     fechaInicio = DateField(
-        label= "Fecha de Inicio",
+        label= "Fecha de inicio",
         validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa la fecha de inicio"},
     )
@@ -56,7 +55,7 @@ class FormAddActivity(FlaskForm):
     )
     
     horasSociales = IntegerField(
-        "Horas Sociales",
+        "Horas sociales",
         validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa las horas sociales asistencia o por kilo, según aplique"},
     )
@@ -67,4 +66,4 @@ class FormAddActivity(FlaskForm):
         render_kw={"placeholder": "Ingresa los cupos totales para la actividad"},
     )
 
-    submit = SubmitField("Enviar")
+    submit = SubmitField("Agregar")

@@ -435,6 +435,15 @@ img {
     width: 50%;
     height: 500px;
 }
+.picture-box2 {
+    background-image: url(../../static/media/background-tree.jpg);
+    background-color: whitesmoke;
+    background-size: cover;
+    padding:150px;
+    width: 50%;
+    height: 500px;
+}
+
 .text-quienes-somos {
     text-align: left;
     font-size: 1.5rem;
@@ -459,7 +468,12 @@ img {
     font-size: 45px;
 }
 
+.center-contacts {
+    align-content: center;
+}
+
 .bloque_miembros{
+    align-items: center;
     margin: 50px 100px 50px 100px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -632,10 +646,7 @@ color: white;
 
 .content h1 {
     text-align: left;
-    color: #2e7072;
-}
-
-.content h1 {
+    color: #a2432b;
     font-size: 3.5rem;
 }
 
@@ -647,9 +658,22 @@ color: white;
 }
 
 .btn-actividad {
-    width:auto;
     text-align: right;
 }
+
+.btn-act {
+    width: 150px;
+    font-size: 1.15rem;
+}
+
+.content-act h1 {
+    font-size: 3rem;
+}
+.content-act p {
+    font-size: 1.25rem;
+    padding-top: 25px;
+}
+
 
 /* CONTACTO */
 
@@ -707,16 +731,6 @@ color: white;
     font-size: 1.5rem;
     align-items: center;
 }  
-
-
-
-
-
-
-
-
-
-
 .row {
     padding-top: 15px;
 }
@@ -736,18 +750,6 @@ color: white;
 .row input[type=submit]:hover {
     background-color: #2E7072;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .col-75 input, textarea {
     font-size: 1.25rem;
@@ -771,8 +773,8 @@ color: white;
 .iconos {
     margin: 50px;
 }
-
-input[type=text], select, textarea {
+/* Soy david agregue input[type=email] */
+input[type=text], input[type=email], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;

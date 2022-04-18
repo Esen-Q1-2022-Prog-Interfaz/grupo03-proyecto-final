@@ -92,7 +92,8 @@ class RegisterForm(FlaskForm):
             raise ValidationError("El correo ingresado no es institucional")
         elif current_mail:
             raise ValidationError("El correo ingresado ya ha sido utilizado")
-        elif not 1998 > int(correo_typed[:7]) or int(datetime.date.today().year) < int(correo_typed[:7]):
+        elif 1998 > int(correo_typed[:4]) or int(datetime.date.today().year) < int(correo_typed[:4]):
+            print(correo_typed[:4])
             raise ValidationError("El año del correo es inválido")
 
 

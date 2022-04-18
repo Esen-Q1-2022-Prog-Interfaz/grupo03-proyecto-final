@@ -32,7 +32,7 @@ class FormAddJD(FlaskForm):
     link = StringField(
         "link",
         validators=[InputRequired(), Length(min=3, max=1000)],
-        render_kw={"placeholder": "Ingresa el link de la foto"},
+        render_kw={"placeholder": "Ingresa el link: https://drive.google.com/file/d/.../view"},
     )
 
     submit = SubmitField("Enviar")
