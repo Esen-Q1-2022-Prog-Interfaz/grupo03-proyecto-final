@@ -731,16 +731,6 @@ color: white;
     font-size: 1.5rem;
     align-items: center;
 }  
-
-
-
-
-
-
-
-
-
-
 .row {
     padding-top: 15px;
 }
@@ -760,18 +750,6 @@ color: white;
 .row input[type=submit]:hover {
     background-color: #2E7072;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .col-75 input, textarea {
     font-size: 1.25rem;
