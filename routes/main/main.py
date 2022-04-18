@@ -7,11 +7,6 @@ from forms.form_updateContrasenna import FormContrasenna
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from db.utils.photos_model import Photo, PhotoNext
-
-# from forms.form_addJD import FormAddJD
-# from forms.form_updateActivity import FormUpdateActivity
-# from forms.form_updateJD import FormUpdateJD
-# from forms.form_addActividad import FormAddActivity
 from models.datos import Datos
 from models.inscripciones import Inscripciones
 from utils_app.bcrypt import bcrypt
