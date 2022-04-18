@@ -25,7 +25,7 @@ def randoString(num):
 
 
 def get_image_id_from_link(link: str) -> str:
-    return replace("/view", "").replace("https://drive.google.com/file/d/", "")
+    return link.replace("/view", "").replace("https://drive.google.com/file/d/", "")
 
 
 def get_random_images_list(images = images_random_ids):
