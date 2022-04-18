@@ -16,7 +16,7 @@ from forms.form_addActividad import FormAddActivity
 from models.actividades import Actividades
 
 # Vistas
-from db.sql_methods import get_view_inscripciones, get_view_registro_academico
+from db.sql_methods import get_view_registro_academico
 
 # Models
 from models.actividades import Actividades
