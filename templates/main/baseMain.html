@@ -117,7 +117,11 @@
             <div class="dropdown" style="float:right;">
                 <button class="dropbtn"><i class="fa-regular fa-circle-user"></i></button>
                 <div class="dropdown-content">
+                {% if user.cargo == "Admin" or user.cargo == "admin"%}
+                <a href="{{ url_for('admin.dashboard') }}">Dashboard</a>
+                {% else %}
                 <a href="{{ url_for('main.profile') }}">Perfil</a>
+                {% endif %}
                 <a href="{{ url_for('main.logout') }}">Desloguear</a> 
                 </div>
             </div> 
