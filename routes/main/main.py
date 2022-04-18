@@ -55,6 +55,7 @@ def home():
 
 @main.route("/about")
 def about():
+    print(get_view_registro_academico_per_act(3))
     JDList = JuntaDirectiva.query.all()
     return render_template("main/about.html", JDList=JDList, user=current_user)
 

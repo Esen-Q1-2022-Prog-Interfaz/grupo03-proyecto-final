@@ -277,15 +277,14 @@ def hacerVoluntario(idVoluntario):
 
 @admin.route("/delete/junta/<int:idPersona>")
 def deleteJD(idPersona):
-    selectedUserJD = JuntaDirectiva.query.filter_by(idPersona=idPersona).first()
-    db.session.delete(selectedUserJD)
+    JuntaDirectiva.query.filter_by(idPersona=idPersona).delete()
     db.session.commit()
     return redirect(url_for("admin.dashboard", idPersona=idPersona))
 
 @admin.route("/delete/actividad/<int:idActividad>")
 def deleteActividad(idActividad):
-    selectedActividad = Actividades.query.filter_by(idActividad=idActividad).first()
-    db.session.delete(selectedActividad)
+    Actividades.query.filter_by(idActividad=idActividad).delete()
+    Inscripciones.query.filter_by(idActividad = idActividad).delete()
     db.session.commit()
     return redirect(url_for("admin.dashboard", idActividad=idActividad))
 
@@ -314,7 +313,7 @@ def changeStatusMessage(idContacto):
 
 @admin.route("/delete/mensaje/<int:idContacto>")
 def deleteMessage(idContacto):
-    selectedMessage = Contactanos.query.filter_by(idContacto=idContacto).first()
+    selectedMessage = Contactanos.query.get(idContacto)
     db.session.delete(selectedMessage)
     db.session.commit()
     return redirect(url_for("admin.dashboard", idContacto=idContacto))

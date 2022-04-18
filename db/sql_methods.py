@@ -48,8 +48,7 @@ def get_view_registro_academico_per_act(idActividad: int):
             Inscripciones.estadoPago,
             Inscripciones.estadoAsistencia,
         ).filter(Actividades.idActividad == idActividad).all()   # type: ignore
+
+    return VistaRegistro.clean_query(query)
     
 
-    print(query)
-    for i in query:
-        print(i.nombreActividad)
