@@ -139,7 +139,7 @@ def login():
 
 
 @main.route("/logout")
-def logout():z
+def logout():
     logout_user()
     return redirect(url_for("main.home"))
 
