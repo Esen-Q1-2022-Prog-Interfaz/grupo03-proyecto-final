@@ -57,9 +57,9 @@ class FormUpdateActivity(FlaskForm):
     )
     
     fechaInicio = DateField(
-        "Horas Sociales",
+        "Fecha de inicio",
         validators=[InputRequired()],
-        render_kw={"placeholder": "Ingresa lafecha de inicio"},
+        render_kw={"placeholder": "Ingresa la fecha de inicio"},
     )
 
 # En las fechas podemos implementar un datepicker en el html para evitar que pongan la fecha con mal formato
