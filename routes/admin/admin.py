@@ -25,54 +25,32 @@ from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
 from utils_app.cryptography import CryptographyToken
+from utils_app.random_images import STRING_SHARING, get_image_id_from_link, get_random_images_list
 
 
 admin = Blueprint("admin", __name__, url_prefix="/admin")
-
-images_random_ids = [
-    "1jMXR6Z8hcaefNpy0onfj02DxXoUaH07t",
-    "1j3WSIKdk6oxB9pQGzHFU0DBDKZ4X41MD",
-    "1V1ICCns-Lmb3hSHEICAnARB8g9elsoi-",
-    "1Xbks6kNge06OAKOIGRQjbV1Fc5szm3XW",
-    "14cWoHbhQ6nEJAC-nESZqltBLBuoSfsU9",
-    "1Eb_0sjjEPADUGN8LPvja95NSP1u5rj2j",
-    "1Ir7qmxQv7Ovg0PiDwDUGJwHj8PGdRKQf",
-    "1NtXst6YtFsKtehB1bMARJ2nmk9OfGR3Q",
-    "1VC4iwmzidL0hAPvzi8EAiJxCE6uau7En",
-    "1rIgoOXYfc0v3sRB7dOujhqU4V4tTBHUH",
-    "1BIhJNBvecOy6iaXe1I1IrKLfdCr5OhcX",
-    "1O1sJdclVCmPBucSo7qpD7wEk-HYKxkPz"
-]
-
-STRING_SHARING = "https://drive.google.com/uc?id"
-
-
-def get_image_id_from_link(link : str) -> str:
-    return link.replace("/view", "").replace("https://drive.google.com/file/d/", "")
-
 
 @admin.route("/")
 def home():
     if "path_excel" in session:
         delete_if_exist(session["path_excel"])
 
+    img_random = get_random_images_list()
+    
     fotos_data = {
         i: Photo(
-            url= STRING_SHARING + "=" + images_random_ids[randint(0, 2)],
+            url=STRING_SHARING + "=" + i,
             desc=f"",
         )
-        for i in range(1, 11)
+        for i in img_random
     }
 
     next_act = {
         i: PhotoNext(
-            STRING_SHARING + "=" + images_random_ids[randint(0, 2)],
-            f"No se {i}",
-            0,
+            STRING_SHARING + "=" + i, f"No se {i}", 0
         )
-        for i in range(1, 13)
+        for i in img_random
     }
-    print(next_act)
 
     return render_template(
         "admin/home.html",
