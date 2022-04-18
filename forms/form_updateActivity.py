@@ -25,9 +25,9 @@ Estados=[
 
 class FormUpdateActivity(FlaskForm):
     descripcion = StringField(
-        "descripcion",
+        "Descripción",
         validators=[InputRequired(), Length(min=2, max=2000)],
-        render_kw={"placeholder": "Ingresa la descripcion"},
+        render_kw={"placeholder": "Ingresa la descripción de la actividad"},
     )
 
     nombre = StringField(
@@ -64,7 +64,7 @@ class FormUpdateActivity(FlaskForm):
 
 # En las fechas podemos implementar un datepicker en el html para evitar que pongan la fecha con mal formato
     fechaFinal = DateField(
-        "Fecha de fin",
+        "Fecha de finalización",
         validators=[InputRequired()],
         render_kw={"placeholder": "Ingresa la fecha de finalización"},
     )
@@ -88,4 +88,4 @@ class FormUpdateActivity(FlaskForm):
         render_kw={"placeholder":"Ingresa el estado de la actividad"}
     )
 
-    submit = SubmitField("Enviar")
+    submit = SubmitField("Modificar")

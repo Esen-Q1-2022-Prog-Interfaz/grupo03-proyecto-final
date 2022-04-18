@@ -1,6 +1,6 @@
-{% extends './admin/baseAdmin.html' %} {% block title %}Update Activity{% endblock %}
+{% extends './admin/baseAdmin.html' %} {% block title %}Modificar actividad{% endblock %}
 {%block contents %}
-<h1>Update Activity</h1>
+<h1>Modificar actividad</h1>
 
 
 <div class="newAct-container">
@@ -8,10 +8,8 @@
     <div class="box1">
       <div class="newAct-text">
         
-        <h1>Actualizar Actividad</h1>
+        <h1>Modificar actividad</h1>
         
-
-
       </div>
     </div>
   </div>
@@ -61,7 +59,7 @@
         <div class="col-75">
           {{ form.lugarActividad(value=currentActividad.lugarActividad) }}
         </div>
-      </div>
+    </div>
 
       <div class="row">
         <div class="col-25">
@@ -70,7 +68,7 @@
         <div class="col-75">
           {{ form.tipoHoras(value=currentActividad.tipoHoras) }}
         </div>
-
+      </div>
 
     </div>
 
