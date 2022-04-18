@@ -1,5 +1,6 @@
 from flask import Blueprint, flash, render_template, redirect, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
+from db.sql_methods import get_view_registro_academico_per_act
 from forms.form_contactanos import FormContactanos
 from forms.form_peticion_reset import FormPeticionContrasenna
 from forms.form_updateContrasenna import FormContrasenna
@@ -25,7 +26,6 @@ from utils_app.random_images import STRING_SHARING, get_random_images_list, rand
 main = Blueprint("main", __name__)
 
 
-
 @main.route("/")
 def home():
     img_random = get_random_images_list()
@@ -38,10 +38,7 @@ def home():
     }
 
     next_act = {
-        i: PhotoNext(
-            STRING_SHARING + "=" + i, f"No se {i}", 0
-        )
-        for i in img_random
+        i: PhotoNext(STRING_SHARING + "=" + i, f"No se {i}", 0) for i in img_random
     }
     datosList = Datos.query.filter_by(idDatos=1)
 
