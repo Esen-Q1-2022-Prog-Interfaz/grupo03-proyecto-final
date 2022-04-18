@@ -24,13 +24,13 @@ class FormUpdateJD(FlaskForm):
     )
 
     correo = StringField(
-        "correo",
+        "Correo",
         validators=[InputRequired(), Length(min=3, max=20)],
         render_kw={"placeholder": "Ingresa el correo"},
     )
     
     link = StringField(
-        "link",
+        "Link",
         validators=[InputRequired(), Length(min=3, max=1000)],
         render_kw={"placeholder": "Ingresa el link de la foto"},
     )
