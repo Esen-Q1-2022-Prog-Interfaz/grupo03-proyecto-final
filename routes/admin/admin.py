@@ -231,11 +231,7 @@ def addJD():
         correo = form.correo.data
         link = STRING_SHARING +  "=" + get_image_id_from_link(form.link.data)
         newJD = JuntaDirectiva(
-            nombre,
-            apellido, 
-            cargo,
-            correo,
-            link,
+            correo, nombre, apellido, cargo, link,
             )
         db.session.add(newJD)
         db.session.commit()
