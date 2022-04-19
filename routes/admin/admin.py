@@ -106,6 +106,7 @@ def inscripcion(nombreAct):
         estadoPago,
         cantidadKg,
         horastotales,
+        evidencia
     )
     db.session.add(newIns)
     db.session.commit()
@@ -124,7 +125,7 @@ def contact():
 @admin.route("/dashboard")
 @login_required
 def dashboard():
-    if current_user.departamento == "Admin":  # type: ignore
+    if current_user.config == "Admin":  # type: ignore
         currentDato = Datos.query.all()
         print(currentDato)
         MiembrosFull = Usuarios.query.filter_by(cargo="miembro").all()
@@ -151,7 +152,7 @@ def dashboard():
 @admin.route("/delete/user/<int:idVoluntario>")
 @login_required
 def deleteVoluntario(idVoluntario):
-    if current_user.departamento == "Admin":
+    if current_user.config == "Admin":
         selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
         correo = selectedUser.correo
         contrasenna = selectedUser.contrasenna
@@ -179,7 +180,7 @@ def deleteVoluntario(idVoluntario):
 @admin.route("/Upgrade/user/<int:idVoluntario>", methods=["POST", "GET"])
 @login_required
 def hacerMiembro(idVoluntario):
-    if current_user.departamento == "Admin":
+    if current_user.config == "Admin":
         if request.method == "POST":
             selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
             correo = selectedUser.correo
