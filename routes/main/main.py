@@ -24,6 +24,10 @@ main = Blueprint("main", __name__)
 @main.route("/")
 def home():
 
+    if not Datos.query.all():
+        datos = Datos(20, 20, 20, 20)
+        db.session.add(datos)
+        db.session.commit()
 
     img_random = get_random_images_list()
 
@@ -34,7 +38,6 @@ def home():
         )
         for i in img_random
     ]
-    print(fotos_data)
 
     datosList = Datos.query.filter_by(idDatos=1)
 
@@ -152,8 +155,8 @@ def register():
         password = form.contrasenna.data
         hashed_password = bcrypt.generate_password_hash(password)
         carrera = form.carrera.data
-        departamento="NA"
-        cargo = "NA"
+        departamento="Trips" if correo == "20204055@esen.edu.sv" else "NA"
+        cargo = "Admin" if correo == "20204055@esen.edu.sv" else "NA"
         anno = [int(i) for i in list(correo)[0:4]]
         annoo = int("".join(map(str, anno)))
         print(type(annoo))
