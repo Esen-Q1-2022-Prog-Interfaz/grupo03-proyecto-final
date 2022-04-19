@@ -236,19 +236,19 @@ def addActivity():
 @admin.route("/updateActivity/<int:idActividad>", methods=["POST", "GET"])
 def updateActivity(idActividad):
     user = current_user
-    currentActividad = Actividades.query.filter_by(idActividad=idActividad).first()
-    form = FormUpdateActivity(actividades=currentActividad)
+    currentActividad = Actividades.query.get(idActividad)
+    form = FormUpdateActivity()
     if form.validate_on_submit():
         descripcion = form.descripcion.data
         nombre = form.nombre.data
-        tipoActividad = form.tipoActividad.data
+        tipoActividad = int(form.tipoActividad.data)
         lugarActividad = form.lugarActividad.data
         tipoHoras = form.tipoHoras.data
         fechaInicio = form.fechaInicio.data
         fechaFinal = form.fechaFinal.data
         horasSociales = form.horasSociales.data
         cuposTotales = form.cuposTotales.data
-        Estado = form.Estado.data
+        Estado = int(form.Estado.data)
 
         currentActividad.descripcion = descripcion
         currentActividad.nombre = nombre
@@ -259,7 +259,9 @@ def updateActivity(idActividad):
         currentActividad.fechaFinal = fechaFinal
         currentActividad.horasSociales = horasSociales
         currentActividad.cuposTotales = cuposTotales
-        currentActividad.Estado = Estado
+        currentActividad.estado = Estado
+        print(currentActividad.estado)
+        print("updatedddddddddddddddddd")
         db.session.add(currentActividad)
         db.session.commit()
         return redirect(
@@ -274,7 +276,6 @@ def updateActivity(idActividad):
     form.fechaInicio.data = currentActividad.fechaInicio
     form.fechaFinal.data = currentActividad.fechaFinal
 
-    print(form.fechaInicio.data)
     return render_template(
         "admin/activities/updateActivity.html",
         form=form,
@@ -472,8 +473,8 @@ def updateInscripcion(idInsc):
 
 
 
-@admin.route("/download")
-def download_excel():
+@admin.route("/download/<int:idAct>", methods=["POST", "GET"])
+def download_excel(idAct):
     if "path_excel" in session:
         delete_if_exist(session["path_excel"])
 
