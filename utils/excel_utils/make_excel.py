@@ -1,6 +1,6 @@
 import os
 from typing import Union
-from db.view_models import VistaRegistro
+from utils.excel_utils.view_models import VistaRegistro
 from flask import session
 import pandas as pd
 import os

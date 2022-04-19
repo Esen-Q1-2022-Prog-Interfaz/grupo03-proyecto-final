@@ -10,12 +10,12 @@ from flask import (
 from forms.formUpdateDatos import FormUpdateDatos
 from flask import Blueprint, render_template, url_for, redirect
 from flask_login import login_required, login_user, logout_user, current_user
-from db.utils.photos_model import Photo, PhotoNext
+from utils.excel_utils.photos_model import Photo, PhotoNext
 from flask import Blueprint, send_file, session
-from db.make_excel import create_excel, delete_if_exist
+from utils.excel_utils.make_excel import create_excel, delete_if_exist
 from forms.form_updateInsc import FormUpdateInsc
 from models.usuarios import Usuarios
-from db.db import db
+from utils.db import db
 from forms.form_addJD import FormAddJD
 from forms.form_updateActivity import FormUpdateActivity
 from forms.form_updateJD import FormUpdateJD
@@ -23,7 +23,7 @@ from forms.form_addActividad import FormAddActivity
 from models.actividades import Actividades
 
 # Vistas
-from db.sql_methods import get_view_registro_academico_per_act
+from utils.excel_utils.sql_methods import get_view_registro_academico_per_act
 
 # Models
 from models.actividades import Actividades
@@ -32,8 +32,8 @@ from models.datos import Datos
 from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
-from utils_app.cryptography import CryptographyToken
-from utils_app.random_images import (
+from utils.cryptography import CryptographyToken
+from utils.random_images import (
     STRING_SHARING,
     get_image_id_from_link,
     get_random_images_list,

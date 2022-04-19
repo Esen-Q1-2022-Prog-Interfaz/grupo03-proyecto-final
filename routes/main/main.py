@@ -1,22 +1,22 @@
 from flask import Blueprint, flash, render_template, redirect, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
-from db.sql_methods import get_view_registro_academico_per_act
+from utils.excel_utils.sql_methods import get_view_registro_academico_per_act
 from forms.form_contactanos import FormContactanos
 from forms.form_peticion_reset import FormPeticionContrasenna
 from forms.form_updateContrasenna import FormContrasenna
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
-from db.utils.photos_model import Photo, PhotoNext
+from utils.excel_utils.photos_model import Photo, PhotoNext
 from models.datos import Datos
 from models.inscripciones import Inscripciones
-from utils_app.bcrypt import bcrypt
+from utils.bcrypt import bcrypt
 from models.juntaDirectiva import JuntaDirectiva
 from models.actividades import Actividades
 from models.usuarios import Usuarios
 from models.contactanos import Contactanos
-from db.db import db
-from utils_app.cryptography import CryptographyToken
-from utils_app.random_images import STRING_SHARING, get_random_images_list, randoString
+from utils.db import db
+from utils.cryptography import CryptographyToken
+from utils.random_images import STRING_SHARING, get_random_images_list, randoString
 
 main = Blueprint("main", __name__)
 

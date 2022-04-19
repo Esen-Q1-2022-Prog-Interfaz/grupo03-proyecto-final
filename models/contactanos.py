@@ -1,4 +1,4 @@
-from db.db import db
+from utils.db import db
 
 
 class Contactanos(db.Model):  # type: ignore

@@ -1,4 +1,4 @@
-from db.db import db
+from utils.db import db
 
 
 class encargadoActividad(db.Model):  # type: ignore

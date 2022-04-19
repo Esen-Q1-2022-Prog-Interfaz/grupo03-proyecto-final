@@ -1,5 +1,5 @@
 from app import app
-from db.db import db
+from utils.db import db
 
 
 with app.app_context():

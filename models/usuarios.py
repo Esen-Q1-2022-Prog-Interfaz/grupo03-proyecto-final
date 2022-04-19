@@ -1,5 +1,5 @@
 from typing import Union
-from db.db import db
+from utils.db import db
 from datetime import datetime
 from flask_login import UserMixin
 

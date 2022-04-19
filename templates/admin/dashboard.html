@@ -86,7 +86,6 @@
                 <th>Kg de reciclaje</th>
                 <th>Horas totales</th>
                 <th>Evidencia</th>
-                <th>Eliminar</th>
                 <th>Modificar</th>
             </tr>
             {% for ins in InscripcionesFull %}
@@ -117,7 +116,6 @@
                     {% elif ins.evidencia == 3 %}
                         <td>No Aplica</td>
                     {% endif %}
-                    <td><a href="">Eliminar</a></td>
                     <td><a href="{{url_for('admin.updateInscripcion', idInsc = ins.idInscripcion)}}">Modificar</a></td>
                 </tr>
             {% endfor %}

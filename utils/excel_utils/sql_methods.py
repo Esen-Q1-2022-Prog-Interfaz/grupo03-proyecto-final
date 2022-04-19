@@ -1,5 +1,5 @@
-from db.db import db
-from db.view_models import VistaRegistro
+from utils.db import db
+from utils.excel_utils.view_models import VistaRegistro
 from models.usuarios import Usuarios
 from models.actividades import Actividades
 from models.inscripciones import Inscripciones
