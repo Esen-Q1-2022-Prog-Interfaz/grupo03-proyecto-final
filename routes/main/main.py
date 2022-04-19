@@ -27,25 +27,21 @@ def home():
 
     img_random = get_random_images_list()
 
-    fotos_data = {
-        i: Photo(
+    fotos_data = [
+        Photo(
             url=STRING_SHARING + "=" + i,
             desc=f"",
         )
         for i in img_random
-    }
+    ]
     print(fotos_data)
 
-    next_act = {
-        i: PhotoNext(STRING_SHARING + "=" + i, f"No se {i}", 0) for i in img_random
-    }
     datosList = Datos.query.filter_by(idDatos=1)
 
     actividadesActivas = Actividades.query.filter_by(estado=2).all()
     return render_template(
         "main/home.html",
         fotos_data=fotos_data,
-        next_act=next_act,
         user=current_user,
         actividadesActivas=actividadesActivas,
         datosList=datosList,

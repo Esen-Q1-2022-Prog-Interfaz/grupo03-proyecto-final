@@ -371,8 +371,9 @@ def deleteJD(idPersona):
 
 @admin.route("/delete/actividad/<int:idActividad>")
 def deleteActividad(idActividad):
-    Actividades.query.filter_by(idActividad=idActividad).delete()
     Inscripciones.query.filter_by(idActividad=idActividad).delete()
+
+    Actividades.query.filter_by(idActividad=idActividad).delete()
     db.session.commit()
     return redirect(url_for("admin.dashboard", idActividad=idActividad))
 

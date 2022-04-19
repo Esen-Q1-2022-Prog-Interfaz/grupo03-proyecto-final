@@ -20,12 +20,11 @@
   <h2>¡Anímate a ser parte de nuestra familia!</h2>
 
   <div class="containerSlideshow">
-    {% for i in fotos_data %}
+    {% for i in range(fotos_data|length) %}
     <div class="mySlides">
       <div class="numbertext">{{i}} / 6</div>
-      <img src="{{fotos_data[i].url}}" style="object-fit: cover" />
+      <img src="{{fotos_data[i].url}}" style="object-fit: cover" onclick="currentSlide({{ i }})" />
     </div>
-
     {% endfor %}
 
     <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -36,15 +35,14 @@
     </div>
 
     <div class="row">
-      {% for i in fotos_data %}
-
+      {% for i in range(fotos_data|length) %}
       <div class="column">
         <img
           class="demo cursor"
           src="{{fotos_data[i].url}}"
           style="width: 100%; object-fit: cover"
-          onclick="currentSlide({{ i }})"
-          alt="{{fotos_data[i].desc}}"
+          onclick="currentSlide({{ i + 1 }})"
+          alt="{{fotos_data[i]}}"
         />
       </div>
 
