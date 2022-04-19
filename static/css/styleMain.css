@@ -423,10 +423,18 @@ img {
 }
 .text-box {
     background-color: white;
-    padding: 125px;
+    padding: 100px;
     width: 50%;
-    height: 500px;
+    height: 400px;
 }
+
+.text-box2 {
+    background-color: white;
+    padding: 100px;
+    width: 50%;
+    height: 800px;
+}
+
 .picture-box {
     background-image: url(../../static/media/miembros.png);
     background-color: whitesmoke;
