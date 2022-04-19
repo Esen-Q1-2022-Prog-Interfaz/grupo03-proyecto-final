@@ -7,3 +7,4 @@ logins/*
 .vscode/*
 Pipfile
 Pipfile.lock
+raices.db
