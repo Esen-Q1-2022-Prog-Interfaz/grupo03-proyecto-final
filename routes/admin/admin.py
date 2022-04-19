@@ -343,10 +343,10 @@ def updateJD(idPersona):
     )
 
 
-@admin.route("/updateDato", methods=["POST", "GET"])
+@admin.route("/updateDatos/<int:idDatos>", methods=["POST", "GET"])
 def updateDatos(idDatos):
     user = current_user
-    currentDato = Datos.query.all()
+    currentDato = Datos.query.filter_by(idDatos=idDatos).first()
     form = FormUpdateDatos(datos=currentDato)
     if form.validate_on_submit():
         numArboles= form.numArboles.data
