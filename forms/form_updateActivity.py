@@ -5,8 +5,8 @@ from wtforms.fields import StringField, SubmitField, SelectField, PasswordField,
 
 
 TipoActividad=[
-    ("1", "Reciclaje"),
-    ("2", "Limpieza"),
+    ("2", "Reciclaje"),
+    ("1", "Limpieza"),
     ("3", "Capacitaciones"),
     ("4", "Otro"), 
 ]
