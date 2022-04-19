@@ -117,7 +117,7 @@
                         <td>No Aplica</td>
                     {% endif %}
                     <td><a href="">Eliminar</a></td>
-                    <td><a href="">Modificar</a></td>
+                    <td><a href="{{url_for('admin.updateInscripcion', idInsc = ins.idInscripcion)}}">Modificar</a></td>
                 </tr>
             {% endfor %}
         </table>

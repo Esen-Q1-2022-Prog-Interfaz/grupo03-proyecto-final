@@ -41,7 +41,7 @@ class Inscripciones(db.Model):  # type: ignore
         estadoPago: int,
         horasTotales: int,
         cantidadKg: float,
-        #evidencia: int
+        evidencia: int
     ) -> None:
 
         self.idActividad = idActividad
@@ -50,13 +50,7 @@ class Inscripciones(db.Model):  # type: ignore
         self.estadoPago = estadoPago
         self.horasTotales = horasTotales
         self.cantidadKg = cantidadKg
-        #self.evidencia = evidencia
-        
-        actividad = Actividades.get_activity(self.idActividad)
-        if actividad != 3: #Let TipoActividad=3 means its webinar
-            self.evidencia = 0 #Let 0=No Aplica
-        else:
-            self.evidencia = 1 #Let 1=No Entregada
+        self.evidencia = evidencia
 
     def __repr__(self) -> str:
         return f"""
