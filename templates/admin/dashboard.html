@@ -252,21 +252,21 @@
             <table class="tablaDash"> <!-- impacto de actividades de raices -->
             <h2>Impacto</h2>
             <tr>
-                <th>Id</th>
                 <th>Árboles</th>
                 <th>Kilogramos reciclados</th>
                 <th>Voluntarios</th>
                 <th>Tortugas liberadas</th>
+                <th>Modificar</th>
             </tr>
- 
-                <tr class="">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="">Modificar</a></td>
-                </tr>
-
+                {% for dato in currentDato%}
+                    <tr class="">
+                        <td>{{dato.numArboles}}</td>
+                        <td>{{dato.cantRec}}</td>
+                        <td>{{dato.numVoluntarios}}</td>
+                        <td>{{dato.numCharlas}}</td>
+                        <td><a href="{{ url_for('admin.updateDatos' , idDatos=dato.idDatos) }}">Modificar</a></td>
+                    </tr>
+                {% endfor %}
         </table>
         </div>
 

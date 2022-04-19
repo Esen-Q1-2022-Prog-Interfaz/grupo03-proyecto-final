@@ -7,6 +7,7 @@ from flask import (
     session,
     render_template,
 )
+from forms.formUpdateDatos import FormUpdateDatos
 from flask import Blueprint, render_template, url_for, redirect
 from flask_login import login_required, login_user, logout_user, current_user
 from db.utils.photos_model import Photo, PhotoNext
@@ -26,6 +27,7 @@ from db.sql_methods import get_view_registro_academico
 # Models
 from models.actividades import Actividades
 from models.inscripciones import Inscripciones
+from models.datos import Datos
 from models.usuarios import Usuarios
 from models.juntaDirectiva import JuntaDirectiva
 from models.contactanos import Contactanos
@@ -116,7 +118,8 @@ def dashboard():
     if current_user.departamento == "Admin" or 1 == 1:  # type: ignore
         # VoluntariosFull = Usuarios.query.filter_by(Usuarios.departamento != "Baja").all()
         # MiembrosFull2 = Usuarios.query.filter_by(departamento == "NA").all()
-
+        currentDato = Datos.query.all()
+        print(currentDato)
         MiembrosFull = Usuarios.query.filter_by(cargo="miembro").all()
         VoluntarioFull = Usuarios.query.filter_by(cargo="NA").all()
         JDFull = JuntaDirectiva.query.all()
@@ -132,6 +135,7 @@ def dashboard():
             ActividadesFull=ActividadesFull,
             MessagesFull=MessagesFull,
             user=current_user,
+            currentDato=currentDato
         )
 
     return redirect(url_for("main.home"))
@@ -332,6 +336,40 @@ def updateJD(idPersona):
         user=user,
         idPersona=idPersona,
         currentJD=currentJD,
+    )
+
+
+@admin.route("/updateDato", methods=["POST", "GET"])
+def updateDatos(idDatos):
+    user = current_user
+    currentDato = Datos.query.all()
+    form = FormUpdateDatos(datos=currentDato)
+    if form.validate_on_submit():
+        numArboles= form.numArboles.data
+        cantRec = form.cantRec.data
+        numVoluntarios = form.numVoluntarios.data
+        numCharlas = form.numCharlas.data
+        currentDato.numArboles = numArboles
+        currentDato.cantRec = cantRec
+        currentDato.numVoluntarios = numVoluntarios
+        currentDato.numCharlas = numCharlas
+        db.session.add(currentDato)
+        db.session.commit()
+        return redirect(
+            url_for(
+                "admin.dashboard",
+                form=form,
+                user=user,
+                idDatos=idDatos,
+                currentDato=currentDato
+            )
+        )
+    return render_template(
+        "admin/updateDatos.html",
+        form=form,
+        user=user,
+        idDatos=idDatos,
+        currentDato=currentDato
     )
 
 
