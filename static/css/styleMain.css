@@ -431,8 +431,8 @@ img {
 .text-box2 {
     background-color: white;
     padding: 100px;
-    width: 50%;
-    height: 800px;
+    width: 55%;
+    height: 700px;
 }
 
 .picture-box {
@@ -448,7 +448,7 @@ img {
     background-color: whitesmoke;
     background-size: cover;
     padding:150px;
-    width: 50%;
+    width: 45%;
     height: 600px;
 }
 
