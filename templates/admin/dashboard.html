@@ -123,13 +123,6 @@
             {% endfor %}
         </table>
         <br>
-        <form style="width:fit-content; margin:0; padding:0" class="btn-actividad" action="{{url_for("admin.download_excel")}}">
-            <input type="submit" value="Descargar" />
-        </form>
-        
-        <!-- <button class="btn-actividad" type="button" onclick="location.href={{url_for("admin.download_excel")}}">
-            Descargar
-        </button> -->
         </div>
 
 
@@ -150,6 +143,7 @@
                     <th>Estado</th>
                     <th>Eliminar</th>
                     <th>Modificar</th>
+                    <th>Descargar excel</th>
                 </tr>
                 {% for act in ActividadesFull %}
                 <tr class="">
@@ -186,6 +180,16 @@
                     {% endif %}
                     <td><a href="{{ url_for('admin.deleteActividad' , idActividad=act.idActividad) }}">Eliminar</a></td>
                     <td><a href="{{ url_for('admin.updateActivity' , idActividad=act.idActividad) }}">Modificar</a></td>
+                    <td>
+                        {% if act.estado == 1 %}
+                        <form style="width:fit-content; margin:0; padding:0" class="btn-actividad" action="{{url_for("admin.download_excel", idAct=act.idActividad)}}">
+                            <input type="submit" value="Descargar" />
+                        </form>
+                        {% else %}
+                        No disponible
+                        {% endif %}
+                        
+                    </td>
                 </tr>
                 {% endfor %}
                             </table>

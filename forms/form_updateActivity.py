@@ -18,9 +18,9 @@ TipoHoras=[
 ]
 
 Estados=[
-    ("1", "En progreso"),
-    ("2", "Terminada"),
-    ("3", "Cancelada"),
+    ("2", "En progreso"),
+    ("1", "Terminada"),
+    ("0", "Cancelada"),
 ]
 
 class FormUpdateActivity(FlaskForm):
