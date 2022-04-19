@@ -76,7 +76,7 @@ def inscripcion(idActividad):
     estadoPago = 2
     cantidadKg = 0
     horastotales = 0
-    print(idActividad)
+    evidencia  = 1
     newIns = Inscripciones(
         idVoluntario,
         idActividad,
@@ -84,6 +84,7 @@ def inscripcion(idActividad):
         estadoPago,
         cantidadKg,
         horastotales,
+        evidencia
     )
     print(newIns)
     db.session.add(newIns)

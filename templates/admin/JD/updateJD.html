@@ -72,11 +72,11 @@
           <script>
             function previewImage(event) {
               event.preventDefault();
-              const sharing_link = "https://drive.google.com/uc?id="; 
+              const sharingLink = "https://drive.google.com/uc?id="; 
               const image = document.getElementById("preview-link");
               const inputText = document.getElementById("link-image-id");
               const link = inputText.value
-              const idLinkDrive = link.replace("/view", "").replace("https://drive.google.com/file/d/", "")
+              const idLinkDrive = link.replace("https://drive.google.com/uc?id=", "").replace("/view", "").replace("https://drive.google.com/file/d/", "")
               image.src = sharing_link + idLinkDrive; 
             }
           </script>

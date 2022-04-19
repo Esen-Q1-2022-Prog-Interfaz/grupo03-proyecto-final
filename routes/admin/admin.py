@@ -13,6 +13,7 @@ from flask_login import login_required, login_user, logout_user, current_user
 from db.utils.photos_model import Photo, PhotoNext
 from flask import Blueprint, send_file, session
 from db.make_excel import create_excel, delete_if_exist
+from forms.form_updateInsc import FormUpdateInsc
 from models.usuarios import Usuarios
 from db.db import db
 from forms.form_addJD import FormAddJD
@@ -445,6 +446,27 @@ def deleteMessage(idContacto):
     db.session.delete(selectedMessage)
     db.session.commit()
     return redirect(url_for("admin.dashboard", idContacto=idContacto))
+
+@admin.route("/modificar/inscripciones/<int:idInsc>", methods=["POST", "GET"])
+def updateInscripcion(idInsc):
+    selectedInsc = Inscripciones.query.get(idInsc)
+    form = FormUpdateInsc()
+    if form.validate_on_submit():
+        selectedInsc.estadoAsistencia =  int(form.asistencia.data)
+        selectedInsc.cantidadKg = form.cantidadKg.data
+        selectedInsc.evidencia = int(form.evidencia.data)
+        selectedInsc.estadoPago = int(form.pago.data)
+        db.session.add(selectedInsc)
+        db.session.commit()
+        return redirect(url_for('admin.dashboard'))
+    form.asistencia.data =selectedInsc.estadoAsistencia
+    form.cantidadKg.data =int(selectedInsc.cantidadKg)
+    form.evidencia.data = selectedInsc.evidencia
+    form.pago.data = int(selectedInsc.estadoPago)
+    print("Estao pago es ", selectedInsc.estadoPago)
+    return render_template("admin/updateInsc.html", idInsc=idInsc, user=current_user, form=form)
+
+
 
 
 @admin.route("/download")
