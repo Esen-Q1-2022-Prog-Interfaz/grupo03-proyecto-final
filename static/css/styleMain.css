@@ -931,12 +931,6 @@ input[type=submit]:hover {
     padding: 10px;
 }
 
-/*
-form {
-    border: 3px solid #f1f1f1;
-    padding: 5%;
-}
-*/
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -1172,6 +1166,27 @@ span.psw {
     grid-template-columns: auto auto;
     gap: 50px;
 }
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
 
 /* PERFIL */
 .grid-perfil {
