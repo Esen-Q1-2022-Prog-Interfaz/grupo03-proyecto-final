@@ -585,7 +585,7 @@ padding: 50px;
 
 .actividades-container {
     width: 100%;
-    height: 65vh;
+    height: 500px;
     background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url(../../static/media/actividad.jpg);
     background-size: cover;
     background-attachment: fixed;
@@ -621,23 +621,23 @@ color: white;
 .left {
     width: 50%;
     height: 500px;
-    background: url(../media/actividades.jpg) no-repeat center / cover;
+    background: url(../media/limpieza.png) no-repeat center / cover;
 }
 
 .left1 {
     width: 50%;
     height: 500px;
-    background: url(../media/background-tree.jpg) no-repeat center / cover;
+    background: url(../media/reciclaje.png) no-repeat center / cover;
 }
 .left2 {
     width: 50%;
     height: 500px;
-    background: url(../media/recycle.png) no-repeat center / cover;
+    background: url(../media/charlas.jpeg) no-repeat center / cover;
 }
 .left3 {
     width: 50%;
     height: 500px;
-    background: url(../media/charity.png) no-repeat center / cover;
+    background: url(../media/otras.jpeg) no-repeat center / cover;
 }
 
 .right {
