@@ -44,6 +44,7 @@ admin = Blueprint("admin", __name__, url_prefix="/admin")
 
 
 @admin.route("/")
+@login_required
 def home():
     img_random = get_random_images_list()
 
@@ -71,6 +72,7 @@ def home():
 
 
 @admin.route("/about")
+@login_required
 def about():
     return render_template(
         "main/about.html",
@@ -79,6 +81,7 @@ def about():
 
 
 @admin.route("/activities")
+@login_required
 def activities():
     return render_template(
         "main/activities.html",
@@ -110,6 +113,7 @@ def inscripcion(nombreAct):
 
 
 @admin.route("/contact")
+@login_required
 def contact():
     return render_template(
         "main/contact.html",
@@ -118,10 +122,9 @@ def contact():
 
 
 @admin.route("/dashboard")
+@login_required
 def dashboard():
-    if current_user.departamento == "Admin" or 1 == 1:  # type: ignore
-        # VoluntariosFull = Usuarios.query.filter_by(Usuarios.departamento != "Baja").all()
-        # MiembrosFull2 = Usuarios.query.filter_by(departamento == "NA").all()
+    if current_user.departamento == "Admin":  # type: ignore
         currentDato = Datos.query.all()
         print(currentDato)
         MiembrosFull = Usuarios.query.filter_by(cargo="miembro").all()
@@ -146,33 +149,9 @@ def dashboard():
 
 
 @admin.route("/delete/user/<int:idVoluntario>")
+@login_required
 def deleteVoluntario(idVoluntario):
-    selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
-    correo = selectedUser.correo
-    contrasenna = selectedUser.contrasenna
-    nombre = selectedUser.nombre
-    apellido = selectedUser.apellido
-    telefono = selectedUser.telefono
-    carrera = selectedUser.carrera
-    anno = selectedUser.anno
-    departamento = "Baja"
-
-    selectedUser.correo = correo
-    selectedUser.contrasenna = contrasenna
-    selectedUser.nombre = nombre
-    selectedUser.apellido = apellido
-    selectedUser.telefono = telefono
-    selectedUser.carrera = carrera
-    selectedUser.anno = anno
-    selectedUser.departamento = departamento
-    db.session.add(selectedUser)
-    db.session.commit()
-    return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
-
-
-@admin.route("/Upgrade/user/<int:idVoluntario>", methods=["POST", "GET"])
-def hacerMiembro(idVoluntario):
-    if request.method == "POST":
+    if current_user.departamento == "Admin":
         selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
         correo = selectedUser.correo
         contrasenna = selectedUser.contrasenna
@@ -181,8 +160,7 @@ def hacerMiembro(idVoluntario):
         telefono = selectedUser.telefono
         carrera = selectedUser.carrera
         anno = selectedUser.anno
-        departamento = request.form.get("position")
-        cargo = "miembro"
+        departamento = "Baja"
 
         selectedUser.correo = correo
         selectedUser.contrasenna = contrasenna
@@ -192,15 +170,47 @@ def hacerMiembro(idVoluntario):
         selectedUser.carrera = carrera
         selectedUser.anno = anno
         selectedUser.departamento = departamento
-        selectedUser.cargo = cargo
         db.session.add(selectedUser)
         db.session.commit()
         return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
-    else:
-        return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
+    return redirect(url_for("main.home"))
+
+
+@admin.route("/Upgrade/user/<int:idVoluntario>", methods=["POST", "GET"])
+@login_required
+def hacerMiembro(idVoluntario):
+    if current_user.departamento == "Admin":
+        if request.method == "POST":
+            selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
+            correo = selectedUser.correo
+            contrasenna = selectedUser.contrasenna
+            nombre = selectedUser.nombre
+            apellido = selectedUser.apellido
+            telefono = selectedUser.telefono
+            carrera = selectedUser.carrera
+            anno = selectedUser.anno
+            departamento = request.form.get("position")
+            cargo = "miembro"
+
+            selectedUser.correo = correo
+            selectedUser.contrasenna = contrasenna
+            selectedUser.nombre = nombre
+            selectedUser.apellido = apellido
+            selectedUser.telefono = telefono
+            selectedUser.carrera = carrera
+            selectedUser.anno = anno
+            selectedUser.departamento = departamento
+            selectedUser.cargo = cargo
+            db.session.add(selectedUser)
+            db.session.commit()
+            return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
+        else:
+            return redirect(url_for("admin.dashboard", idVoluntario=idVoluntario))
+    return redirect(url_for("main.home"))
 
 
 @admin.route("/NewActivity", methods=["POST", "GET"])
+@login_required
 def addActivity():
     user = current_user
     form = FormAddActivity()
@@ -234,6 +244,7 @@ def addActivity():
 
 
 @admin.route("/updateActivity/<int:idActividad>", methods=["POST", "GET"])
+@login_required
 def updateActivity(idActividad):
     user = current_user
     currentActividad = Actividades.query.get(idActividad)
@@ -260,8 +271,6 @@ def updateActivity(idActividad):
         currentActividad.horasSociales = horasSociales
         currentActividad.cuposTotales = cuposTotales
         currentActividad.estado = Estado
-        print(currentActividad.estado)
-        print("updatedddddddddddddddddd")
         db.session.add(currentActividad)
         db.session.commit()
         return redirect(
@@ -286,6 +295,7 @@ def updateActivity(idActividad):
 
 
 @admin.route("/NewJD", methods=["POST", "GET"])
+@login_required
 def addJD():
     user = current_user
     form = FormAddJD()
@@ -309,6 +319,7 @@ def addJD():
 
 
 @admin.route("/updateJD/<int:idPersona>", methods=["POST", "GET"])
+@login_required
 def updateJD(idPersona):
     user = current_user
     currentJD = JuntaDirectiva.query.filter_by(idPersona=idPersona).first()
@@ -345,6 +356,7 @@ def updateJD(idPersona):
 
 
 @admin.route("/updateDatos/<int:idDatos>", methods=["POST", "GET"])
+@login_required
 def updateDatos(idDatos):
     user = current_user
     currentDato = Datos.query.filter_by(idDatos=idDatos).first()
@@ -379,6 +391,7 @@ def updateDatos(idDatos):
 
 
 @admin.route("/downgrade/user/<int:idVoluntario>")
+@login_required
 def hacerVoluntario(idVoluntario):
     selectedUser = Usuarios.query.filter_by(idVoluntario=idVoluntario).first()
     correo = selectedUser.correo
@@ -406,6 +419,7 @@ def hacerVoluntario(idVoluntario):
 
 
 @admin.route("/delete/junta/<int:idPersona>")
+@login_required
 def deleteJD(idPersona):
     JuntaDirectiva.query.filter_by(idPersona=idPersona).delete()
     db.session.commit()
@@ -413,6 +427,7 @@ def deleteJD(idPersona):
 
 
 @admin.route("/delete/actividad/<int:idActividad>")
+@login_required
 def deleteActividad(idActividad):
     Inscripciones.query.filter_by(idActividad=idActividad).delete()
 
@@ -422,6 +437,7 @@ def deleteActividad(idActividad):
 
 
 @admin.route("/changeStatus/mensaje/<int:idContacto>")
+@login_required
 def changeStatusMessage(idContacto):
     selectedMessage = Contactanos.query.filter_by(idContacto=idContacto).first()
     # id = selectedMessage.idContacto
@@ -445,6 +461,7 @@ def changeStatusMessage(idContacto):
 
 
 @admin.route("/delete/mensaje/<int:idContacto>")
+@login_required
 def deleteMessage(idContacto):
     selectedMessage = Contactanos.query.get(idContacto)
     db.session.delete(selectedMessage)
@@ -452,6 +469,7 @@ def deleteMessage(idContacto):
     return redirect(url_for("admin.dashboard", idContacto=idContacto))
 
 @admin.route("/modificar/inscripciones/<int:idInsc>", methods=["POST", "GET"])
+@login_required
 def updateInscripcion(idInsc):
     selectedInsc = Inscripciones.query.get(idInsc)
     form = FormUpdateInsc()
@@ -474,6 +492,7 @@ def updateInscripcion(idInsc):
 
 
 @admin.route("/download/<int:idAct>", methods=["POST", "GET"])
+@login_required
 def download_excel(idAct):
     if "path_excel" in session:
         delete_if_exist(session["path_excel"])
