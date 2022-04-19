@@ -23,7 +23,7 @@ from forms.form_addActividad import FormAddActivity
 from models.actividades import Actividades
 
 # Vistas
-from db.sql_methods import get_view_registro_academico
+from db.sql_methods import get_view_registro_academico_per_act
 
 # Models
 from models.actividades import Actividades
@@ -478,7 +478,7 @@ def download_excel(idAct):
     if "path_excel" in session:
         delete_if_exist(session["path_excel"])
 
-    data = get_view_registro_academico()
+    data = get_view_registro_academico_per_act(idAct)
     path = create_excel(data)
     if path:
         session["path_excel"] = path
