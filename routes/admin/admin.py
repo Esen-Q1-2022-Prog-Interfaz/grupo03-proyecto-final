@@ -1,7 +1,6 @@
 from flask import (
     Blueprint,
     redirect,
-    render_template_string,
     request,
     send_file,
     session,
@@ -9,7 +8,7 @@ from flask import (
 )
 from forms.formUpdateDatos import FormUpdateDatos
 from flask import Blueprint, render_template, url_for, redirect
-from flask_login import login_required, login_user, logout_user, current_user
+from flask_login import login_required, current_user
 from utils.excel_utils.photos_model import Photo, PhotoNext
 from flask import Blueprint, send_file, session
 from utils.excel_utils.make_excel import create_excel, delete_if_exist
@@ -103,6 +102,7 @@ def inscripcion(nombreAct):
         estadoPago,
         cantidadKg,
         horastotales,
+        evidencia
     )
     db.session.add(newIns)
     db.session.commit()
@@ -119,9 +119,7 @@ def contact():
 
 @admin.route("/dashboard")
 def dashboard():
-    if current_user.departamento == "Admin" or 1 == 1:  # type: ignore
-        # VoluntariosFull = Usuarios.query.filter_by(Usuarios.departamento != "Baja").all()
-        # MiembrosFull2 = Usuarios.query.filter_by(departamento == "NA").all()
+    if current_user.cargo == "Admin":  # type: ignore
         currentDato = Datos.query.all()
         print(currentDato)
         MiembrosFull = Usuarios.query.filter_by(cargo="miembro").all()
