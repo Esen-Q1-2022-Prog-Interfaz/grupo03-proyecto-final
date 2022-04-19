@@ -18,8 +18,10 @@
     <section>
         <div class="containerontop" id="about-us-container">
             {% if  activity.tipoActividad == 1%}
+            <div class="left"></div>
+            {% elif  activity.tipoActividad == 2 %}
             <div class="left1"></div>
-            {% elif  activity.tipoActividad == 0 %}
+            {% elif  activity.tipoActividad == 3 %}
             <div class="left2"></div>
             {% else %}
             <div class="left3"></div>
