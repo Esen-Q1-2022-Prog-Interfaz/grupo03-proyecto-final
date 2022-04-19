@@ -58,19 +58,22 @@ def home():
     next_act = {
         i: PhotoNext(STRING_SHARING + "=" + i, f"No se {i}", 0) for i in img_random
     }
+    actividadesActivas = Actividades.query.filter_by(estado=2).all()
+
 
     return render_template(
-        "admin/home.html",
+        "main/home.html",
         fotos_data=fotos_data,
         next_act=next_act,
         user=current_user,
+        actividadesActivas=actividadesActivas,
     )
 
 
 @admin.route("/about")
 def about():
     return render_template(
-        "admin/about.html",
+        "main/about.html",
         user=current_user,
     )
 
@@ -78,7 +81,7 @@ def about():
 @admin.route("/activities")
 def activities():
     return render_template(
-        "admin/activities.html",
+        "main/activities.html",
         user=current_user,
     )
 
@@ -109,7 +112,7 @@ def inscripcion(nombreAct):
 @admin.route("/contact")
 def contact():
     return render_template(
-        "admin/contact.html",
+        "main/contact.html",
         user=current_user,
     )
 
