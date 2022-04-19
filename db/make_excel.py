@@ -11,13 +11,33 @@ def create_excel(
     filename="horas_sociales",
     sheet_name="Horas sociales",
 ) -> Union[str, None]:
+
     """Crear un archivo excel a partir de una lista de models de VistaRegistro"""
     data = [
-        [record.carnet, record.nombre_apellido, record.actividad, record.total_horas]
+        [
+            record.carnet,
+            record.nombre_apellido,
+            record.actividad,
+            record.lugar,
+            record.total_horas,
+            record.fecha_inicio,
+            record.fecha_final,
+            record.total_horas
+        ]
         for record in data_vista
     ]
     df = pd.DataFrame(
-        data, columns=["Carnet", "Nombre alumno", "Actividad", "Horas sociales"]
+        data,
+        columns=[
+            "Carnet",
+            "Nombre alumno",
+            "Actividad",
+            "Lugar",
+            "Tipo horas",
+            "Fecha de inicio",
+            "Fecha final",
+            "Horas totales",
+        ],
     )
     path = os.getcwd() + "/" + filename + ".xlsx"
     with pd.ExcelWriter(path, engine="xlsxwriter") as writer:

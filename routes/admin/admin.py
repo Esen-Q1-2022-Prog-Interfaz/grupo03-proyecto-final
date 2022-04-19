@@ -480,6 +480,7 @@ def download_excel(idAct):
 
     data = get_view_registro_academico_per_act(idAct)
     path = create_excel(data)
+    
     if path:
         session["path_excel"] = path
         return send_file(path)
