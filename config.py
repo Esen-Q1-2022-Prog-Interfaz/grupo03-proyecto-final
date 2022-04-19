@@ -1,6 +1,6 @@
 class BaseConfig(object):
     # SQLALCHEMY_DATABASE_URI = "sqlite:///raices.db"
-    SQLALCHEMY_DATABASE_URI = "mysql://b848d6e2f90ff2:15ac7a17@us-cdbr-east-05.cleardb.net/heroku_7a5d8a412fdac8b?reconnect=true" 
+    SQLALCHEMY_DATABASE_URI = "mysql://b848d6e2f90ff2:15ac7a17@us-cdbr-east-05.cleardb.net/heroku_7a5d8a412fdac8b" 
     SQLALCHEMY_POOL_SIZE = 50
     SQLALCHEMY_POOL_TIMEOUT = 300
     SQLALCHEMY_TRACK_MODIFICATIONS = False
