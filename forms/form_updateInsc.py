@@ -49,33 +49,5 @@ class FormUpdateInsc(FlaskForm):
         choices= evidencias,
         render_kw={"placeholder": "Ingresa estado evidencia"},
     )
-    
-
-# # En las fechas podemos implementar un datepicker en el html para evitar que pongan la fecha con mal formato
-#     fechaFinal = DateField(
-#         "Fecha de finalización",
-#          format='%Y-%m-%d',
-#         validators=[InputRequired()],
-#         render_kw={"placeholder": "Ingresa la fecha de finalización"},
-#     )
-    
-#     horasSociales = IntegerField(
-#         "Horas Sociales",
-#         validators=[InputRequired()],
-#         render_kw={"placeholder": "Ingresa las horas sociales asistencia o por kilo, según aplique"},
-#     )
-    
-#     cuposTotales = IntegerField(
-#         "Cupos totales",
-#         validators=[InputRequired()],
-#         render_kw={"placeholder": "Ingresa los cupos totales para la actividad"},
-#     )
-    
-#     Estado = SelectField(
-#         label="Estado",
-#         validators=[InputRequired()],
-#         choices= Estados,
-#         render_kw={"placeholder":"Ingresa el estado de la actividad"}
-#     )
 
     submit = SubmitField("Modificar")
